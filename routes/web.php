@@ -137,3 +137,6 @@ Route::group(['middleware' => ['auth']] , function(){
 
     Route::resource('/partner', PartnerController::class)->except('show', 'create');
 });
+
+
+// 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
