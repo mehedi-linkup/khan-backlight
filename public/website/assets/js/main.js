@@ -284,8 +284,8 @@
    * Swiper Main Slider
    */
   var swiper = new Swiper(".mySwiper1", {
-    speed: 600,
     parallax: true,
+    delay: 5000,
     speed: 1000,
     autoplay: true,
     loop: true,

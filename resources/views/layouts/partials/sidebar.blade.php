@@ -25,7 +25,7 @@
                         <a class="nav-link" href="{{ route('gallery') }}">Gallery</a>
                         <a class="nav-link" href="{{ route('videos') }}">Video</a>
                         <a class="nav-link" href="{{ route('news') }}">News & Events</a>
-                        <!-- <a class="nav-link" href="{{ route('partner.index') }}">Partner</a> -->
+                        <a class="nav-link" href="{{ route('partner.index') }}">Partner</a>
                     </nav>
                 </div>
 
