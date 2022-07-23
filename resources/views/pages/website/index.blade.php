@@ -43,7 +43,7 @@
           <h2>Our Products</h2>
           <p style="box-shadow: 0 1px 1px 0px #4154f147;">Some sample of our products</p>
           <div class="btn-absolute text-center text-lg-start">
-            <a href="#" class="btn-read-more d-inline-flex align-items-center justify-content-center align-self-center">
+            <a href="{{ route('product') }}" class="btn-read-more d-inline-flex align-items-center justify-content-center align-self-center">
               <span>See More</span>
               <i class="bi bi-arrow-right"></i>
             </a>
@@ -54,7 +54,7 @@
           <div class="col" data-aos="fade-up" data-aos-delay="600">
             <div class="card p-lg-3">
               <div class="img-box">
-                  <a href=#>
+                  <a href="#!">
                       <img width="100%" height="219" src="{{ asset('website/assets/img/product/cover logo.jpg') }}" class="card-img-top" alt="Avenue Montaigne">
                   </a>
               </div>
@@ -64,7 +64,7 @@
                   </a> 
                   <div class="product-id">Id-16</div>
                   <div class="">
-                      <a href="#" class="btn button-2 btn-card">Order Now</a>
+                      <a href="{{ route('order') }}" class="btn button-2 btn-card">Order Now</a>
                   </div>
               </div>
             </div>
@@ -520,7 +520,7 @@
           <h2>Sister Concern</h2>
           <p style="box-shadow: 0 1px 1px 0px #4154f147;">Our relations with other companies</p>
           <div class="btn-absolute text-center text-lg-start">
-            <a href="#" class="btn-read-more d-inline-flex align-items-center justify-content-center align-self-center">
+            <a href="{{ route('sister-concern') }}" class="btn-read-more d-inline-flex align-items-center justify-content-center align-self-center">
               <span>See More</span>
               <i class="bi bi-arrow-right"></i>
             </a>
@@ -573,7 +573,7 @@
           <h2>F.A.Q</h2>
           <p style="box-shadow: 0 1px 1px 0px #4154f147;">Frequently Asked Questions</p>
           <div class="btn-absolute text-center text-lg-start">
-            <a href="#" class="btn-read-more d-inline-flex align-items-center justify-content-center align-self-center">
+            <a href="{{ route('faq') }}" class="btn-read-more d-inline-flex align-items-center justify-content-center align-self-center">
               <span>See More</span>
               <i class="bi bi-arrow-right"></i>
             </a>
@@ -688,7 +688,7 @@
           <h2>Gallery</h2>
           <p style="box-shadow: 0 1px 1px 0px #4154f147;">Check our latest photos</p>
           <div class="btn-absolute text-center text-lg-start">
-            <a href="#" class="btn-read-more d-inline-flex align-items-center justify-content-center align-self-center">
+            <a href="{{ route('gallery') }}" class="btn-read-more d-inline-flex align-items-center justify-content-center align-self-center">
               <span>See More</span>
               <i class="bi bi-arrow-right"></i>
             </a>
@@ -942,7 +942,7 @@
           <h2>Team</h2>
           <p style="box-shadow: 0 1px 1px 0px #4154f147;">Our team members</p>
           <div class="btn-absolute text-center text-lg-start">
-            <a href="#" class="btn-read-more d-inline-flex align-items-center justify-content-center align-self-center">
+            <a href="{{ route('team') }}" class="btn-read-more d-inline-flex align-items-center justify-content-center align-self-center">
               <span>See More</span>
               <i class="bi bi-arrow-right"></i>
             </a>
@@ -1092,7 +1092,7 @@
           <h2>News & Events</h2>
           <p style="box-shadow: 0 1px 1px 0px #4154f147;">Recent news & events of our company</p>
           <div class="btn-absolute text-center text-lg-start">
-            <a href="#" class="btn-read-more d-inline-flex align-items-center justify-content-center align-self-center">
+            <a href="{{ route('webnews') }}" class="btn-read-more d-inline-flex align-items-center justify-content-center align-self-center">
               <span>See More</span>
               <i class="bi bi-arrow-right"></i>
             </a>

@@ -2236,6 +2236,9 @@ section {
 .footer .footer-top .footer-contact p {
   line-height: 26px;
 }
+.footer .footer-top .footer-contact a {
+  color: #444444;
+}
 .footer .copyright {
   text-align: center;
   padding-top: 30px;

@@ -19,9 +19,9 @@ class HomeController extends Controller
     public function index()
     {   
 
-        return view('pages.website.index');
+        $slider = Slider::latest()->get();
+        return view('pages.website.index', compact('slider'));
         // $category = Category::latest()->get();
-        // $slider = Slider::latest()->get();
         // $whatwe = Whatwe::first();
         // $video = Video::latest()->get();
         // $gallery = Gallery::latest()->get();
@@ -51,6 +51,16 @@ class HomeController extends Controller
     public function gallery() {
         return view('pages.website.gallery');
     }
+    public function team() {
+        return view('pages.website.team');
+    }
+    public function webnews() {
+        return view('pages.website.news');
+    }
+    public function order() {
+        return view('pages.website.order');
+    }
+
     // public function submenu($id) {
     //     $category = Category::find($id);
     //     if (isset($category)) {

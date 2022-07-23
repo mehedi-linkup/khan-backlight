@@ -40,6 +40,9 @@ Route::get('/activity', [HomeController::class, 'activity'])->name('activity');
 Route::get('/sister-concern', [HomeController::class, 'sister_concern'])->name('sister-concern');
 Route::get('/faq', [HomeController::class, 'faq'])->name('faq');
 Route::get('/gallery', [HomeController::class, 'gallery'])->name('gallery');
+Route::get('/team', [HomeController::class, 'team'])->name('team');
+Route::get('/webnews', [HomeController::class, 'webnews'])->name('webnews');
+Route::get('/order', [HomeController::class, 'order'])->name('order');
 
 
 // Route::get('/submenu/{id}', [HomeController::class, 'submenu'])->name('submenu');
