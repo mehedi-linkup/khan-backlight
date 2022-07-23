@@ -17,7 +17,7 @@
                 Quisquam vel ut sint cum eos hic dolores aperiam. Sed deserunt et. Inventore et et dolor consequatur itaque ut voluptate sed et. Magnam nam ipsum tenetur suscipit voluptatum nam et est corrupti.
               </p>
               <div class="text-center text-lg-start">
-                <a href="#" class="btn-read-more d-inline-flex align-items-center justify-content-center align-self-center">
+                <a href="{{ route('about') }}" class="btn-read-more d-inline-flex align-items-center justify-content-center align-self-center">
                   <span>Read More</span>
                   <i class="bi bi-arrow-right"></i>
                 </a>
@@ -26,7 +26,7 @@
           </div>
 
           <div class="col-lg-6 d-flex align-items-center" data-aos="zoom-out" data-aos-delay="200">
-            <img src="{{ asset('website/assets/img/about.jpg') }}" class="img-fluid" alt="">
+            <img src="{{ asset('website/assets/img/about.jpg') }}" class="img-fluid" alt="" style="height: 366px;">
           </div>
 
         </div>
@@ -178,6 +178,132 @@
             </div>
           </div>
           <div class="col" data-aos="fade-up" data-aos-delay="600">
+            <div class="card p-lg-3">
+              <div class="img-box">
+                  <a href=#>
+                      <img width="100%" height="219" src="{{ asset('website/assets/img/product/backlight cover.jpg') }}" class="card-img-top" alt="Avenue Montaigne">
+                  </a>
+              </div>
+              <div class="card-body p_card text-center">
+                  <a href="#">
+                      <h5 class="card-title">Product Title</h5>
+                  </a> 
+                  <div class="product-id">Id-16</div>
+                  <div class="">
+                      <a href="#" class="btn button-2 btn-card">Order Now</a>
+                  </div>
+              </div>
+            </div>
+          </div>
+          <div class="col" data-aos="fade-up" data-aos-delay="600">
+            <div class="card p-lg-3">
+              <div class="img-box">
+                  <a href=#>
+                      <img width="100%" height="219" src="{{ asset('website/assets/img/product/cover logo.jpg') }}" class="card-img-top" alt="Avenue Montaigne">
+                  </a>
+              </div>
+              <div class="card-body p_card text-center">
+                  <a href="#">
+                      <h5 class="card-title">Product Title</h5>
+                  </a> 
+                  <div class="product-id">Id-16</div>
+                  <div class="">
+                      <a href="#" class="btn button-2 btn-card">Order Now</a>
+                  </div>
+              </div>
+            </div>
+          </div>
+          <div class="col" data-aos="fade-up" data-aos-delay="600">
+            <div class="card p-lg-3">
+              <div class="img-box">
+                  <a href=#>
+                      <img width="100%" height="219" src="{{ asset('website/assets/img/product/Honda Batch.jpg') }}" class="card-img-top" alt="Avenue Montaigne">
+                  </a>
+              </div>
+              <div class="card-body p_card text-center">
+                  <a href="#">
+                      <h5 class="card-title">Product Title</h5>
+                  </a> 
+                  <div class="product-id">Id-16</div>
+                  <div class="">
+                      <a href="#" class="btn button-2 btn-card">Order Now</a>
+                  </div>
+              </div>
+            </div>
+          </div>
+          <div class="col" data-aos="fade-up" data-aos-delay="600">
+            <div class="card p-lg-3">
+              <div class="img-box">
+                  <a href=#>
+                      <img width="100%" height="219" src="{{ asset('website/assets/img/product/looking glass.jpg') }}" class="card-img-top" alt="Avenue Montaigne">
+                  </a>
+              </div>
+              <div class="card-body p_card text-center">
+                  <a href="#">
+                      <h5 class="card-title">Product Title</h5>
+                  </a> 
+                  <div class="product-id">Id-16</div>
+                  <div class="">
+                      <a href="#" class="btn button-2 btn-card">Order Now</a>
+                  </div>
+              </div>
+            </div>
+          </div>
+          <div class="col" data-aos="fade-up" data-aos-delay="600">
+            <div class="card p-lg-3">
+              <div class="img-box">
+                  <a href=#>
+                      <img width="100%" height="219" src="{{ asset('website/assets/img/product/mod guard set.jpg') }}" class="card-img-top" alt="Avenue Montaigne">
+                  </a>
+              </div>
+              <div class="card-body p_card text-center">
+                  <a href="#">
+                      <h5 class="card-title">Product Title</h5>
+                  </a> 
+                  <div class="product-id">Id-16</div>
+                  <div class="">
+                      <a href="#" class="btn button-2 btn-card">Order Now</a>
+                  </div>
+              </div>
+            </div>
+          </div>
+          <div class="col" data-aos="fade-up" data-aos-delay="600">
+            <div class="card p-lg-3">
+              <div class="img-box">
+                  <a href=#>
+                      <img width="100%" height="219" src="{{ asset('website/assets/img/product/product1.jpg') }}" class="card-img-top" alt="Avenue Montaigne">
+                  </a>
+              </div>
+              <div class="card-body p_card text-center">
+                  <a href="#">
+                      <h5 class="card-title">Product Title</h5>
+                  </a> 
+                  <div class="product-id">Id-16</div>
+                  <div class="">
+                      <a href="#" class="btn button-2 btn-card">Order Now</a>
+                  </div>
+              </div>
+            </div>
+          </div>
+          <div class="col" data-aos="fade-up" data-aos-delay="200">
+            <div class="card p-lg-3">
+              <div class="img-box">
+                  <a href=#>
+                      <img width="100%" height="219" src="{{ asset('website/assets/img/product/backlight cover.jpg') }}" class="card-img-top" alt="Avenue Montaigne">
+                  </a>
+              </div>
+              <div class="card-body p_card text-center">
+                  <a href="#">
+                      <h5 class="card-title">Product Title</h5>
+                  </a> 
+                  <div class="product-id">Id-16</div>
+                  <div class="">
+                      <a href="#" class="btn button-2 btn-card">Order Now</a>
+                  </div>
+              </div>
+            </div>
+          </div>
+          <div class="col" data-aos="fade-up" data-aos-delay="400">
             <div class="card p-lg-3">
               <div class="img-box">
                   <a href=#>
@@ -352,7 +478,9 @@
                   <i class="bi bi-check2"></i>
                   <h4>Incidunt non veritatis illum ea ut nisi</h4>
                 </div>
-                <p>Non quod totam minus repellendus autem sint velit. Rerum debitis facere soluta tenetur. Iure molestiae assumenda sunt qui inventore eligendi voluptates nisi at. Dolorem quo tempora. Quia et perferendis.</p>
+                <p>Non quod totam minus repellendus autem sint velit. Rerum debitis facere soluta tenetur. Iure molestiae assumenda sunt qui inventore eligendi voluptates nisi at. Dolorem quo tempora. Quia et perferendis.
+                  <a href="{{ route('history') }}" style="font-size: 15px">See More</a>
+                </p>
               </div><!-- End Tab 1 Content -->
   
               <div class="tab-pane fade show" id="tab2">
@@ -366,23 +494,10 @@
                   <i class="bi bi-check2"></i>
                   <h4>Incidunt non veritatis illum ea ut nisi</h4>
                 </div>
-                <p>Non quod totam minus repellendus autem sint velit. Rerum debitis facere soluta tenetur. Iure molestiae assumenda sunt qui inventore eligendi voluptates nisi at. Dolorem quo tempora. Quia et perferendis.</p>
+                <p>Non quod totam minus repellendus autem sint velit. Rerum debitis facere soluta tenetur. Iure molestiae assumenda sunt qui inventore eligendi voluptates nisi at. Dolorem quo tempora. Quia et perferendis.
+                  <a href="{{ route('activity') }}" style="font-size: 15px">See More</a>
+                </p>
               </div><!-- End Tab 2 Content -->
-  
-              {{-- <div class="tab-pane fade show" id="tab3">
-                <p>Consequuntur inventore voluptates consequatur aut vel et. Eos doloribus expedita. Sapiente atque consequatur minima nihil quae aspernatur quo suscipit voluptatem.</p>
-                <div class="d-flex align-items-center mb-2">
-                  <i class="bi bi-check2"></i>
-                  <h4>Repudiandae rerum velit modi et officia quasi facilis</h4>
-                </div>
-                <p>Laborum omnis voluptates voluptas qui sit aliquam blanditiis. Sapiente minima commodi dolorum non eveniet magni quaerat nemo et.</p>
-                <div class="d-flex align-items-center mb-2">
-                  <i class="bi bi-check2"></i>
-                  <h4>Incidunt non veritatis illum ea ut nisi</h4>
-                </div>
-                <p>Non quod totam minus repellendus autem sint velit. Rerum debitis facere soluta tenetur. Iure molestiae assumenda sunt qui inventore eligendi voluptates nisi at. Dolorem quo tempora. Quia et perferendis.</p>
-              </div><!-- End Tab 3 Content --> --}}
-  
             </div>
   
           </div>

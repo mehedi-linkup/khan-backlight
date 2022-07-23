@@ -1,46 +1,298 @@
 @extends('layouts.website', ['pageName' => 'product'])
 @section('web-content')
 
-<section id="product-background" class="product-background d-flex" style="background-image: url('{{ asset('/website/assets/image/section-background/'.$backimage->bgimage_other) }}')">
-  <div class="container align-self-center">
-      <div class="row">
-          <div class="col-lg-8 offset-lg-2 col-12">
-              <nav aria-label="breadcrumb" style="--bs-breadcrumb-divider: '';">
-                  <ol class="breadcrumb justify-content-center">
-                    <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                    <span>&nbsp;/&nbsp;</span>
-                    <li class="breadcrumb-item"><a href="{{ route('submenu', $category->id) }}">{{ $category->name }}</a></li>
-                    <span>&nbsp;/&nbsp;</span>
-                    <li class="breadcrumb-item active" aria-current="page">{{ $subcategory->name }}</li>
-                  </ol>
-                </nav>
-          </div>
-      </div>
-  </div>
-</section>
+<!-- ======= Breadcrumbs ======= -->
+<section class="breadcrumbs">
+  <div class="container">
 
-<section id="category-menu" class="category-menu section-padding">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12 col-12">
-          <h2 class="section-title fs-2 fw-bold text-center text-uppercase text-white">{{ $subcategory->name }}</h2>
-        </div>
-      </div>
-      <div class="row gy-3">
-        @foreach($product as $item)
-        <div class="col-md-3 col-12 text-center">
-          <div class="filter-anchor">
-            <div class="filter-box">
+    <ol>
+      <li><a href="{{route('home')}}">Home</a></li>
+      <li> Product </li>
+    </ol>
+    <h2>Our Products</h2>
+
+  </div>
+</section><!-- End Breadcrumbs -->
+
+
+    <!-- ======= Product Section ======= -->
+    <section id="products" class="products">
+
+      <div class="container" data-aos="fade-up">
+        <div class="row row-cols-lg-5 gy-lg-3">
+          <div class="col" data-aos="fade-up" data-aos-delay="600">
+            <div class="card p-lg-3">
               <div class="img-box">
-                <img src="{{ asset( $item->image ) }}" alt="{{ $item->name }}" class="img-fluid"/>
+                  <a href=#>
+                      <img width="100%" height="219" src="{{ asset('website/assets/img/product/cover logo.jpg') }}" class="card-img-top" alt="Avenue Montaigne">
+                  </a>
               </div>
-              <h5 class="product-title mt-2">{{ $item->name }}</h5>
+              <div class="card-body p_card text-center">
+                  <a href="#">
+                      <h5 class="card-title">Product Title</h5>
+                  </a> 
+                  <div class="product-id">Id-16</div>
+                  <div class="">
+                      <a href="#" class="btn button-2 btn-card">Order Now</a>
+                  </div>
+              </div>
+            </div>
+          </div>
+          <div class="col" data-aos="fade-up" data-aos-delay="600">
+            <div class="card p-lg-3">
+              <div class="img-box">
+                  <a href=#>
+                      <img width="100%" height="219" src="{{ asset('website/assets/img/product/Honda Batch.jpg') }}" class="card-img-top" alt="Avenue Montaigne">
+                  </a>
+              </div>
+              <div class="card-body p_card text-center">
+                  <a href="#">
+                      <h5 class="card-title">Product Title</h5>
+                  </a> 
+                  <div class="product-id">Id-16</div>
+                  <div class="">
+                      <a href="#" class="btn button-2 btn-card">Order Now</a>
+                  </div>
+              </div>
+            </div>
+          </div>
+          <div class="col" data-aos="fade-up" data-aos-delay="600">
+            <div class="card p-lg-3">
+              <div class="img-box">
+                  <a href=#>
+                      <img width="100%" height="219" src="{{ asset('website/assets/img/product/looking glass.jpg') }}" class="card-img-top" alt="Avenue Montaigne">
+                  </a>
+              </div>
+              <div class="card-body p_card text-center">
+                  <a href="#">
+                      <h5 class="card-title">Product Title</h5>
+                  </a> 
+                  <div class="product-id">Id-16</div>
+                  <div class="">
+                      <a href="#" class="btn button-2 btn-card">Order Now</a>
+                  </div>
+              </div>
+            </div>
+          </div>
+          <div class="col" data-aos="fade-up" data-aos-delay="600">
+            <div class="card p-lg-3">
+              <div class="img-box">
+                  <a href=#>
+                      <img width="100%" height="219" src="{{ asset('website/assets/img/product/mod guard set.jpg') }}" class="card-img-top" alt="Avenue Montaigne">
+                  </a>
+              </div>
+              <div class="card-body p_card text-center">
+                  <a href="#">
+                      <h5 class="card-title">Product Title</h5>
+                  </a> 
+                  <div class="product-id">Id-16</div>
+                  <div class="">
+                      <a href="#" class="btn button-2 btn-card">Order Now</a>
+                  </div>
+              </div>
+            </div>
+          </div>
+          <div class="col" data-aos="fade-up" data-aos-delay="600">
+            <div class="card p-lg-3">
+              <div class="img-box">
+                  <a href=#>
+                      <img width="100%" height="219" src="{{ asset('website/assets/img/product/product1.jpg') }}" class="card-img-top" alt="Avenue Montaigne">
+                  </a>
+              </div>
+              <div class="card-body p_card text-center">
+                  <a href="#">
+                      <h5 class="card-title">Product Title</h5>
+                  </a> 
+                  <div class="product-id">Id-16</div>
+                  <div class="">
+                      <a href="#" class="btn button-2 btn-card">Order Now</a>
+                  </div>
+              </div>
+            </div>
+          </div>
+          <div class="col" data-aos="fade-up" data-aos-delay="200">
+            <div class="card p-lg-3">
+              <div class="img-box">
+                  <a href=#>
+                      <img width="100%" height="219" src="{{ asset('website/assets/img/product/backlight cover.jpg') }}" class="card-img-top" alt="Avenue Montaigne">
+                  </a>
+              </div>
+              <div class="card-body p_card text-center">
+                  <a href="#">
+                      <h5 class="card-title">Product Title</h5>
+                  </a> 
+                  <div class="product-id">Id-16</div>
+                  <div class="">
+                      <a href="#" class="btn button-2 btn-card">Order Now</a>
+                  </div>
+              </div>
+            </div>
+          </div>
+          <div class="col" data-aos="fade-up" data-aos-delay="400">
+            <div class="card p-lg-3">
+              <div class="img-box">
+                  <a href=#>
+                      <img width="100%" height="219" src="{{ asset('website/assets/img/product/backlight cover.jpg') }}" class="card-img-top" alt="Avenue Montaigne">
+                  </a>
+              </div>
+              <div class="card-body p_card text-center">
+                  <a href="#">
+                      <h5 class="card-title">Product Title</h5>
+                  </a> 
+                  <div class="product-id">Id-16</div>
+                  <div class="">
+                      <a href="#" class="btn button-2 btn-card">Order Now</a>
+                  </div>
+              </div>
+            </div>
+          </div>
+          <div class="col" data-aos="fade-up" data-aos-delay="600">
+            <div class="card p-lg-3">
+              <div class="img-box">
+                  <a href=#>
+                      <img width="100%" height="219" src="{{ asset('website/assets/img/product/backlight cover.jpg') }}" class="card-img-top" alt="Avenue Montaigne">
+                  </a>
+              </div>
+              <div class="card-body p_card text-center">
+                  <a href="#">
+                      <h5 class="card-title">Product Title</h5>
+                  </a> 
+                  <div class="product-id">Id-16</div>
+                  <div class="">
+                      <a href="#" class="btn button-2 btn-card">Order Now</a>
+                  </div>
+              </div>
+            </div>
+          </div>
+          <div class="col" data-aos="fade-up" data-aos-delay="600">
+            <div class="card p-lg-3">
+              <div class="img-box">
+                  <a href=#>
+                      <img width="100%" height="219" src="{{ asset('website/assets/img/product/cover logo.jpg') }}" class="card-img-top" alt="Avenue Montaigne">
+                  </a>
+              </div>
+              <div class="card-body p_card text-center">
+                  <a href="#">
+                      <h5 class="card-title">Product Title</h5>
+                  </a> 
+                  <div class="product-id">Id-16</div>
+                  <div class="">
+                      <a href="#" class="btn button-2 btn-card">Order Now</a>
+                  </div>
+              </div>
+            </div>
+          </div>
+          <div class="col" data-aos="fade-up" data-aos-delay="600">
+            <div class="card p-lg-3">
+              <div class="img-box">
+                  <a href=#>
+                      <img width="100%" height="219" src="{{ asset('website/assets/img/product/Honda Batch.jpg') }}" class="card-img-top" alt="Avenue Montaigne">
+                  </a>
+              </div>
+              <div class="card-body p_card text-center">
+                  <a href="#">
+                      <h5 class="card-title">Product Title</h5>
+                  </a> 
+                  <div class="product-id">Id-16</div>
+                  <div class="">
+                      <a href="#" class="btn button-2 btn-card">Order Now</a>
+                  </div>
+              </div>
+            </div>
+          </div>
+          <div class="col" data-aos="fade-up" data-aos-delay="600">
+            <div class="card p-lg-3">
+              <div class="img-box">
+                  <a href=#>
+                      <img width="100%" height="219" src="{{ asset('website/assets/img/product/looking glass.jpg') }}" class="card-img-top" alt="Avenue Montaigne">
+                  </a>
+              </div>
+              <div class="card-body p_card text-center">
+                  <a href="#">
+                      <h5 class="card-title">Product Title</h5>
+                  </a> 
+                  <div class="product-id">Id-16</div>
+                  <div class="">
+                      <a href="#" class="btn button-2 btn-card">Order Now</a>
+                  </div>
+              </div>
+            </div>
+          </div>
+          <div class="col" data-aos="fade-up" data-aos-delay="600">
+            <div class="card p-lg-3">
+              <div class="img-box">
+                  <a href=#>
+                      <img width="100%" height="219" src="{{ asset('website/assets/img/product/mod guard set.jpg') }}" class="card-img-top" alt="Avenue Montaigne">
+                  </a>
+              </div>
+              <div class="card-body p_card text-center">
+                  <a href="#">
+                      <h5 class="card-title">Product Title</h5>
+                  </a> 
+                  <div class="product-id">Id-16</div>
+                  <div class="">
+                      <a href="#" class="btn button-2 btn-card">Order Now</a>
+                  </div>
+              </div>
+            </div>
+          </div>
+          <div class="col" data-aos="fade-up" data-aos-delay="600">
+            <div class="card p-lg-3">
+              <div class="img-box">
+                  <a href=#>
+                      <img width="100%" height="219" src="{{ asset('website/assets/img/product/product1.jpg') }}" class="card-img-top" alt="Avenue Montaigne">
+                  </a>
+              </div>
+              <div class="card-body p_card text-center">
+                  <a href="#">
+                      <h5 class="card-title">Product Title</h5>
+                  </a> 
+                  <div class="product-id">Id-16</div>
+                  <div class="">
+                      <a href="#" class="btn button-2 btn-card">Order Now</a>
+                  </div>
+              </div>
+            </div>
+          </div>
+          <div class="col" data-aos="fade-up" data-aos-delay="200">
+            <div class="card p-lg-3">
+              <div class="img-box">
+                  <a href=#>
+                      <img width="100%" height="219" src="{{ asset('website/assets/img/product/backlight cover.jpg') }}" class="card-img-top" alt="Avenue Montaigne">
+                  </a>
+              </div>
+              <div class="card-body p_card text-center">
+                  <a href="#">
+                      <h5 class="card-title">Product Title</h5>
+                  </a> 
+                  <div class="product-id">Id-16</div>
+                  <div class="">
+                      <a href="#" class="btn button-2 btn-card">Order Now</a>
+                  </div>
+              </div>
+            </div>
+          </div>
+          <div class="col" data-aos="fade-up" data-aos-delay="400">
+            <div class="card p-lg-3">
+              <div class="img-box">
+                  <a href=#>
+                      <img width="100%" height="219" src="{{ asset('website/assets/img/product/backlight cover.jpg') }}" class="card-img-top" alt="Avenue Montaigne">
+                  </a>
+              </div>
+              <div class="card-body p_card text-center">
+                  <a href="#">
+                      <h5 class="card-title">Product Title</h5>
+                  </a> 
+                  <div class="product-id">Id-16</div>
+                  <div class="">
+                      <a href="#" class="btn button-2 btn-card">Order Now</a>
+                  </div>
+              </div>
             </div>
           </div>
         </div>
-        @endforeach
       </div>
-    </div>
-  </section>
-  @endsection
+    </section><!-- End Product Section -->
+
+@endsection
   

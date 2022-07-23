@@ -33,6 +33,15 @@ use App\Http\Controllers\HomeController;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/about', [HomeController::class, 'about'])->name('about');
+Route::get('/product', [HomeController::class, 'product'])->name('product');
+Route::get('/history', [HomeController::class, 'history'])->name('history');
+Route::get('/activity', [HomeController::class, 'activity'])->name('activity');
+Route::get('/sister-concern', [HomeController::class, 'sister_concern'])->name('sister-concern');
+Route::get('/faq', [HomeController::class, 'faq'])->name('faq');
+Route::get('/gallery', [HomeController::class, 'gallery'])->name('gallery');
+
+
 // Route::get('/submenu/{id}', [HomeController::class, 'submenu'])->name('submenu');
 // Route::get('/product/{id}', [HomeController::class, 'product'])->name('product');
 // Route::get('/product-detail/{id}', [HomeController::class, 'productDetail'])->name('productDetail');

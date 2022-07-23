@@ -30,7 +30,27 @@ class HomeController extends Controller
         // $backimage = BackImage::first();
         // return view('pages.website.index', compact('category', 'slider', 'gallery', 'video', 'management', 'news', 'whatwe', 'backimage'));
     }
-
+    public function about() {
+        return view('pages.website.about');
+    }
+    public function product() {
+        return view('pages.website.product');
+    }
+    public function history() {
+        return view('pages.website.history');
+    }
+    public function activity() {
+        return view('pages.website.activity');
+    }
+    public function sister_concern() {
+        return view('pages.website.sister-concern');
+    }
+    public function faq() {
+        return view('pages.website.faq');
+    }
+    public function gallery() {
+        return view('pages.website.gallery');
+    }
     // public function submenu($id) {
     //     $category = Category::find($id);
     //     if (isset($category)) {
