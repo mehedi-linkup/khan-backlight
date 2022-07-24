@@ -4,27 +4,29 @@
     <div class="container">
       <div class="row gy-4">
         <div class="col-lg-4 col-md-12 footer-info">
-          <a href="index.html" class="logo d-flex align-items-center">
+          <a href="{{ route('home') }}" class="logo d-flex align-items-center">
             {{-- <img src="{{ asset('website/assets/img/logo.png') }}" alt=""> --}}
-            <span>Khan Backlight Product</span>
+            <span>{{ $content->name }}</span>
           </a>
-          <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies darta donna mare fermentum iaculis eu non diam phasellus.</p>
+          <div>{!! Str::words($content->about, 30, '') !!}</div>
           <div class="social-links mt-3">
-            <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
-            <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-            <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-            <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+            <a href="{{ $content->twitter }}" class="twitter" target="_blank"><i class="bi bi-twitter"></i></a>
+            <a href="{{ $content->facebook }}" class="facebook" target="_blank"><i class="bi bi-facebook"></i></a>
+            <a href="{{ $content->instagram }}" class="instagram" target="_blank"><i class="bi bi-instagram"></i></a>
+            <a href="{{ $content->linkedin }}" class="linkedin" target="_blank"><i class="bi bi-linkedin"></i></a>
           </div>
         </div>
 
         <div class="col-lg-2 col-6 footer-links">
           <h4>Useful Links</h4>
           <ul>
-            <li><i class="bi bi-chevron-right"></i> <a href="#">Home</a></li>
-            <li><i class="bi bi-chevron-right"></i> <a href="#">About us</a></li>
-            <li><i class="bi bi-chevron-right"></i> <a href="#">Services</a></li>
-            <li><i class="bi bi-chevron-right"></i> <a href="#">Terms of service</a></li>
-            <li><i class="bi bi-chevron-right"></i> <a href="#">Privacy policy</a></li>
+            <li><i class="bi bi-chevron-right"></i> <a href="{{ route('home') }}">Home</a></li>
+            <li><i class="bi bi-chevron-right"></i> <a href="{{ route('about') }}">About us</a></li>
+            <li><i class="bi bi-chevron-right"></i> <a href="{{ route('product') }}">Product</a></li>
+            <li><i class="bi bi-chevron-right"></i> <a href="{{ route('faq') }}">FAQ</a></li>
+            <li><i class="bi bi-chevron-right"></i> <a href="{{ route('gallery') }}">Gallery</a></li>
+            <li><i class="bi bi-chevron-right"></i> <a href="{{ route('team') }}">Team</a></li>
+            <li><i class="bi bi-chevron-right"></i> <a href="{{ route('webnews') }}">News & Events</a></li>
           </ul>
         </div>
 

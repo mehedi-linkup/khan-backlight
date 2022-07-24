@@ -1,4 +1,4 @@
-@extends('layouts.admin-master', ['pageName'=> 'service', 'title' => 'Add Service'])
+@extends('layouts.admin-master', ['pageName'=> 'service', 'title' => 'Add Speciality'])
 {{-- @section('title', 'Service') --}}
 
 @push('admin-css')
@@ -13,7 +13,7 @@
                 <div class="card my-3">
                     <div class="card-header">
                         <i class="fas fa-plus"></i>
-                        Add a Service
+                        Add Company Speciality
                     </div>
 
                     <div class="card-body">
@@ -22,29 +22,20 @@
                             <div class="row">
                                 <div class="col-md-6 mb-2">
                                     <label for="name" class="mb-1"> Title <span class="text-danger">*</span> </label>
-                                    <input type="text" name="name" class="form-control form-control-sm shadow-none @error('name') is-invalid @enderror" id="name" placeholder="Enter Service Name">
+                                    <input type="text" name="name" class="form-control form-control-sm shadow-none @error('name') is-invalid @enderror" id="name" placeholder="Enter a Title">
                                     @error('name')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
-                                    {{-- 
-                                    <label for="icon" class="mb-1"> Icon <span class="text-danger">*</span> </label>
-                                    <input type="text" name="icon" class="form-control form-control-sm shadow-none @error('icon') is-invalid @enderror" id="icon" placeholder="Enter an Icon">
-                                    @error('name')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror --}}
+<!--                                     
                                     <label for="description" class="mb-1">Description</label>
                                     <textarea name="description" class="form-control form-control-sm" id="description" rows="3"></textarea>
                                     @error('description')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
-                                    @enderror
-                                </div>
-                                <div class="col-md-6 mb-2">
+                                    @enderror -->
                                     <label for="s_description" class="mb-1">Short Description</label>
                                     <textarea name="s_description" class="form-control form-control-sm" id="s_description" rows="3" placeholder="Enter a short description"></textarea>
                                     @error('s_description')
@@ -52,6 +43,8 @@
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
+                                </div>
+                                <div class="col-md-6 mb-2">
 
 
                                     <label for="image">Service Image</label>
@@ -76,7 +69,7 @@
                 <div class="card my-3">
                     <div class="card-header">
                         <i class="fas fa-list"></i>
-                        Service List
+                        Speciality List
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">

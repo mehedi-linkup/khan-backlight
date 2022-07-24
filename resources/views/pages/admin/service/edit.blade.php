@@ -1,4 +1,4 @@
-@extends('layouts.admin-master', ['pageName'=> 'service', 'title' => 'Edit Service'])
+@extends('layouts.admin-master', ['pageName'=> 'service', 'title' => 'Edit Speciality'])
 {{-- @section('title', 'Update Service') --}}
 @push('admin-css')
     <link href="{{ asset('summernote/summernote-bs4.min.css') }}" rel="stylesheet">  
@@ -9,12 +9,12 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="form-area">
-                    <h4 class="heading"><i class="fas fa-edit"></i> Edit Service</h4>
+                    <h4 class="heading"><i class="fas fa-edit"></i> Edit Speciality</h4>
                     <form action="{{ route('update.service', $service->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
                             <div class="col-md-6 mb-2">
-                                <label for="name" class="mb-1"> Name <span class="text-danger">*</span> </label>
+                                <label for="name" class="mb-1"> Title <span class="text-danger">*</span> </label>
                                 <input type="text" name="name" class="form-control form-control-sm shadow-none @error('name') is-invalid @enderror" id="name" placeholder="Enter Service Name" value="{{ $service->name }}">
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
@@ -22,25 +22,18 @@
                                     </span>
                                 @enderror
                                 
-                                <label for="description" class="mb-1">Description</label>
-                                <textarea name="description" class="form-control form-control-sm" id="description" rows="3">{{ $service->description }}</textarea>
-                                @error('description')
+                                <label for="s_description" class="mb-1">Short Description</label>
+                                <textarea name="s_description" class="form-control form-control-sm" id="s_description" rows="3">{{ $service->s_description }}</textarea>
+                                @error('s_description')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
-                                @enderror
+                                @enderror                               
                             </div>
 
                             <div class="col-md-6 mb-2">
-                                <label for="s_description" class="mb-1">Short Description</label>
-                                    <textarea name="s_description" class="form-control form-control-sm" id="s_description" rows="3">{{ $service->s_description }}</textarea>
-                                    @error('s_description')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
 
-                                <label for="image">Service Image</label>
+                                <label for="image">Image</label>
                                 <input class="form-control form-control-sm" id="image" type="file" name="image" onchange="readImgURL(this);">
                                 <div class="form-group mt-2" style="margin-bottom: 0">
                                     <img class="img-thumbnail" src="#" id="previewImage" style="width: 160px;height: 130px;">

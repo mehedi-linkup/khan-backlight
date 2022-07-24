@@ -17,8 +17,8 @@ class ServiceController extends Controller
     public function serviceInsert(Request $request) {
         $request->validate([
             'name' => 'required',
-            'description' => 'required|min:12',
-            'icon'
+            's_description' => 'required|min:4',
+            'image' => 'required|image|mimes:jpeg,jpg,png,gif,webp'
         ]);
 
         try {
@@ -30,7 +30,7 @@ class ServiceController extends Controller
             
             $service = new Service;
             $service->name = $request->name;
-            $service->description = $request->description;
+            // $service->description = $request->description;
             $service->s_description = $request->s_description;
             $service->image = $save_url;    
             $service->created_at = Carbon::now();
@@ -48,15 +48,13 @@ class ServiceController extends Controller
     public function serviceUpdate(Request $request, $id) {
         $request->validate([
             'name' => 'required',
-            'description' => 'required|min:12',
             's_description' => 'required|min:8',
+            'image' => 'image|mimes:jpeg,jpg,png,gif,webp'
         ]);
 
         try {
-            // DB::beginTransaction();
             $service = Service::find($id);
             $service->name = $request->name;
-            $service->description = $request->description;
             $service->s_description = $request->s_description;
 
             $image = $request->file('image');

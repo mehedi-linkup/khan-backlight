@@ -15,17 +15,23 @@
                     <nav class="sb-sidenav-menu-nested nav">
                         <a class="nav-link" href="{{ route('company.edit') }}">Company Content</a>
                         <a class="nav-link" href="{{ route('slider.index') }}">Slider</a>
-                        <a class="nav-link" href="{{ route('whatwe.edit') }}">About Us</a>
-                        <a class="nav-link" href="{{ route('backimage.edit') }}">Background Image</a>
+                        <!-- <a class="nav-link" href="{{ route('whatwe.edit') }}">About Us</a> -->
+                        <!-- <a class="nav-link" href="{{ route('backimage.edit') }}">Background Image</a> -->
                         <!-- <a class="nav-link" href="{{ route('service') }}">Service</a> -->
-                        <a class="nav-link" href="{{ route('admin.categories') }}">Category</a>
-                        <a class="nav-link" href="{{ route('admin.subcategories') }}">Subcategory</a>
+                        <!-- <a class="nav-link" href="{{ route('admin.categories') }}">Category</a> -->
+                        <!-- <a class="nav-link" href="{{ route('admin.subcategories') }}">Subcategory</a> -->
                         <a class="nav-link" href="{{ route('admin.products') }}">Product</a>
-                        <a class="nav-link" href="{{ route('management.index') }}">Management</a>
+                        <a class="nav-link" href="{{ route('service') }}">Our Speciality</a>
+                        <a class="nav-link" href="{{ route('admin.products') }}">Factory Information</a>
+                        <a class="nav-link" href="{{ route('admin.products') }}">History & Activity</a>
+                        <a class="nav-link" href="{{ route('admin.products') }}">Sister Concern</a>
+                        <a class="nav-link" href="{{ route('admin.products') }}">Faq</a>
                         <a class="nav-link" href="{{ route('gallery') }}">Gallery</a>
-                        <a class="nav-link" href="{{ route('videos') }}">Video</a>
+                        <a class="nav-link" href="{{ route('admin.products') }}">Testimonial</a>
+                        <a class="nav-link" href="{{ route('management.index') }}">Management</a>
+                        <a class="nav-link" href="{{ route('partner.index') }}">Client</a>
                         <a class="nav-link" href="{{ route('news') }}">News & Events</a>
-                        <a class="nav-link" href="{{ route('partner.index') }}">Partner</a>
+                        <!-- <a class="nav-link" href="{{ route('videos') }}">Video</a> -->
                     </nav>
                 </div>
 
