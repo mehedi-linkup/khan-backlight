@@ -134,7 +134,7 @@
           <div class="col-lg-4 mt-5 mt-lg-0 d-flex">
             <div class="row align-self-center gy-4">
 
-              @foreach ($factorypoint as $item)
+              @foreach ($factorypoint->take(6) as $item)
               <div class="col-md-12" data-aos="zoom-out" data-aos-delay="200">
                 <div class="feature-box d-flex align-items-center">
                   <i class="bi bi-check"></i>

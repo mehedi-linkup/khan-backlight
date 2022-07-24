@@ -26,7 +26,7 @@
                         <a class="nav-link" href="{{ route('whatwe.edit') }}">History & Activity</a>
                         <a class="nav-link" href="{{ route('sister') }}">Sister Concern</a>
                         <a class="nav-link" href="{{ route('faq.index') }}">Faq</a>
-                        <a class="nav-link" href="{{ route('gallery') }}">Gallery</a>
+                        <a class="nav-link" href="{{ route('galleries') }}">Gallery</a>
                         <a class="nav-link" href="{{ route('testimonial.index') }}">Testimonial</a>
                         <a class="nav-link" href="{{ route('management.index') }}">Management</a>
                         <a class="nav-link" href="{{ route('partner.index') }}">Client</a>
