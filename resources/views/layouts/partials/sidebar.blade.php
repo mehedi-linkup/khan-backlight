@@ -22,12 +22,12 @@
                         <!-- <a class="nav-link" href="{{ route('admin.subcategories') }}">Subcategory</a> -->
                         <a class="nav-link" href="{{ route('admin.products') }}">Product</a>
                         <a class="nav-link" href="{{ route('service') }}">Our Speciality</a>
-                        <a class="nav-link" href="{{ route('admin.products') }}">Factory Information</a>
-                        <a class="nav-link" href="{{ route('admin.products') }}">History & Activity</a>
-                        <a class="nav-link" href="{{ route('admin.products') }}">Sister Concern</a>
-                        <a class="nav-link" href="{{ route('admin.products') }}">Faq</a>
+                        <a class="nav-link" href="{{ route('edit.factory') }}">Factory Information</a>
+                        <a class="nav-link" href="{{ route('whatwe.edit') }}">History & Activity</a>
+                        <a class="nav-link" href="{{ route('sister') }}">Sister Concern</a>
+                        <a class="nav-link" href="{{ route('faq.index') }}">Faq</a>
                         <a class="nav-link" href="{{ route('gallery') }}">Gallery</a>
-                        <a class="nav-link" href="{{ route('admin.products') }}">Testimonial</a>
+                        <a class="nav-link" href="{{ route('testimonial.index') }}">Testimonial</a>
                         <a class="nav-link" href="{{ route('management.index') }}">Management</a>
                         <a class="nav-link" href="{{ route('partner.index') }}">Client</a>
                         <a class="nav-link" href="{{ route('news') }}">News & Events</a>

@@ -13,6 +13,13 @@ use App\Models\Video;
 use App\Models\News;
 use App\Models\Management;
 use App\Models\BackImage;
+use App\Models\Partner;
+use App\Models\Factory;
+use App\Models\FactoryPoint;
+use App\Models\Service;
+use App\Models\SisterConcern;
+use App\Models\Faq;
+use App\Models\Testimonial;
 
 class HomeController extends Controller
 {
@@ -20,42 +27,54 @@ class HomeController extends Controller
     {   
 
         $slider = Slider::latest()->get();
-        return view('pages.website.index', compact('slider'));
-        // $category = Category::latest()->get();
-        // $whatwe = Whatwe::first();
-        // $video = Video::latest()->get();
-        // $gallery = Gallery::latest()->get();
-        // $management = Management::latest()->get();
-        // $news = News::latest()->get();
-        // $backimage = BackImage::first();
-        // return view('pages.website.index', compact('category', 'slider', 'gallery', 'video', 'management', 'news', 'whatwe', 'backimage'));
+        $partner = Partner::latest()->get();
+        $management = Management::latest()->get();
+        $history = Whatwe::first();
+        $gallery = Gallery::latest()->get();
+        $product = Product::latest()->get();
+        $factory = Factory::first();
+        $factorypoint = FactoryPoint::latest()->get();
+        $service = Service::latest()->get();
+        $sister = SisterConcern::latest()->get();
+        $news = News::latest()->get();
+        $faq = Faq::latest()->get();
+        $testimonial = Testimonial::latest()->get();
+        return view('pages.website.index', compact('slider', 'partner', 'management', 'gallery', 'product', 'history', 'factory', 'factorypoint', 'service', 'news', 'sister', 'faq', 'testimonial'));
     }
     public function about() {
         return view('pages.website.about');
     }
     public function product() {
-        return view('pages.website.product');
+        $product = Product::latest()->get();
+        return view('pages.website.product', compact('product'));
     }
     public function history() {
-        return view('pages.website.history');
+        $history = Whatwe::first();
+        return view('pages.website.history', compact('history'));
     }
     public function activity() {
-        return view('pages.website.activity');
+        $activity = Whatwe::first();
+        return view('pages.website.activity', compact('activity'));
     }
     public function sister_concern() {
-        return view('pages.website.sister-concern');
+        $sister = SisterConcern::latest()->get();
+        return view('pages.website.sister-concern', compact('sister'));
     }
     public function faq() {
-        return view('pages.website.faq');
+        $faq = Faq::latest()->get();
+        return view('pages.website.faq', compact('faq'));
     }
     public function gallery() {
-        return view('pages.website.gallery');
+        $gallery = Gallery::latest()->get();
+        return view('pages.website.gallery', compact('gallery'));
     }
     public function team() {
-        return view('pages.website.team');
+        $management = Management::latest()->get();
+        return view('pages.website.team', compact('management'));
     }
     public function webnews() {
-        return view('pages.website.news');
+        $news = News::latest()->get();
+        return view('pages.website.news', compact('news'));
     }
     public function order() {
         return view('pages.website.order');

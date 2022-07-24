@@ -47,7 +47,7 @@
                                 <div class="col-md-6 mb-2">
 
 
-                                    <label for="image">Service Image</label>
+                                    <label for="image">Image</label>
                                     <input class="form-control form-control-sm" id="image" type="file" name="image" onchange="readImgURL(this);">
                                     <div class="form-group mt-2" style="margin-bottom: 0">
                                         <img class="img-thumbnail" src="#" id="previewImage" style="width: 160px;height: 120px;">

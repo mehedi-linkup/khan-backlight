@@ -11,7 +11,7 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="{{ asset('website/assets/img/favicon.ico')}}" rel="icon">
+  <link href="{{ asset($content->logo)}}" rel="icon">
   <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('website/assets/img/apple-touch-icon.png')}}">
   <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('website/assets/img/favicon-32x32.png')}}">
   <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('website/assets/img/favicon-16x16.png')}}">

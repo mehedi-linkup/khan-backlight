@@ -32,26 +32,6 @@
                                     <input type="text" name="name" value="{{ @$productData->name }}" class="form-control form-control-sm mb-2" id="name" placeholder="Enter Category name">
                                     @error('name') <span style="color: red">{{$message}}</span> @enderror
 
-                                    <label for="name" class="mb-2"> Category <span class="text-danger">*</span> </label>
-                                    <select name="category_id" class="form-control form-control-sm mb-2">
-                                        <option value="">Select Category Option</option>
-                                        @foreach ($category as $item)
-                                            <option value="{{ $item->id }}" {{ $item->id == @$productData->category_id ? 'selected' : '' }} >{{ $item->name }}</option>
-                                        @endforeach
-                                    </select>
-                                    @error('category_id') <span style="color: red">{{$message}}</span> @enderror
-
-
-                                    <label for="name" class="mb-2"> Subcategory <span class="text-danger">*</span> </label>
-                                    <select name="subcategory_id" class="form-control form-control-sm mb-2">
-                                        <option value="">Select Subcategory Option</option>
-                                        @if(@$productSubData)
-                                        @foreach ($productSubData as $item)
-                                            <option value="{{ $item->id }}" {{ $item->id == @$productData->subcategory_id ? 'selected' : '' }} >{{ $item->name }}</option>
-                                        @endforeach
-                                        @endif
-                                    </select>
-                                    @error('subcategory_id') <span style="color: red">{{$message}}</span> @enderror
                                     {{-- <label for="name" class="mb-2"> Product Description <span class="text-danger">*</span> </label>
                                     <textarea name="description" id="description" rows="4" class="form-control">{{ @$productData->description }}</textarea>
                                     @error('description') <span style="color: red">{{$message}}</span> @enderror --}}
@@ -98,8 +78,6 @@
                                         <th>ID</th>
                                         <th>Product Name</th>
                                         <th>Image</th>
-                                        <th>Category</th>
-                                        <th>Subcategory</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -109,8 +87,6 @@
                                         <td>{{ $loop->index + 1 }}</td>
                                         <td>{{ $item->name }}</td>
                                         <td><img src="{{ asset($item->image) }}" width="30" height="30" alt=""></td>
-                                        <td>{{ $item->category->name }}</td>
-                                        <td>{{ $item->subcategory->name }}</td>
                                         <td>
                                             <a href="{{ route('admin.product.edit', $item->id) }}" class="btn-sm btn btn-info"><i class="fas fa-edit"></i></a>
                                             <a href="{{ route('admin.product.delete', $item->id) }}" onclick="return confirm('Are you sure to Delete?')" class="btn-sm btn btn-danger"><i class="fas fa-trash"></i></a>
@@ -135,30 +111,6 @@
     $('#description').summernote({
         tabsize: 2,
         height: 160
-    });
-</script>
-
-<script>
-    $(document).ready(function(){
-        $('select[name="category_id"]').on('change', function(){
-            var category_id = $(this).val();
-            if (category_id) {
-                $.ajax({
-                    url: "{{ url('/product/subcategory/get') }}/"+category_id,
-                    type: "GET",
-                    dataType: "json",
-                    success: function(data){
-                        var d = $('select[name="subcategory_id"]').empty();
-                        $.each(data, function(key, value){
-                            $('select[name="subcategory_id"]').append('<option value="'+ value.id +'">'+ value.name +'</option>');
-                        });
-                    },
-                });
-            }else{
-                alert('danger');
-            }
-        });
-        
     });
 </script>
 

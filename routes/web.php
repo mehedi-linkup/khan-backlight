@@ -1,25 +1,30 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\AuthenticationController;
-use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\Admin\CategoryController;
-use App\Http\Controllers\Admin\CompanyProfileController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Admin\FaqController;
+use App\Http\Controllers\Admin\NewsController;
+use App\Http\Controllers\Admin\QueryController;
+use App\Http\Controllers\Admin\VideoController;
+use App\Http\Controllers\Admin\SliderController;
+use App\Http\Controllers\Admin\WhatweController;
+use App\Http\Controllers\Admin\FactoryController;
 use App\Http\Controllers\Admin\GalleryController;
-use App\Http\Controllers\Admin\ManagementController;
 use App\Http\Controllers\Admin\MessageController;
 use App\Http\Controllers\Admin\PartnerController;
 use App\Http\Controllers\Admin\ProductController;
-use App\Http\Controllers\Admin\QueryController;
-use App\Http\Controllers\Admin\RegistrationController;
 use App\Http\Controllers\Admin\ServiceController;
-use App\Http\Controllers\Admin\SubcategoryController;
-use App\Http\Controllers\Admin\SliderController;
-use App\Http\Controllers\Admin\VideoController;
-use App\Http\Controllers\Admin\NewsController;
-use App\Http\Controllers\Admin\WhatweController;
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\BackImageController;
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\ManagementController;
+use App\Http\Controllers\Admin\SubcategoryController;
+use App\Http\Controllers\Admin\TestimonialController;
+use App\Http\Controllers\Admin\RegistrationController;
+
+use App\Http\Controllers\Admin\SisterConcernController;
+use App\Http\Controllers\Admin\AuthenticationController;
+use App\Http\Controllers\Admin\CompanyProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -100,8 +105,15 @@ Route::group(['middleware' => ['auth']] , function(){
     Route::post('service/update/{id}', [ServiceController::class, 'serviceUpdate'])->name('update.service');
     Route::get('service/delete/{id}', [ServiceController::class, 'serviceDelete'])->name('delete.service');
     
+    // Service Route
+    Route::get('/sister', [SisterConcernController::class, 'index'])->name('sister');
+    Route::post('sister/insert', [SisterConcernController::class, 'store'])->name('store.sister');
+    Route::get('sister/edit/{id}', [SisterConcernController::class, 'edit'])->name('edit.sister');
+    Route::post('sister/update/{id}', [SisterConcernController::class, 'update'])->name('update.sister');
+    Route::get('sister/delete/{id}', [SisterConcernController::class, 'delete'])->name('delete.sister');
+
     // Gallery Route
-    Route::get('/galleries', [GalleryController::class, 'gallery'])->name('gallery');
+    Route::get('/galleries', [GalleryController::class, 'gallery'])->name('galleries');
     Route::post('gallery/insert', [GalleryController::class, 'galleryInsert'])->name('store.gallery');
     Route::get('gallery/edit/{id}', [GalleryController::class, 'galleryEdit'])->name('edit.gallery');
     Route::post('gallery/update/{id}', [GalleryController::class, 'galleryUpdate'])->name('update.gallery');
@@ -135,6 +147,14 @@ Route::group(['middleware' => ['auth']] , function(){
     Route::post('slider/update/{id}', [SliderController::class, 'update'])->name('slider.update');
     Route::get('slider/delete/{id}', [SliderController::class, 'delete'])->name('slider.delete');
 
+    Route::get('factory', [FactoryController::class, 'edit'])->name('edit.factory');
+    Route::post('factory/{id}', [FactoryController::class, 'update'])->name('update.factory');
+    Route::get('factorypoint/{id}', [FactoryController::class, 'editpoint'])->name('edit.factorypoint');
+    Route::post('factorypoint/update/{id}', [FactoryController::class, 'pointupdate'])->name('update.factorypoint');
+    Route::get('factorypoint/delete/{id}', [FactoryController::class, 'pointdelete'])->name('delete.factorypoint');
+
+
+
     Route::get('whatwe', [WhatweController::class, 'edit'])->name('whatwe.edit');
     Route::put('whatwe/{whatwe}', [WhatweController::class, 'update'])->name('whatwe.update');
 
@@ -148,6 +168,24 @@ Route::group(['middleware' => ['auth']] , function(){
     Route::get('queries/delete/{id}', [QueryController::class, 'queryDelete'])->name('admin.query.delete');
 
     Route::resource('/partner', PartnerController::class)->except('show', 'create');
+	
+	
+	
+	//testimonial
+        Route::get('/our-testimonial',[TestimonialController::class,'index'])->name('testimonial.index');
+        Route::post('/our-testimonial-store',[TestimonialController::class,'store'])->name('testimonial.store');
+        Route::get('/our-testimonial-edit/{id}',[TestimonialController::class,'edit'])->name('testimonial.edit');
+        Route::put('/our-testimonial-update/{id}',[TestimonialController::class,'update'])->name('testimonial.update');
+        Route::delete('/our-testimonial-delete/{id}',[TestimonialController::class,'destroy'])->name('testimonial.destroy');
+		
+	//faq
+        Route::get('/faqs',[FaqController::class,'index'])->name('faq.index');
+        Route::post('/faq-store',[FaqController::class,'store'])->name('faq.store');
+        Route::get('/faq-edit/{id}',[FaqController::class,'edit'])->name('faq.edit');
+        Route::put('/faq-update/{id}',[FaqController::class,'update'])->name('faq.update');
+        Route::get('/faq-delete/{id}',[FaqController::class,'destroy'])->name('faq.destroy');
+        // Route::delete('/faq-delete/{id}',[FaqController::class,'destroy'])->name('faq.destroy');
+        
 });
 
 

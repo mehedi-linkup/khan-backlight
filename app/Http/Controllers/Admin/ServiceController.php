@@ -16,15 +16,15 @@ class ServiceController extends Controller
     }
     public function serviceInsert(Request $request) {
         $request->validate([
-            'name' => 'required',
-            's_description' => 'required|min:4',
+            'name' => 'required|min:4|max:255',
+            's_description' => 'required|min:4|max:255',
             'image' => 'required|image|mimes:jpeg,jpg,png,gif,webp'
         ]);
 
         try {
             $image = $request->file('image');
             $name_gen=hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
-            Image::make($image)->resize(724,480)->save('uploads/service/'.$name_gen);
+            Image::make($image)->resize(440,360)->save('uploads/service/'.$name_gen);
             $save_url = 'uploads/service/'.$name_gen;
 
             
@@ -60,7 +60,7 @@ class ServiceController extends Controller
             $image = $request->file('image');
             if($image) {
                 $imageName = date('YmdHi').$image->getClientOriginalName();
-                Image::make($image)->resize(720,480)->save('uploads/service/' . $imageName);
+                Image::make($image)->resize(440,360)->save('uploads/service/' . $imageName);
                 $save_url = 'uploads/service/'.$imageName;
                 if(file_exists($service->image) && !empty($service->image)) {
                     unlink($service->image);
@@ -70,8 +70,7 @@ class ServiceController extends Controller
             $service->save();
             // DB::commit();
             return redirect()->back()->with('success', 'Service Updated!');
-        } catch (\Exception $e) {
-            // DB::rollback();           
+        } catch (\Exception $e) {       
 		    // return ["error" => $e->getMessage()];
             return redirect()->back()->with('error', 'Service update failed!');
         }

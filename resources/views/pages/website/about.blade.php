@@ -20,13 +20,12 @@
       <div class="row gx-0">
 
         <div class="col-lg-12" data-aos="fade-up" data-aos-delay="200">
-          <img src="{{ asset('website/assets/img/about.jpg') }}" class="img-fluid float-end ps-2" alt="" style="width: 40%; height: 366px;"> 
+          <img src="{{ asset($content->about_image) }}" class="img-fluid float-end ps-2" alt="" style="width: 40%; height: 366px;"> 
           <div class="content">
             <h3>Who We Are</h3>
-            <h2>Expedita voluptas omnis cupiditate totam eveniet nobis sint iste. Dolores est repellat corrupti reprehenderit.</h2>
-            <p class="m-0" style="text-align: justify">
-              Quisquam vel ut sint cum eos hic dolores aperiam. Sed deserunt et. Inventore et et dolor consequatur itaque ut voluptate sed et. Magnam nam ipsum tenetur suscipit voluptatum nam et est corrupti.
-            </p>
+            <div class="m-0" style="text-align: justify">
+              {!! $content->about !!}
+            </div>
           </div>
         </div>
 

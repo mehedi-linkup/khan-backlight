@@ -1414,6 +1414,14 @@ section {
   background-size: contain;
   z-index: 1;
 }
+@media(min-width: 1200px) {
+  .team .member .member-img img {
+    height: 298px;
+  }
+}
+.team .member .member-img img {
+
+}
 .team .member .social {
   position: absolute;
   right: -100%;
