@@ -1,4 +1,4 @@
-@extends('layouts.admin-master', ['pageName'=> 'service', 'title' => 'Add Speciality'])
+@extends('layouts.admin-master', ['pageName'=> 'speciality', 'title' => 'Add Speciality'])
 {{-- @section('title', 'Service') --}}
 
 @push('admin-css')
@@ -13,7 +13,7 @@
                 <div class="card my-3">
                     <div class="card-header">
                         <i class="fas fa-plus"></i>
-                        Add Company Speciality
+                        Add Company Speciality (At most 3 specialities)
                     </div>
 
                     <div class="card-body">

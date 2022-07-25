@@ -56,7 +56,7 @@
                             </div>
                             <div class="col-md-6 offset-md-3 mb-2">
                                 <div class="form-group">
-                                    <label for="title">Factory Point</label>
+                                    <label for="title">Factory Point (maximum 6 points)</label>
                                     <input type="text" name="title" class="form-control form-control-sm mb-2 shadow-none @error('title') is-invalid @enderror" id="title" placeholder="Factory Point">
                                 </div>
                                 @error('title')

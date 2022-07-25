@@ -16,7 +16,7 @@ class FaqController extends Controller
     function store(Request $request){
         
         $request->validate([
-            'name' => 'required',
+            'name' => 'required|max:150',
             'details' =>'required'
         ]);
 
@@ -44,7 +44,7 @@ class FaqController extends Controller
     function update(Request $request, $id){
 
         $request->validate([
-            'name' => 'required',
+            'name' => 'required|max:150',
             'details' =>'required',
         ]);
 

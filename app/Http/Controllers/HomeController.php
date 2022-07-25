@@ -48,6 +48,14 @@ class HomeController extends Controller
         $product = Product::latest()->get();
         return view('pages.website.product', compact('product'));
     }
+    public function productDetail($id) {
+        $product = Product::find($id);
+        if($product) {
+            return view('pages.website.product-detail', compact('product'));
+        } else {
+            return view('pages.website.no-page');
+        }
+    }
     public function history() {
         $history = Whatwe::first();
         return view('pages.website.history', compact('history'));
@@ -75,6 +83,14 @@ class HomeController extends Controller
     public function webnews() {
         $news = News::latest()->get();
         return view('pages.website.news', compact('news'));
+    }
+    public function webnewsDetail($id) {
+        $news = News::find($id);
+        if($news) {
+            return view('pages.website.news-details', compact('news'));
+        } else {
+            return view('pages.website.no-page');
+        }
     }
     public function order() {
         return view('pages.website.order');

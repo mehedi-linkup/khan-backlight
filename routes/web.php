@@ -25,6 +25,8 @@ use App\Http\Controllers\Admin\SisterConcernController;
 use App\Http\Controllers\Admin\AuthenticationController;
 use App\Http\Controllers\Admin\CompanyProfileController;
 use App\Http\Controllers\Admin\ContactController;
+use App\Http\Controllers\Admin\MapController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -39,6 +41,7 @@ use App\Http\Controllers\Admin\ContactController;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::get('/product', [HomeController::class, 'product'])->name('product');
+Route::get('/product-detail/{id}', [HomeController::class, 'productDetail'])->name('product-detail');
 Route::get('/history', [HomeController::class, 'history'])->name('history');
 Route::get('/activity', [HomeController::class, 'activity'])->name('activity');
 Route::get('/sister-concern', [HomeController::class, 'sister_concern'])->name('sister-concern');
@@ -46,18 +49,13 @@ Route::get('/faq', [HomeController::class, 'faq'])->name('faq');
 Route::get('/gallery', [HomeController::class, 'gallery'])->name('gallery');
 Route::get('/team', [HomeController::class, 'team'])->name('team');
 Route::get('/webnews', [HomeController::class, 'webnews'])->name('webnews');
+Route::get('/webnews-detail/{id}', [HomeController::class, 'webnewsDetail'])->name('webnews-detail');
 Route::get('/order', [HomeController::class, 'order'])->name('order');
-
-
-// Route::get('/submenu/{id}', [HomeController::class, 'submenu'])->name('submenu');
-// Route::get('/product/{id}', [HomeController::class, 'product'])->name('product');
-// Route::get('/product-detail/{id}', [HomeController::class, 'productDetail'])->name('productDetail');
-// Route::get('/news-detail/{id}', [HomeController::class, 'newsDetail'])->name('newsDetail');
-
 // contact route
-Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
-Route::post('/contact-store', [ContactController::class, 'contactStore'])->name('contact.store');
-
+Route::post('/contact-store', [ContactController::class, 'store'])->name('contact.store');
+// order route
+Route::get('/order', [HomeController::class, 'order'])->name('order');
+Route::post('/messages/store', [MessageController::class, 'store'])->name('store.message');
 
 // login
 Route::get('admin', [AuthenticationController::class, 'login'])->name('login');
@@ -81,8 +79,8 @@ Route::group(['middleware' => ['auth']] , function(){
     Route::put('/registration', [RegistrationController::class, 'profileUpdate'])->name('register.update');
 
     // contact list
-    Route::get('/contact-list', [ContactController::class, 'contactList'])->name('contact.list');
-    Route::delete('/contact-delete/{contact}', [ContactController::class, 'destroy'])->name('contact.delete');
+    Route::get('/contact-list', [ContactController::class, 'index'])->name('contact.list');
+    Route::get('/contact-delete/{id}', [ContactController::class, 'destroy'])->name('contact.delete');
 
     // Category Routes
     Route::get('/categories', [CategoryController::class, 'index'])->name('admin.categories');
@@ -167,8 +165,8 @@ Route::group(['middleware' => ['auth']] , function(){
     Route::get('backimage', [BackImageController::class, 'edit'])->name('backimage.edit');
     Route::put('backimage/{backimage}', [BackImageController::class, 'update'])->name('backimage.update');
 
-    Route::get('/messages', [MessageController::class, 'message'])->name('admin.message');
-    Route::get('messages/delete/{id}', [MessageController::class, 'messageDelete'])->name('admin.message.delete');
+    Route::get('/messages', [MessageController::class, 'index'])->name('admin.message');
+    Route::get('messages/delete/{id}', [MessageController::class, 'delete'])->name('delete.message');
     
     Route::get('/queries', [QueryController::class, 'query'])->name('admin.query');
     Route::get('queries/delete/{id}', [QueryController::class, 'queryDelete'])->name('admin.query.delete');
@@ -189,7 +187,10 @@ Route::group(['middleware' => ['auth']] , function(){
     Route::put('/faq-update/{id}',[FaqController::class,'update'])->name('faq.update');
     Route::get('/faq-delete/{id}',[FaqController::class,'destroy'])->name('faq.destroy');
     // Route::delete('/faq-delete/{id}',[FaqController::class,'destroy'])->name('faq.destroy');
-        
+
+    Route::get('map', [MapController::class, 'edit'])->name('map.edit');
+    Route::put('map/{map}', [MapController::class, 'update'])->name('map.update');
+      
 });
 
 

@@ -14,10 +14,10 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $subcategory = Subcategory::latest()->get();
-        $category = Category::latest()->get();
+        // $subcategory = Subcategory::latest()->get();
+        // $category = Category::latest()->get();
         $product = Product::latest()->get();
-        return view('pages.admin.product', compact('subcategory', 'category', 'product'));
+        return view('pages.admin.product', compact('product'));
     }
 
     /**
@@ -31,6 +31,7 @@ class ProductController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|max:100',
             'image' => 'required|image|mimes:jpeg,jpg,png,gif,webp',
+            'description' => 'min:8'
         ]);
         
         try {
@@ -39,15 +40,19 @@ class ProductController extends Controller
             Image::make($image)->resize(960,720)->save('uploads/product/'.$name_gen);
             $save_url = 'uploads/product/'.$name_gen;
 
+            $latestid = Product::orderBy('id', 'DESC')->first()->id;
+
             $product = new Product();
             $product->name = $request->name;
-            // $product->description = $request->description;
+            $product->product_id = '10'.$latestid+1;
+            $product->description = $request->description;
             $product->image = $save_url;
             $product->save();
             return Redirect()->route('admin.products')->with('success', 'Product Insertion Succeful!');
 
-        } catch (\Exception $e) {   
-            return Redirect()->back()->with('error', 'Insertion Failed!');
+        } catch (\Exception $e) {  
+            return $e->getMessage();
+            // return Redirect()->back()->with('error', 'Insertion Failed!');
         }
     }
 
@@ -88,6 +93,7 @@ class ProductController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|max:100',
             'image' => 'image|mimes:jpeg,jpg,png,gif,webp',
+            'description' => 'min:8'
         ]);
         try {
             $old_img = $request->old_image;
@@ -102,7 +108,7 @@ class ProductController extends Controller
                 // $product->category_id = $request->category_id;
                 // $product->subcategory_id = $request->subcategory_id;
                 $product->name = $request->name;
-                // $product->description = $request->description;
+                $product->description = $request->description;
                 $product->image = $save_url;
                 $product->save();
             } else {
@@ -110,6 +116,7 @@ class ProductController extends Controller
                 // $product->category_id = $request->category_id;
                 // $product->subcategory_id = $request->subcategory_id;
                 $product->name = $request->name;
+                $product->description = $request->description;
                 $product->save();
             }
             return Redirect()->route('admin.products')->with('success', 'Update Successful!');

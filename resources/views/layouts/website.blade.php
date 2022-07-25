@@ -5,16 +5,16 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Khan Back Light</title>
+  <title>Khan Back Light | {{ $pageName ?? '' }}</title>
   <meta content="" name="description">
 
   <meta content="" name="keywords">
 
   <!-- Favicons -->
   <link href="{{ asset($content->logo)}}" rel="icon">
-  <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('website/assets/img/apple-touch-icon.png')}}">
-  <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('website/assets/img/favicon-32x32.png')}}">
-  <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('website/assets/img/favicon-16x16.png')}}">
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ asset($content->logo)}}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ asset($content->logo)}}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ asset($content->logo)}}">
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
@@ -25,6 +25,7 @@
   <link href="{{ asset('website/assets/vendor/glightbox/css/glightbox.min.css')}}" rel="stylesheet">
   <link href="{{ asset('website/assets/vendor/remixicon/remixicon.css')}}" rel="stylesheet">
   <link href="{{ asset('website/assets/vendor/swiper/swiper-bundle.min.css')}}" rel="stylesheet">
+  @stack('web-css')
   <!-- Template Main CSS File -->
   <link href="{{ asset('website/assets/css/style.css')}}" rel="stylesheet">
 </head>
@@ -50,9 +51,9 @@
   <script src="{{ asset('website/assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
   <script src="{{ asset('website/assets/vendor/glightbox/js/glightbox.min.js')}}"></script>
   <script src="{{ asset('website/assets/vendor/swiper/swiper-bundle.min.js')}}"></script>
-  <script src="{{ asset('website/assets/vendor/php-email-form/validate.js')}}"></script>
-
+  {{-- <script src="{{ asset('website/assets/vendor/php-email-form/validate.js')}}"></script> --}}
   <!-- Template Main JS File -->
   <script src="{{ asset('website/assets/js/main.js')}}"></script>
+  @stack('web-js')
 </body>
 </html>

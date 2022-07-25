@@ -1,4 +1,4 @@
-@extends('layouts.admin-master', ['pageName'=> 'factorypoint', 'title' => 'Add Factory Point'])
+@extends('layouts.admin-master', ['pageName'=> 'factory', 'title' => 'Add Factory Point'])
 {{-- @section('title') Add Category @endsection --}}
 @section('admin-content')
 

@@ -29,12 +29,12 @@
                             <div class="row">
                                 <div class="col-md-7 mb-2">
                                     <label for="name" class="mb-2"> Product Name <span class="text-danger">*</span> </label>
-                                    <input type="text" name="name" value="{{ @$productData->name }}" class="form-control form-control-sm mb-2" id="name" placeholder="Enter Category name">
+                                    <input type="text" name="name" value="{{ @$productData->name }}" class="form-control form-control-sm mb-2" id="name" placeholder="Enter Product name">
                                     @error('name') <span style="color: red">{{$message}}</span> @enderror
 
-                                    {{-- <label for="name" class="mb-2"> Product Description <span class="text-danger">*</span> </label>
+                                    <label for="name" class="mb-2"> Product Description <span class="text-danger">*</span> </label>
                                     <textarea name="description" id="description" rows="4" class="form-control">{{ @$productData->description }}</textarea>
-                                    @error('description') <span style="color: red">{{$message}}</span> @enderror --}}
+                                    @error('description') <span style="color: red">{{$message}}</span> @enderror
                                 </div>
 
                                 <div class="col-md-5 mb-2">

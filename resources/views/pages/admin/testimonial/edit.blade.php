@@ -1,17 +1,17 @@
-@extends('layouts.admin-master', ['pageName'=> 'faq', 'title' => 'Add FAQ'])
-@section('title', 'Edit Testimonial')
+@extends('layouts.admin-master', ['pageName'=> 'testimonial', 'title' => 'Add Testimonial'])
+{{-- @section('title', 'Edit Testimonial') --}}
 @section('admin-content')
     <main>
         <div class="container ">
             <div class="heading-title p-2 my-2">
                 <span class="my-3 heading "><i class="fas fa-home"></i> <a class=""
-                        href="{{ route('dashboard') }}">Home</a> > Edit Team</span>
+                        href="{{ route('dashboard') }}">Home</a> > Testimonial</span>
             </div>
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <div class=""><i class="fab fa-servicestack me-1"></i>Edit Team</div>
+                            <div class=""><i class="fab fa-servicestack me-1"></i>Edit Testimonial</div>
                         </div>
                         <div class="card-body table-card-body">
                             <form action="{{ route('testimonial.update',$testimonial->id) }}" method="post" enctype="multipart/form-data">

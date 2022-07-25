@@ -1,4 +1,4 @@
-@extends('layouts.website', ['pageName' => 'news'])
+	@extends('layouts.website', ['pageName' => 'news'])
 @section('web-content')
 
 <!-- ======= Breadcrumbs ======= -->
@@ -9,7 +9,7 @@
 		<li><a href="{{route('home')}}">Home</a></li>
 		<li> News Title </li>
 	  </ol>
-	  <h2>News Title</h2>
+	  <h2>{{ $news->title  }}</h2>
   
 	</div>
   </section><!-- End Breadcrumbs -->
@@ -29,9 +29,9 @@
 			</div>
 			<div class="col-md-6 col-12">
 				<div class="details-box">
-					<div class="date float-end">{{ date('Y-m-d', strtotime($news->created_at)) }}</div>
+					<div class="date float-end" style="text-decoration: underline">{{ date('F j, Y', strtotime($news->created_at)) }}</div>
 					<h4>{{ $news->title }}</h4>
-					<p style="text-align: justify">{{ $news->description }}</p>
+					<p style="text-align: justify"><strong>Description: </strong>{{ $news->description }}</p>
 				</div>
 			</div>
 		</div>

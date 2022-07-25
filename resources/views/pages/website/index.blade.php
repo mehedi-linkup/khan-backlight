@@ -1,5 +1,7 @@
 @extends('layouts.website', ['pageName' => 'home'])
-
+@push('web-css')
+<link rel="stylesheet" href="{{ asset('css/toastr.min.css') }}">
+@endpush
 
 @section('web-content')
     @include('layouts.partials.web_slider')
@@ -13,19 +15,21 @@
             <div class="content">
               <h3>Who We Are</h3>
               <div>
-                {!! $content->about !!}
+                {!! Str::limit($content->about, 650, '...') !!}
               </div>
+              @if(strlen($content->about) > 650)
               <div class="text-center text-lg-start">
                 <a href="{{ route('about') }}" class="btn-read-more d-inline-flex align-items-center justify-content-center align-self-center">
                   <span>Read More</span>
                   <i class="bi bi-arrow-right"></i>
                 </a>
               </div>
+              @endif
             </div>
           </div>
 
           <div class="col-lg-6 d-flex align-items-center" data-aos="zoom-out" data-aos-delay="200">
-            <img src="{{ asset($content->about_image) }}" class="img-fluid" alt="" style="height: 366px;">
+            <img src="{{ asset($content->about_image) }}" class="img-fluid about-image" alt="">
           </div>
 
         </div>
@@ -40,29 +44,31 @@
 
         <header class="section-header">
           <h2>Our Products</h2>
-          <p style="box-shadow: 0 1px 1px 0px #4154f147;">Some sample of our products</p>
+          <p><span>Some sample of our products</span></p>
+          @if($product->count() > 15)
           <div class="btn-absolute text-center text-lg-start">
             <a href="{{ route('product') }}" class="btn-read-more d-inline-flex align-items-center justify-content-center align-self-center">
               <span>See More</span>
               <i class="bi bi-arrow-right"></i>
             </a>
           </div>
+          @endif
         </header>
 
         <div class="row row-cols-lg-5 gy-lg-3">
-          @foreach($product as $item)
+          @foreach($product->take(15) as $item)
           <div class="col" data-aos="fade-up" data-aos-delay="600">
             <div class="card p-lg-3">
               <div class="img-box">
-                  <a href="#!">
+                  <a href="{{ route('product-detail', $item->id) }}">
                       <img width="100%" height="219" src="{{ asset($item->image) }}" class="card-img-top" alt="Avenue Montaigne">
                   </a>
               </div>
               <div class="card-body p_card text-center">
-                  <a href="#">
+                  <a href="{{ route('product-detail', $item->id) }}">
                       <h5 class="card-title">{{ $item->name }}</h5>
                   </a> 
-                  <div class="product-id">Id-{{ $item->id }}</div>
+                  <div class="product-id pb-md-2">{{ 'PRD'.$item->product_id }}</div>
                   <div class="">
                       <a href="{{ route('order') }}" class="btn button-2 btn-card">Order Now</a>
                   </div>
@@ -81,11 +87,11 @@
 
         <header class="section-header">
           <h2>Our Speciality</h2>
-          <p>Our Company's best qualities & specialities</p>
+          <p><span>Our Company's best qualities & specialities</span></p>
         </header>
 
         <div class="row">
-          @foreach($service as $item)
+          @foreach($service->take(3) as $item)
           <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
             <div class="box">
               <img src="{{ asset($item->image) }}" class="img-fluid" alt="">
@@ -109,7 +115,7 @@
 
         <header class="section-header">
           <h2>Our Factory</h2>
-          <p>Some of our factory information</p>
+          <p><span>Some of our factory information</span></p>
         </header>
 
         <div class="row">
@@ -176,10 +182,13 @@
   
               <div class="tab-pane fade show active" id="tab1">
                 {!! $history->description1 !!}
-              </div><!-- End Tab 1 Content -->
+                <span><a href="{{ route('history') }}">Read More</a></span>
+              </div>
+              <!-- End Tab 1 Content -->
   
               <div class="tab-pane fade show" id="tab2">
                 {!! $history->description2 !!}
+                <span><a href="{{ route('activity') }}">Read More</a></span>
               </div><!-- End Tab 2 Content -->
             </div>
   
@@ -201,13 +210,15 @@
 
         <header class="section-header">
           <h2>Sister Concern</h2>
-          <p style="box-shadow: 0 1px 1px 0px #4154f147;">Our relations with other companies</p>
+          <p><span>Our relations with other companies</span></p>
+          @if($sister->count() > 3)
           <div class="btn-absolute text-center text-lg-start">
             <a href="{{ route('sister-concern') }}" class="btn-read-more d-inline-flex align-items-center justify-content-center align-self-center">
               <span>See More</span>
               <i class="bi bi-arrow-right"></i>
             </a>
           </div>
+          @endif
         </header>
 
         <div class="row gy-4">
@@ -236,18 +247,20 @@
 
         <header class="section-header">
           <h2>F.A.Q</h2>
-          <p style="box-shadow: 0 1px 1px 0px #4154f147;">Frequently Asked Questions</p>
+          <p><span>Frequently Asked Questions</span></p>
+          @if($faq->count() > 6)
           <div class="btn-absolute text-center text-lg-start">
             <a href="{{ route('faq') }}" class="btn-read-more d-inline-flex align-items-center justify-content-center align-self-center">
               <span>See More</span>
               <i class="bi bi-arrow-right"></i>
             </a>
           </div>
+          @endif
         </header>
 
         <div class="accordion accordion-flush" id="faqlist1">
-        <div class="row">
-            @foreach($faq as $item)
+        <div class="row gy-2">
+            @foreach($faq->take(6) as $item)
             <div class="col-lg-6">
               <div class="accordion-item">
                 <h2 class="accordion-header">
@@ -277,13 +290,15 @@
 
         <header class="section-header">
           <h2>Gallery</h2>
-          <p style="box-shadow: 0 1px 1px 0px #4154f147;">Check our latest photos</p>
+          <p><span>Check our latest photos</span></p>
+          @if($gallery->count() > 12)
           <div class="btn-absolute text-center text-lg-start">
             <a href="{{ route('gallery') }}" class="btn-read-more d-inline-flex align-items-center justify-content-center align-self-center">
               <span>See More</span>
               <i class="bi bi-arrow-right"></i>
             </a>
           </div>
+          @endif
         </header>
         <div class="row gy-4 portfolio-container" data-aos="fade-up" data-aos-delay="200">
           @foreach($gallery->take(12) as $item)
@@ -312,7 +327,7 @@
 
         <header class="section-header">
           <h2>Testimonials</h2>
-          <p>What they are saying about us</p>
+          <p><span>What they are saying about us</span></p>
         </header>
 
         <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="200">
@@ -348,13 +363,15 @@
 
         <header class="section-header">
           <h2>Team</h2>
-          <p style="box-shadow: 0 1px 1px 0px #4154f147;">Our team members</p>
+          <p><span>Our team members</span></p>
+          @if($management->count() > 4)
           <div class="btn-absolute text-center text-lg-start">
             <a href="{{ route('team') }}" class="btn-read-more d-inline-flex align-items-center justify-content-center align-self-center">
               <span>See More</span>
               <i class="bi bi-arrow-right"></i>
             </a>
           </div>
+          @endif
         </header>
 
         <div class="row gy-4">
@@ -389,7 +406,7 @@
 
         <header class="section-header">
           <h2>Our Clients</h2>
-          <p>Some of our clients</p>
+          <p><span>Some of our clients</span></p>
         </header>
       </div>
       <div class="client-holder">
@@ -417,23 +434,25 @@
 
         <header class="section-header">
           <h2>News & Events</h2>
-          <p style="box-shadow: 0 1px 1px 0px #4154f147;">Recent news & events of our company</p>
+          <p><span>Recent news & events of our company</span></p>
+          @if($news->count() > 3)
           <div class="btn-absolute text-center text-lg-start">
             <a href="{{ route('webnews') }}" class="btn-read-more d-inline-flex align-items-center justify-content-center align-self-center">
               <span>See More</span>
               <i class="bi bi-arrow-right"></i>
             </a>
           </div>
+          @endif
         </header>
 
         <div class="row">
-          @foreach($news as $item)
+          @foreach($news->take(3) as $item)
           <div class="col-lg-4">
             <div class="post-box">
               <div class="post-img"><img src="{{ asset($item->image) }}" class="img-fluid" alt=""></div>
-              <span class="post-date">{{ $item->created_at }}</span>
+              <span class="post-date">{{ date('F j, Y', strtotime($item->created_at)) }}</span>
               <h3 class="post-title">{{ $item->title }}</h3>
-              {{-- <a href="blog-single.html" class="readmore stretched-link mt-auto"><span>Read More</span><i class="bi bi-arrow-right"></i></a> --}}
+              <a href="{{ route('webnews-detail', $item->id) }}" class="readmore stretched-link mt-auto"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
             </div>
           </div>
           @endforeach
@@ -450,7 +469,7 @@
 
         <header class="section-header">
           <h2>Contact</h2>
-          <p>Contact Us</p>
+          <p><span>Contact Us</span></p>
         </header>
 
         <div class="row gy-4">
@@ -462,28 +481,21 @@
                 <div class="info-box">
                   <i class="bi bi-geo-alt"></i>
                   <h3>Address</h3>
-                  <p>A108 Adam Street,<br>New York, NY 535022</p>
+                  <p>{{ $content->address }}</p>
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="info-box">
                   <i class="bi bi-telephone"></i>
                   <h3>Call Us</h3>
-                  <p>+1 5589 55488 55<br>+1 6678 254445 41</p>
+                  <p>{{ '+88'.$content->phone }}</p>
                 </div>
               </div>
-              <div class="col-md-6">
+              <div class="col-md-12">
                 <div class="info-box">
                   <i class="bi bi-envelope"></i>
                   <h3>Email Us</h3>
-                  <p>info@example.com<br>contact@example.com</p>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="info-box">
-                  <i class="bi bi-clock"></i>
-                  <h3>Open Hours</h3>
-                  <p>Monday - Friday<br>9:00AM - 05:00PM</p>
+                  <p>{{ $content->email }}</p>
                 </div>
               </div>
             </div>
@@ -491,32 +503,30 @@
           </div>
 
           <div class="col-lg-6">
-            <form action="forms/contact.php" method="post" class="php-email-form">
+            <form action="{{ route('contact.store') }}" method="post" class="php-email-form">
+              @csrf
               <div class="row gy-4">
 
                 <div class="col-md-6">
                   <input type="text" name="name" class="form-control" placeholder="Your Name" required>
+                  @error('name') <span style="color: red">{{$message}}</span> @enderror
                 </div>
 
                 <div class="col-md-6 ">
                   <input type="email" class="form-control" name="email" placeholder="Your Email" required>
+                  @error('email') <span style="color: red">{{$message}}</span> @enderror
                 </div>
 
                 <div class="col-md-12">
                   <input type="text" class="form-control" name="subject" placeholder="Subject" required>
+                  @error('subject') <span style="color: red">{{$message}}</span> @enderror
                 </div>
 
                 <div class="col-md-12">
                   <textarea class="form-control" name="message" rows="6" placeholder="Message" required></textarea>
+                  @error('message') <span style="color: red">{{$message}}</span> @enderror
                 </div>
-
-                <div class="col-md-12 text-center">
-                  <div class="loading">Loading</div>
-                  <div class="error-message"></div>
-                  <div class="sent-message">Your message has been sent. Thank you!</div>
-
-                  <button type="submit">Send Message</button>
-                </div>
+                <button type="submit">Send Message</button>
               </div>
             </form>
           </div>
@@ -525,3 +535,27 @@
     </section><!-- End Contact Section -->
 
 @endsection
+
+@push('web-js')
+<script src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>
+<script src="{{ asset('js/toastr.min.js') }}"></script>
+<script>
+    @if(Session::has('success'))
+    toastr.options =
+    {
+        "closeButton" : true,
+        "progressBar" : true
+    }
+    toastr.success("{{ session('success') }}");
+    @endif
+
+    @if(Session::has('error'))
+    toastr.options =
+    {
+        "closeButton" : true,
+        "progressBar" : true
+    }
+            toastr.error("{{ session('error') }}");
+    @endif
+</script>
+@endpush

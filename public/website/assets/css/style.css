@@ -51,6 +51,11 @@ section {
   line-height: 42px;
   font-weight: 700;
   color: #012970;
+  border-bottom: 2px solid
+}
+.section-header p span {
+  display: inline-block;
+  padding-bottom: 3px;
 }
 @media (max-width: 768px) {
   .section-header p {
@@ -104,7 +109,7 @@ section {
   transition: 0.5s;
   color: #fff;
   background: #4154f1;
-  box-shadow: 0px 5px 25px rgba(65, 84, 241, 0.3);
+  /* box-shadow: 0px 5px 25px rgba(65, 84, 241, 0.3); */
 }
 .btn-read-more span {
   font-family: "Nunito", sans-serif;
@@ -594,6 +599,11 @@ section {
   background-color: #f6f9ff;
   padding: 40px;
 }
+@media(min-width: 340px) and (max-width: 575px) {
+  .about .content {
+    padding: 10px;
+  }
+}
 .about h3 {
   font-size: 14px;
   font-weight: 700;
@@ -606,10 +616,14 @@ section {
   color: #012970;
 }
 .about p {
-  margin: 15px 0 30px 0;
+  margin: 15px 0 10px 0;
   line-height: 24px;
 }
-
+@media(min-width: 1200px) {
+  .about .about-image {
+    height: 366px;
+  }
+}
 /*--------------------------------------------------------------
 # Values
 --------------------------------------------------------------*/
@@ -1598,6 +1612,9 @@ section {
   color: #444444;
   background: #fafbff;
   padding: 30px;
+}
+.contact .info-box p {
+  height: 48px;
 }
 .contact .info-box i {
   font-size: 38px;

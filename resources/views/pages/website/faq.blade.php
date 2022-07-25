@@ -19,7 +19,7 @@
 
     <div class="container" data-aos="fade-up">
       <div class="accordion accordion-flush" id="faqlist1">
-        <div class="row">
+        <div class="row gy-2">
             @foreach($faq as $item)
             <div class="col-lg-6">
               <div class="accordion-item">

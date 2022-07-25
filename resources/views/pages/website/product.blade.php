@@ -32,7 +32,7 @@
                   <a href="#">
                       <h5 class="card-title">{{ $item->name }}</h5>
                   </a> 
-                  <div class="product-id">Id-{{ $item->id }}</div>
+                  <div class="product-id pb-md-2">Id-{{ $item->id }}</div>
                   <div class="">
                       <a href="{{ route('order') }}" class="btn button-2 btn-card">Order Now</a>
                   </div>

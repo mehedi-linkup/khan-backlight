@@ -1,4 +1,4 @@
-@extends('layouts.admin-master', ['pageName'=> 'message', 'title' => 'All Customer Message'])
+@extends('layouts.admin-master', ['pageName'=> 'query', 'title' => 'All Customer Message'])
 
 {{-- @section('title', 'Service') --}}
 @section('admin-content')
@@ -7,7 +7,7 @@
         <div class="card my-3">
             <div class="card-header">
                 <i class="far fa-envelope"></i>
-                Messages
+                Customer Query
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -23,27 +23,27 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse ($messages as $key=>$item)
+                            @forelse ($contact as $key=>$item)
                                 <tr>
                                     <td>{{ $key+1 }}</td>
                                     <td>{{ $item->name }}</td>
                                     <td>{!! $item->email !!}</td>
                                     <td>
-                                        @if(countwords($item->subject) > 10)
+                                        @if(Str::of($item->subject)->wordCount() > 10)
                                         {!! Str::words($item->subject, 10, '...') !!}
                                         @else
                                         {{ $item->subject }}
                                         @endif
                                     </td>
                                     <td>
-                                        @if(countwords($item->message) > 10)
+                                        @if(Str::of($item->message)->wordCount() > 10)
                                         {!! Str::words($item->message, 10, '...') !!}
                                         @else
                                         {{ $item->message }}
                                         @endif
                                     </td>                          
                                     <td>
-                                        @if(countwords($item->message) > 10)
+                                        @if(Str::of($item->message)->wordCount() > 10)
                                         <a href="#staticBackdrop{{ $item->id }}" class="d-inline btn btn-primary btn-sm b-btn mr-1"  data-toggle="modal" style="text-decoration: none;">
                                             <i class="far fa-eye"></i>
                                         </a>
@@ -73,7 +73,7 @@
                                             </div>
                                         </div>
                                         @endif
-                                        <a href="{{ route('delete.service', $item->id) }}" type="submit" class="d-inline btn btn-danger btn-sm b-btn" onclick="return confirm('Are you sure you want to delete?');"><i class="fas fa-trash"></i></button>
+                                        <a href="{{ route('contact.delete', $item->id) }}" type="submit" class="d-inline btn btn-danger btn-sm b-btn" onclick="return confirm('Are you sure you want to delete?');"><i class="fas fa-trash"></i></button>
                                     </td>
                                 </tr>
                             @empty
