@@ -190,3 +190,8 @@ Route::group(['middleware' => ['auth']] , function(){
 
 
 // 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
+//Password: @xKPnwD7OTEq
+//User: khanhfyd_websiteUser
+//Database: khanhfyd_website
+
+
