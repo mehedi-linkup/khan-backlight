@@ -21,11 +21,10 @@ use App\Http\Controllers\Admin\ManagementController;
 use App\Http\Controllers\Admin\SubcategoryController;
 use App\Http\Controllers\Admin\TestimonialController;
 use App\Http\Controllers\Admin\RegistrationController;
-
 use App\Http\Controllers\Admin\SisterConcernController;
 use App\Http\Controllers\Admin\AuthenticationController;
 use App\Http\Controllers\Admin\CompanyProfileController;
-
+use App\Http\Controllers\Admin\ContactController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -55,6 +54,11 @@ Route::get('/order', [HomeController::class, 'order'])->name('order');
 // Route::get('/product-detail/{id}', [HomeController::class, 'productDetail'])->name('productDetail');
 // Route::get('/news-detail/{id}', [HomeController::class, 'newsDetail'])->name('newsDetail');
 
+// contact route
+Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
+Route::post('/contact-store', [ContactController::class, 'contactStore'])->name('contact.store');
+
+
 // login
 Route::get('admin', [AuthenticationController::class, 'login'])->name('login');
 Route::post('admin', [AuthenticationController::class, 'AuthCheck'])->name('login.check');
@@ -75,6 +79,10 @@ Route::group(['middleware' => ['auth']] , function(){
 
     Route::get('/settings', [RegistrationController::class, 'settings'])->name('settings');
     Route::put('/registration', [RegistrationController::class, 'profileUpdate'])->name('register.update');
+
+    // contact list
+    Route::get('/contact-list', [ContactController::class, 'contactList'])->name('contact.list');
+    Route::delete('/contact-delete/{contact}', [ContactController::class, 'destroy'])->name('contact.delete');
 
     // Category Routes
     Route::get('/categories', [CategoryController::class, 'index'])->name('admin.categories');
@@ -153,8 +161,6 @@ Route::group(['middleware' => ['auth']] , function(){
     Route::post('factorypoint/update/{id}', [FactoryController::class, 'pointupdate'])->name('update.factorypoint');
     Route::get('factorypoint/delete/{id}', [FactoryController::class, 'pointdelete'])->name('delete.factorypoint');
 
-
-
     Route::get('whatwe', [WhatweController::class, 'edit'])->name('whatwe.edit');
     Route::put('whatwe/{whatwe}', [WhatweController::class, 'update'])->name('whatwe.update');
 
@@ -169,22 +175,20 @@ Route::group(['middleware' => ['auth']] , function(){
 
     Route::resource('/partner', PartnerController::class)->except('show', 'create');
 	
-	
-	
-	//testimonial
-        Route::get('/our-testimonial',[TestimonialController::class,'index'])->name('testimonial.index');
-        Route::post('/our-testimonial-store',[TestimonialController::class,'store'])->name('testimonial.store');
-        Route::get('/our-testimonial-edit/{id}',[TestimonialController::class,'edit'])->name('testimonial.edit');
-        Route::put('/our-testimonial-update/{id}',[TestimonialController::class,'update'])->name('testimonial.update');
-        Route::delete('/our-testimonial-delete/{id}',[TestimonialController::class,'destroy'])->name('testimonial.destroy');
-		
-	//faq
-        Route::get('/faqs',[FaqController::class,'index'])->name('faq.index');
-        Route::post('/faq-store',[FaqController::class,'store'])->name('faq.store');
-        Route::get('/faq-edit/{id}',[FaqController::class,'edit'])->name('faq.edit');
-        Route::put('/faq-update/{id}',[FaqController::class,'update'])->name('faq.update');
-        Route::get('/faq-delete/{id}',[FaqController::class,'destroy'])->name('faq.destroy');
-        // Route::delete('/faq-delete/{id}',[FaqController::class,'destroy'])->name('faq.destroy');
+    //testimonial
+    Route::get('/our-testimonial',[TestimonialController::class,'index'])->name('testimonial.index');
+    Route::post('/our-testimonial-store',[TestimonialController::class,'store'])->name('testimonial.store');
+    Route::get('/our-testimonial-edit/{id}',[TestimonialController::class,'edit'])->name('testimonial.edit');
+    Route::put('/our-testimonial-update/{id}',[TestimonialController::class,'update'])->name('testimonial.update');
+    Route::delete('/our-testimonial-delete/{id}',[TestimonialController::class,'destroy'])->name('testimonial.destroy');
+    
+    //faq
+    Route::get('/faqs',[FaqController::class,'index'])->name('faq.index');
+    Route::post('/faq-store',[FaqController::class,'store'])->name('faq.store');
+    Route::get('/faq-edit/{id}',[FaqController::class,'edit'])->name('faq.edit');
+    Route::put('/faq-update/{id}',[FaqController::class,'update'])->name('faq.update');
+    Route::get('/faq-delete/{id}',[FaqController::class,'destroy'])->name('faq.destroy');
+    // Route::delete('/faq-delete/{id}',[FaqController::class,'destroy'])->name('faq.destroy');
         
 });
 
