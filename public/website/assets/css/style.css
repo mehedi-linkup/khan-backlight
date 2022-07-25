@@ -513,6 +513,12 @@ section {
   color: #fff;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
+  height: 522px;
+}
+@media(min-width: 340px) and (max-width: 575px) {
+  .hero .swiper-slide {
+    height: 300px;
+  }
 }
 .hero .parallax-bg {
   position: absolute;
@@ -539,6 +545,11 @@ section {
 }
 .hero .swiper-box {
   padding: 170px 100px;
+}
+@media(min-width: 340px) and (max-width: 575px) {
+  .hero .swiper-box {
+    padding: 60px 10px;
+  }
 }
 /* @media (min-width: 1024px) {
   .hero {
