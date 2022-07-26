@@ -1,4 +1,4 @@
-@extends('layouts.website')
+@extends('layouts.website', ['pageName' => 'Sister-Concern'])
 @section('web-content')
 
 <!-- ======= Breadcrumbs ======= -->

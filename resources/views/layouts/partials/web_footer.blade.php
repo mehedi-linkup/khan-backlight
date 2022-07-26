@@ -34,8 +34,8 @@
           <h4>Contact Us</h4>
           <p>
             <span class="text-wrap">{{ $content->address }}</span>
-            <a href="tel: {{ $content->phone }}"><strong>Phone:</strong> {{ $content->phone }}</a><br>
-            <a href="mailto: {{ $content->email }}"><strong>Email:</strong> {{ $content->email }}</a><br>
+            <a class="d-block" href="tel: {{ $content->phone }}"><strong>Phone:</strong> {{ $content->phone }}</a>
+            <a class="d-block" href="mailto: {{ $content->email }}"><strong>Email:</strong> {{ $content->email }}</a><br>
           </p>
 
         </div>

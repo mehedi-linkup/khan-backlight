@@ -1,4 +1,4 @@
-@extends('layouts.admin-master', ['pageName'=> 'faq'])
+@extends('layouts.admin-master', ['pageName'=> 'faq', 'title' => 'FAQ'])
 {{-- @section('title', 'FAQ Entry') --}}
 @section('admin-content')
     <main>
@@ -59,7 +59,8 @@
                             <div class="table-head"><i class="fas fa-list mr-2"></i>FAQ List </div>
                         </div>
                         <div class="card-body table-card-body p-3">
-                            <table id="datatablesSimple">
+                        <div class="table-responsive">
+                            <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
                                 <thead class="text-center bg-light">
                                     <tr>
                                         <th>Title Name</th>
@@ -75,7 +76,7 @@
                                             <td class="text-center">
 
                                                 <a href="{{ route('faq.edit', $item->id) }}"
-                                                    class="btn btn-edit btn-sm"><i class="fas fa-edit"></i></a>
+                                                    class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></a>
 
                                                 {{-- <button type="submit" class="btn btn-delete"
                                                     onclick="deleteUser({{ $item->id }})"><i
@@ -94,6 +95,7 @@
 
                                 </tbody>
                             </table>
+                        </div>
                         </div>
                     </div>
                 </div>

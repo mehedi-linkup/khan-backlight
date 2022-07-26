@@ -608,6 +608,10 @@ section {
   .about .content {
     padding: 10px;
   }
+  .about .about-section-img {
+    width: 100%;
+    height: auto;
+  }
 }
 .about h3 {
   font-size: 14px;
@@ -649,6 +653,14 @@ section {
   padding: 30px 50px;
   transition: 0.5s;
   transform: scale(1.1);
+}
+@media(min-width: 340px) and (max-width: 575px) {
+  .values .box {
+    padding: 0px;
+  }
+  .values .box img {
+    padding: 20px;
+  }
 }
 .values .box h3 {
   font-size: 24px;

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Slider;
 use Illuminate\Http\Request;
+use Image;
 
 class SliderController extends Controller
 {
@@ -22,15 +23,25 @@ class SliderController extends Controller
         ]);
         try {
             $slider = new Slider();
+
+            $image = $request->file('image');
+            $nameGen = 'slide'.hexdec(uniqid());
+            $imgExt = strtolower($image->getClientOriginalExtension());
+            $imgName = $nameGen. '.' . $imgExt;
+            $upLocation = 'uploads/slider/';
+            // $image->move($upLocation, $imgName);
+            Image::make($image)->resize(1920,1080)->save($upLocation . $imgName);
+
             $slider->slogan = $request->slogan;
             $slider->headerline = $request->headerline;
             $slider->description = $request->description;
-            $slider->image = $this->imageUpload($request, 'image', 'uploads/slider') ?? '';
+            $slider->image = $upLocation . $imgName;
+            // $slider->image = $this->imageUpload($request, 'image', 'uploads/slider') ?? '';
             $slider->save();
             return redirect()->route('slider.index')->with('success', 'Insert Successful');
         } catch (\Throwable $th) {
-            //throw $th;
-            return redirect()->back()->withInput();       
+            // throw $th;
+            return redirect()->back()->with('error', 'Insert Failed!');       
         }  
     }
 
@@ -58,8 +69,16 @@ class SliderController extends Controller
                 if (!empty($slider->image) && file_exists($slider->image)) {
                     unlink($slider->image);
                 }
-                $sliderImage = $this->imageUpload($request, 'image', 'uploads/slider');
-            }else{
+                // $sliderImage = $this->imageUpload($request, 'image', 'uploads/slider');
+                $image = $request->file('image');
+                $nameGen = 'slide'.hexdec(uniqid());
+                $imgExt = strtolower($image->getClientOriginalExtension());
+                $imgName = $nameGen. '.' . $imgExt;
+                $upLocation = 'uploads/slider/';
+                // $image->move($upLocation, $imgName);
+                Image::make($image)->resize(1920,1080)->save($upLocation . $imgName);
+                $sliderImage = $upLocation . $imgName;
+            } else{
                 $sliderImage = $slider->image;
             }
             $slider->slogan = $request->slogan;

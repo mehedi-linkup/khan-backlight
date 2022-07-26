@@ -1,4 +1,4 @@
-@extends('layouts.website')
+@extends('layouts.website', ['pageName' => 'Activity'])
 @section('web-content')
 
 <!-- ======= Breadcrumbs ======= -->

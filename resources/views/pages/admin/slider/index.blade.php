@@ -43,7 +43,12 @@
                                 @enderror
 
                                 <label for="image" class="mt-1">Slider Image</label>
-                                <input class="form-control form-control-sm" id="image" type="file" name="image" onchange="readURL(this);">
+                                <input class="form-control form-control-sm @error('image') is-invalid @enderror" id="image" type="file" name="image" onchange="readURL(this);">
+                                @error('image')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                             <div class="col-md-4 offset-md-1 mt-3">
                                 <img class="form-controlo img-thumbnail" src="#" id="previewImage" style="height: 205px; width:400px; background: #3f4a49;">

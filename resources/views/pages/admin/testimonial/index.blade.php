@@ -138,8 +138,8 @@
                                             <td>{{ $item->rank }}</td> --}}
                                             {{-- <td>@if($item->is_phone == 'a') Active @else Inactive @endif</td> --}}
                                             <td class="text-center"><img src="{{ asset($item->image) }}" alt="" class="tbl-image"></td>
-                                            <td class="text-center"><a href="{{ route('testimonial.edit', $item->id) }}"class="btn btn-edit btn-sm"><i class="fas fa-edit"></i></a>
-                                                <button type="submit" class="btn btn-delete"onclick="deleteUser({{ $item->id }})"><i class="far fa-trash-alt"></i></button>
+                                            <td class="text-center"><a href="{{ route('testimonial.edit', $item->id) }}"class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></a>
+                                                <button type="submit" class="btn btn-danger btn-sm btn-delete"onclick="deleteUser({{ $item->id }})"><i class="far fa-trash-alt"></i></button>
                                                 <form id="delete-form-{{ $item->id }}"
                                                     action="{{ route('testimonial.destroy', $item->id) }}" method="POST"
                                                     style="display: none;">

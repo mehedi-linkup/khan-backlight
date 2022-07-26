@@ -1,4 +1,4 @@
-@extends('layouts.website')
+@extends('layouts.website', ['pageName' => 'Order'])
 @push('web-css')
 <link rel="stylesheet" href="{{ asset('css/toastr.min.css') }}">
 @endpush

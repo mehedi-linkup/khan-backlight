@@ -23,7 +23,7 @@
           <div class="content ">
             <h3>Who We Are</h3>
             <div class="clearfix">
-              <img src="{{ asset($content->about_image) }}" class="img-fluid float-end ps-3 pt-2" alt="" style="width: 40%; height: 366px;"> 
+              <img src="{{ asset($content->about_image) }}" class="img-fluid about-section-img float-md-end ps-md-3 pt-md-2" alt=""> 
               <div class="m-0" style="text-align: justify">
                 {!! $content->about !!}
               </div>
