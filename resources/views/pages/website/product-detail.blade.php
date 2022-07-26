@@ -28,6 +28,7 @@
                 <img src="{{ asset($product->image) }}" alt="">
               </div>
             </div>
+
             <div class="swiper-pagination"></div>
           </div>
         </div>
@@ -36,11 +37,14 @@
           <div class="portfolio-description">
             <h2>Product Information</h2>
             <p><strong>Product Name: </strong>{{ $product->name }}</p>
-            <h6><strong>Product Code: </strong> {{ 'PRD'.$product->product_id }}</h6>
+            <h6><strong>Model: </strong> {{ $product->product_id }}</h6>
             <div>
             <div>
-                <strong>Description: </strong>
-                {!! $product->description !!}
+              <strong>Description: </strong>
+              {!! $product->description !!}
+            </div>
+            <div class="pt-3 pt-md-4">
+              <a href="{{ route('order', $product->id) }}" class="btn button-2 btn-card">Order Now</a>
             </div>
           </div>
         </div>

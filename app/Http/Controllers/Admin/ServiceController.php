@@ -48,7 +48,7 @@ class ServiceController extends Controller
     public function serviceUpdate(Request $request, $id) {
         $request->validate([
             'name' => 'required',
-            's_description' => 'required|min:8',
+            's_description' => 'required|min:8|max:255',
             'image' => 'image|mimes:jpeg,jpg,png,gif,webp'
         ]);
 

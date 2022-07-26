@@ -20,11 +20,13 @@
       <div class="row gx-0">
 
         <div class="col-lg-12" data-aos="fade-up" data-aos-delay="200">
-          <img src="{{ asset($content->about_image) }}" class="img-fluid float-end ps-2" alt="" style="width: 40%; height: 366px;"> 
-          <div class="content">
+          <div class="content ">
             <h3>Who We Are</h3>
-            <div class="m-0" style="text-align: justify">
-              {!! $content->about !!}
+            <div class="clearfix">
+              <img src="{{ asset($content->about_image) }}" class="img-fluid float-end ps-3 pt-2" alt="" style="width: 40%; height: 366px;"> 
+              <div class="m-0" style="text-align: justify">
+                {!! $content->about !!}
+              </div>
             </div>
           </div>
         </div>

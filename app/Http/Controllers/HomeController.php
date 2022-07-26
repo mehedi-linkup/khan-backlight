@@ -92,8 +92,13 @@ class HomeController extends Controller
             return view('pages.website.no-page');
         }
     }
-    public function order() {
-        return view('pages.website.order');
+    public function order($id) {
+        $product = Product::find($id);
+        if($product) {
+            return view('pages.website.order', compact('product'));
+        } else {
+            return view('pages.website.no-page');
+        }
     }
 
     // public function submenu($id) {

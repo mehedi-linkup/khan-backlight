@@ -1,5 +1,5 @@
 @extends('layouts.admin-master', ['pageName' => 'faq'])
-@section('title', 'Service')
+{{-- @section('title', 'Service') --}}
 @section('admin-content')
     <main>
         <div class="container ">

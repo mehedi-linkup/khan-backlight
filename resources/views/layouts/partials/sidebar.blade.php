@@ -46,12 +46,12 @@
                         <a class="nav-link" href="{{ route('admin.message') }}">Message</a>
                     </nav>
                 </div> --}}
-                <a class="nav-link {{ ($pageName == 'message' || $pageName == 'order') ? 'active' : 'collapsed' }} " href="#" data-toggle="collapse" data-target="#collapseLayouts3" aria-expanded="false" aria-controls="collapseLayouts3">
+                <a class="nav-link {{ ($pageName == 'contact' || $pageName == 'order') ? 'active' : 'collapsed' }} " href="#" data-toggle="collapse" data-target="#collapseLayouts3" aria-expanded="false" aria-controls="collapseLayouts3">
                     <div class="sb-nav-link-icon"><i class="far fa-envelope"></i></div>
                     Messages
                     <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                 </a>
-                <div class="collapse {{ ($pageName == 'profile' || $pageName == 'register') ? 'show' : '' }}" id="collapseLayouts3" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                <div class="collapse {{ ($pageName == 'contact' || $pageName == 'order') ? 'show' : '' }}" id="collapseLayouts3" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
                         <a class="nav-link" href="{{ route('admin.message') }}">Order Message</a>
                         <a class="nav-link" href="{{ route('contact.list') }}">Customer Message</a>

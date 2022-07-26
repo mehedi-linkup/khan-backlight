@@ -14,10 +14,10 @@
           <div class="col-lg-6 d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="200">
             <div class="content">
               <h3>Who We Are</h3>
-              <div>
-                {!! Str::limit($content->about, 650, '...') !!}
+              <div class="about-text">
+                {!! Str::limit($content->about, 600, '...') !!}
               </div>
-              @if(strlen($content->about) > 650)
+              @if(strlen($content->about) > 600)
               <div class="text-center text-lg-start">
                 <a href="{{ route('about') }}" class="btn-read-more d-inline-flex align-items-center justify-content-center align-self-center">
                   <span>Read More</span>
@@ -45,7 +45,7 @@
         <header class="section-header">
           <h2>Our Products</h2>
           <p><span>Some sample of our products</span></p>
-          @if($product->count() > 15)
+          @if($product->count() > 10)
           <div class="btn-absolute text-center text-lg-start">
             <a href="{{ route('product') }}" class="btn-read-more d-inline-flex align-items-center justify-content-center align-self-center">
               <span>See More</span>
@@ -55,10 +55,10 @@
           @endif
         </header>
 
-        <div class="row row-cols-lg-5 gy-lg-3">
-          @foreach($product->take(15) as $item)
+        <div class="row row-cols-1 row-cols-lg-5 gy-3">
+          @foreach($product->take(10) as $item)
           <div class="col" data-aos="fade-up" data-aos-delay="600">
-            <div class="card p-lg-3">
+            <div class="card p-2 p-lg-3">
               <div class="img-box">
                   <a href="{{ route('product-detail', $item->id) }}">
                       <img width="100%" height="219" src="{{ asset($item->image) }}" class="card-img-top" alt="Avenue Montaigne">
@@ -68,9 +68,9 @@
                   <a href="{{ route('product-detail', $item->id) }}">
                       <h5 class="card-title">{{ $item->name }}</h5>
                   </a> 
-                  <div class="product-id pb-md-2">{{ 'PRD'.$item->product_id }}</div>
+                  <div class="product-id pb-md-2">{{ $item->product_id }}</div>
                   <div class="">
-                      <a href="{{ route('order') }}" class="btn button-2 btn-card">Order Now</a>
+                      <a href="{{ route('order', $item->id) }}" class="btn button-2 btn-card">Order Now</a>
                   </div>
               </div>
             </div>
@@ -140,7 +140,7 @@
           <div class="col-lg-4 mt-5 mt-lg-0 d-flex">
             <div class="row align-self-center gy-4">
 
-              @foreach ($factorypoint->take(6) as $item)
+              @foreach ($factorypoint->take(5) as $item)
               <div class="col-md-12" data-aos="zoom-out" data-aos-delay="200">
                 <div class="feature-box d-flex align-items-center">
                   <i class="bi bi-check"></i>
@@ -172,22 +172,23 @@
               <li>
                 <a class="nav-link" data-bs-toggle="pill" href="#tab2">Activities</a>
               </li>
-              {{-- <li>
-                <a class="nav-link" data-bs-toggle="pill" href="#tab3">Corrupti</a>
-              </li> --}}
             </ul><!-- End Tabs -->
   
             <!-- Tab Content -->
             <div class="tab-content">
   
               <div class="tab-pane fade show active" id="tab1">
-                {!! $history->description1 !!}
+                <div class="history-box">
+                  {!! $history->description1 !!}
+                </div>
                 <span><a href="{{ route('history') }}">Read More</a></span>
               </div>
               <!-- End Tab 1 Content -->
   
               <div class="tab-pane fade show" id="tab2">
-                {!! $history->description2 !!}
+                <div class="history-box">
+                  {!! $history->description2 !!}
+                </div>
                 <span><a href="{{ route('activity') }}">Read More</a></span>
               </div><!-- End Tab 2 Content -->
             </div>
@@ -230,7 +231,7 @@
                 <img src="{{ asset($item->image) }}" alt="" class="img-fluid rounded">
               </div>
               <h3>{{ $item->name }}</h3>
-              <p>{{ $item->s_description }}</p>
+              <p class="sister-text" style="text-align: justify">{{ Str::limit($item->s_description, 275, '...') }}</p>
             </div>
           </div>
           @endforeach
@@ -478,21 +479,21 @@
 
             <div class="row gy-4">
               <div class="col-md-6">
-                <div class="info-box">
+                <div class="info-box text-center">
                   <i class="bi bi-geo-alt"></i>
                   <h3>Address</h3>
                   <p>{{ $content->address }}</p>
                 </div>
               </div>
               <div class="col-md-6">
-                <div class="info-box">
+                <div class="info-box text-center">
                   <i class="bi bi-telephone"></i>
                   <h3>Call Us</h3>
                   <p>{{ '+88'.$content->phone }}</p>
                 </div>
               </div>
               <div class="col-md-12">
-                <div class="info-box">
+                <div class="info-box text-center">
                   <i class="bi bi-envelope"></i>
                   <h3>Email Us</h3>
                   <p>{{ $content->email }}</p>
@@ -526,7 +527,9 @@
                   <textarea class="form-control" name="message" rows="6" placeholder="Message" required></textarea>
                   @error('message') <span style="color: red">{{$message}}</span> @enderror
                 </div>
-                <button type="submit">Send Message</button>
+                <div class="col-md-12">
+                  <button type="submit" class="btn btn-sm d-inline-block w-100">Send Message</button>
+                </div>
               </div>
             </form>
           </div>

@@ -1,17 +1,17 @@
 @extends('layouts.admin-master', ['pageName'=> 'faq'])
-@section('title', 'FAQ Entry')
+{{-- @section('title', 'FAQ Entry') --}}
 @section('admin-content')
     <main>
         <div class="container ">
             <div class="heading-title p-2 my-2">
                 <span class="my-3 heading "><i class="fas fa-home"></i> <a class=""
-                        href="{{ route('dashboard') }}">Home</a> >FAQ</span>
+                        href="{{ route('dashboard') }}">Home</a> > FAQ</span>
             </div>
             <div class="row">
                 <div class="col-md-6">
                     <div class="card">
                         <div class="card-header">
-                            <div class=""><i class="fas fa-question-circle"></i>&nbsp;Add FAQ</div>
+                            <div class=""><i class="fas fa-plus"></i>&nbsp;Add FAQ</div>
                         </div>
                         <div class="card-body table-card-body">
                             <form action="{{ route('faq.store') }}" method="post"
@@ -56,8 +56,7 @@
                 <div class="col-md-6">
                     <div class="card">
                         <div class="card-header">
-                            <div class="table-head"><i class="fas fa-table me-1"></i>FAQ List <a href=""
-                                    class="float-right"><i class="fas fa-print"></i></a></div>
+                            <div class="table-head"><i class="fas fa-list mr-2"></i>FAQ List </div>
                         </div>
                         <div class="card-body table-card-body p-3">
                             <table id="datatablesSimple">

@@ -14,8 +14,6 @@ class ProductController extends Controller
 {
     public function index()
     {
-        // $subcategory = Subcategory::latest()->get();
-        // $category = Category::latest()->get();
         $product = Product::latest()->get();
         return view('pages.admin.product', compact('product'));
     }
@@ -30,8 +28,12 @@ class ProductController extends Controller
     {
         $validatedData = $request->validate([
             'name' => 'required|max:100',
+            'product_id' => 'max:20|unique:products',
             'image' => 'required|image|mimes:jpeg,jpg,png,gif,webp',
             'description' => 'min:8'
+        ],
+        [
+            'product_id.unique' => 'This model already exists'
         ]);
         
         try {
@@ -44,7 +46,7 @@ class ProductController extends Controller
 
             $product = new Product();
             $product->name = $request->name;
-            $product->product_id = '10'.$latestid+1;
+            $product->product_id = $request->product_id;
             $product->description = $request->description;
             $product->image = $save_url;
             $product->save();
@@ -92,34 +94,38 @@ class ProductController extends Controller
     {
         $validatedData = $request->validate([
             'name' => 'required|max:100',
+            'product_id' => 'max:20',
             'image' => 'image|mimes:jpeg,jpg,png,gif,webp',
             'description' => 'min:8'
         ]);
         try {
-            $old_img = $request->old_image;
-            if ($request->file('image')) {
-                unlink($old_img);
-                $image = $request->file('image');
-                $name_gen=hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
-                Image::make($image)->resize(960,720)->save('uploads/product/'.$name_gen);
-                $save_url = 'uploads/product/'.$name_gen;
-    
-                $product = Product::find($id);
-                // $product->category_id = $request->category_id;
-                // $product->subcategory_id = $request->subcategory_id;
-                $product->name = $request->name;
-                $product->description = $request->description;
-                $product->image = $save_url;
-                $product->save();
+            if(Product::where('id', '!=', $request->id)->where('product_id', $request->product_id)->exists()) {
+
+                return back()->with('error','Product Model exist!');
             } else {
-                $product = Product::find($id);
-                // $product->category_id = $request->category_id;
-                // $product->subcategory_id = $request->subcategory_id;
-                $product->name = $request->name;
-                $product->description = $request->description;
-                $product->save();
+                $old_img = $request->old_image;
+                if ($request->file('image')) {
+                    unlink($old_img);
+                    $image = $request->file('image');
+                    $name_gen=hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
+                    Image::make($image)->resize(960,720)->save('uploads/product/'.$name_gen);
+                    $save_url = 'uploads/product/'.$name_gen;
+        
+                    $product = Product::find($id);
+                    $product->name = $request->name;
+                    $product->product_id = $request->product_id;
+                    $product->description = $request->description;
+                    $product->image = $save_url;
+                    $product->save();
+                } else {
+                    $product = Product::find($id);
+                    $product->name = $request->name;
+                    $product->product_id = $request->product_id;
+                    $product->description = $request->description;
+                    $product->save();
+                }
+                return Redirect()->route('admin.products')->with('success', 'Update Successful!');
             }
-            return Redirect()->route('admin.products')->with('success', 'Update Successful!');
             
         } catch (\Throwable $th) {
             return Redirect()->back()->with('failed', 'Product Update Failed!');

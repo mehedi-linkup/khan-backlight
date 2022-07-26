@@ -1,4 +1,4 @@
-@extends('layouts.admin-master', ['pageName'=> 'query', 'title' => 'All Customer Message'])
+@extends('layouts.admin-master', ['pageName'=> 'contact', 'title' => 'All Customer Message'])
 
 {{-- @section('title', 'Service') --}}
 @section('admin-content')

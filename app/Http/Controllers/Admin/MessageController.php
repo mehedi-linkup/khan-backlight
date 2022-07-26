@@ -26,6 +26,7 @@ class MessageController extends Controller
             $message = new Message;
             $message->name = $request->name;
             $message->email = $request->email;
+            $message->product_id = $request->product_id;
             $message->subject = $request->subject;
             $message->message = $request->message;
             $message->created_at = Carbon::now();

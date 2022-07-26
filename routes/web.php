@@ -50,11 +50,11 @@ Route::get('/gallery', [HomeController::class, 'gallery'])->name('gallery');
 Route::get('/team', [HomeController::class, 'team'])->name('team');
 Route::get('/webnews', [HomeController::class, 'webnews'])->name('webnews');
 Route::get('/webnews-detail/{id}', [HomeController::class, 'webnewsDetail'])->name('webnews-detail');
-Route::get('/order', [HomeController::class, 'order'])->name('order');
+// Route::get('/order/{id}', [HomeController::class, 'order'])->name('order');
 // contact route
 Route::post('/contact-store', [ContactController::class, 'store'])->name('contact.store');
 // order route
-Route::get('/order', [HomeController::class, 'order'])->name('order');
+Route::get('/order/{id}', [HomeController::class, 'order'])->name('order');
 Route::post('/messages/store', [MessageController::class, 'store'])->name('store.message');
 
 // login
@@ -166,7 +166,7 @@ Route::group(['middleware' => ['auth']] , function(){
     Route::put('backimage/{backimage}', [BackImageController::class, 'update'])->name('backimage.update');
 
     Route::get('/messages', [MessageController::class, 'index'])->name('admin.message');
-    Route::get('messages/delete/{id}', [MessageController::class, 'delete'])->name('delete.message');
+    Route::get('messages/delete/{id}', [MessageController::class, 'destroy'])->name('delete.message');
     
     Route::get('/queries', [QueryController::class, 'query'])->name('admin.query');
     Route::get('queries/delete/{id}', [QueryController::class, 'queryDelete'])->name('admin.query.delete');

@@ -17,15 +17,15 @@
 <!-- ======= Recent Blog Posts Section ======= -->
 <section id="recent-blog-posts" class="recent-blog-posts">
     <div class="container" data-aos="fade-up">
-      <div class="row">
+      <div class="row gy-2 gy-md-4">
 
         @foreach($news as $item)
           <div class="col-lg-4">
             <div class="post-box">
               <div class="post-img"><img src="{{ asset($item->image) }}" class="img-fluid" alt=""></div>
-              <span class="post-date">{{ $item->created_at }}</span>
+              <span class="post-date">{{ date('F j, Y', strtotime($item->created_at)) }}</span>
               <h3 class="post-title">{{ $item->title }}</h3>
-              {{-- <a href="blog-single.html" class="readmore stretched-link mt-auto"><span>Read More</span><i class="bi bi-arrow-right"></i></a> --}}
+              <a href="{{ route('webnews-detail', $item->id) }}" class="readmore stretched-link mt-auto"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
             </div>
           </div>
           @endforeach

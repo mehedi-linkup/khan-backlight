@@ -1,4 +1,4 @@
-@extends('layouts.admin-master', ['pageName'=> 'message', 'title' => 'All Customer Message'])
+@extends('layouts.admin-master', ['pageName'=> 'order', 'title' => 'All Customer Message'])
 {{-- @section('title', 'Service') --}}
 @section('admin-content')
 <main>
@@ -16,6 +16,7 @@
                                 <th>ID</th>
                                 <th>Name</th>
                                 <th>Email</th>
+                                <th>Product Model</th>
                                 <th>Subject</th>
                                 <th>Message</th>
                                 <th>Action</th>
@@ -27,6 +28,7 @@
                                     <td>{{ $key+1 }}</td>
                                     <td>{{ $item->name }}</td>
                                     <td>{!! $item->email !!}</td>
+                                    <td>{{ $item->product_id }}</td>
                                     <td>
                                         @if(Str::of($item->subject)->wordCount() > 10)
                                         {!! Str::words($item->subject, 10, '...') !!}
@@ -72,7 +74,7 @@
                                             </div>
                                         </div>
                                         @endif
-                                        <a href="{{ route('delete.service', $item->id) }}" type="submit" class="d-inline btn btn-danger btn-sm b-btn" onclick="return confirm('Are you sure you want to delete?');"><i class="fas fa-trash"></i></button>
+                                        <a href="{{ route('delete.message', $item->id) }}" type="submit" class="d-inline btn btn-danger btn-sm b-btn" onclick="return confirm('Are you sure you want to delete?');"><i class="fas fa-trash"></i></button>
                                     </td>
                                 </tr>
                             @empty

@@ -19,7 +19,6 @@ class MapController extends Controller
             'link' => 'required',
         ]);
 
-        // Image Update
         try {
             $map->link = $request->link;
             $map->save();

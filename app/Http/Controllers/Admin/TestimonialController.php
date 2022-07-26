@@ -19,8 +19,7 @@ class TestimonialController extends Controller
         
         $request->validate([
             'name' => 'required',
-            'post' =>'required',
-            'rank' =>'required',  
+            'post' =>'required',  
             'description' => 'max:255'         
         ]);
 
@@ -31,9 +30,9 @@ class TestimonialController extends Controller
             $testimonial->name = $request->name;
             $testimonial->post = $request->post;
             $testimonial->description = $request->description;
-            $testimonial->phone = $request->phone;
-            $testimonial->rank = $request->rank;
-            $testimonial->is_phone = $request->is_phone ? $request->is_phone : 'd';
+            // $testimonial->phone = $request->phone;
+            // $testimonial->rank = $request->rank;
+            // $testimonial->is_phone = $request->is_phone ? $request->is_phone : 'd';
             $mainImagewithPath = '';
             if($request->hasFile('image')){               
                 $image = $request->file('image');
@@ -64,7 +63,8 @@ class TestimonialController extends Controller
         $request->validate([
             'name' => 'required',
             'post' =>'required',
-            'rank' =>'required',        
+            'description' => 'max:255'
+            // 'rank' =>'required',        
         ]);
 
         try{
@@ -73,9 +73,9 @@ class TestimonialController extends Controller
             $testimonial->name = $request->name;
             $testimonial->post = $request->post;
             $testimonial->description = $request->description;
-            $testimonial->phone = $request->phone;
-            $testimonial->rank = $request->rank;
-            $testimonial->is_phone = $request->is_phone ? $request->is_phone : 'd';
+            // $testimonial->phone = $request->phone;
+            // $testimonial->rank = $request->rank;
+            // $testimonial->is_phone = $request->is_phone ? $request->is_phone : 'd';
             $mainImagewithPath = $testimonial ->image;
             if($request->hasFile('image')){ 
 

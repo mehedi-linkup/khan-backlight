@@ -53,19 +53,19 @@
                                         @enderror
                                     </div>
 
-                                    <div class="col-md-3">
+                                    {{-- <div class="col-md-3">
                                         <strong><label>Phone</label> <span class="float-right">:</span></strong>
-                                    </div>
-                                    <div class="col-md-9">
+                                    </div> --}}
+                                    {{-- <div class="col-md-9">
                                         <input type="text" id="phone" class="form-control my-form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}">
                                         @error('phone')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                         @enderror
-                                    </div>
+                                    </div> --}}
 
-                                    <div class="col-md-3">
+                                    {{-- <div class="col-md-3">
                                         <strong><label>Rank Id</label> <span class="float-right">:</span></strong>
                                     </div>
                                     <div class="col-md-9">
@@ -75,25 +75,25 @@
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                         @enderror
-                                    </div>
+                                    </div> --}}
 
                                     <div class="col-md-3">
                                         <strong><label>Image</label> <span class="float-right">:</span></strong>
                                     </div>
                                     <div class="col-md-5 mt-2">
                                         <input type="file" class="form-control my-form-control" id="image" name="image" onchange="readURL(this);">
-                                        <small class="text-danger">(Dimention 120*120 px)</small>
+                                        {{-- <small class="text-danger">(Dimention 120*120 px)</small> --}}
                                     </div>
                                     <div class="col-md-4 mt-2">
                                         <img class="form-controlo img-thumbnail" src="#" id="previewImage" style="height:100px;width:120px; background: #3f4a49;">
                                     </div>
 
-                                    <div class="col-md-3">
+                                    {{-- <div class="col-md-3">
                                         <label><strong>Show Phone</strong></label><span style="float: right">:</span>
-                                    </div>
-                                    <div class="col-md-9">
+                                    </div> --}}
+                                    {{-- <div class="col-md-9">
                                         <input type="checkbox" class="" name="is_phone" value="a">
-                                    </div>
+                                    </div> --}}
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12 text-center">
@@ -116,14 +116,15 @@
                                     class="float-right"><i class="fas fa-print"></i></a></div>
                         </div>
                         <div class="card-body table-card-body p-3">
-                            <table id="datatablesSimple">
+                            <div class="table-responsive">
+                                <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
                                 <thead class="text-center bg-light">
                                     <tr>
                                         <th>Name</th>
                                         <th>post</th>
-                                        <th>Phone</th>
+                                        {{-- <th>Phone</th>
                                         <th>Rank</th>
-                                        <th>show_Phone</th>
+                                        <th>show_Phone</th> --}}
                                         <th>Image</th>
                                         <th width="20%" class="text-center">Action</th>
                                     </tr>
@@ -133,9 +134,9 @@
                                         <tr class="text-center">
                                             <td>{{ $item->name }}</td>
                                             <td>{{ $item->post }}</td>
-                                            <td>{{ $item->phone }}</td>
-                                            <td>{{ $item->rank }}</td>
-                                            <td>@if($item->is_phone == 'a') Active @else Inactive @endif</td>
+                                            {{-- <td>{{ $item->phone }}</td>
+                                            <td>{{ $item->rank }}</td> --}}
+                                            {{-- <td>@if($item->is_phone == 'a') Active @else Inactive @endif</td> --}}
                                             <td class="text-center"><img src="{{ asset($item->image) }}" alt="" class="tbl-image"></td>
                                             <td class="text-center"><a href="{{ route('testimonial.edit', $item->id) }}"class="btn btn-edit btn-sm"><i class="fas fa-edit"></i></a>
                                                 <button type="submit" class="btn btn-delete"onclick="deleteUser({{ $item->id }})"><i class="far fa-trash-alt"></i></button>
@@ -150,6 +151,7 @@
                                     @endforeach
                                 </tbody>
                             </table>
+                            </div>
                         </div>
                     </div>
                 </div>

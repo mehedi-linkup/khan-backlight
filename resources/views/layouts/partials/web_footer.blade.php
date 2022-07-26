@@ -4,11 +4,11 @@
     <div class="container">
       <div class="row gy-4">
         <div class="col-lg-4 col-md-12 footer-info">
-          <a href="{{ route('home') }}" class="logo d-flex align-items-center">
+          <a href="{{ route('home') }}" class="logo d-block">
             {{-- <img src="{{ asset('website/assets/img/logo.png') }}" alt=""> --}}
             <span>{{ $content->name }}</span>
           </a>
-          <div>{!! Str::words($content->about, 30, '') !!}</div>
+          <div class="mt-2">{!! Str::words($content->about, 30, '') !!}</div>
           <div class="social-links mt-3">
             <a href="{{ $content->twitter }}" class="twitter" target="_blank"><i class="bi bi-twitter"></i></a>
             <a href="{{ $content->facebook }}" class="facebook" target="_blank"><i class="bi bi-facebook"></i></a>
@@ -30,7 +30,7 @@
           </ul>
         </div>
 
-        <div class="col-lg-2 col-md-12 footer-contact text-center text-md-start">
+        <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
           <h4>Contact Us</h4>
           <p>
             <span class="text-wrap">{{ $content->address }}</span>
@@ -40,7 +40,7 @@
 
         </div>
 
-        <div class="col-lg-4 col-md-12">
+        <div class="col-lg-3 col-md-12">
           <h4>Map</h4>
           <iframe src="{{ $map->link }}" width="100%" height="250" style="border: 2px solid #bfb4b4;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>

@@ -33,21 +33,21 @@
 
           <div class="row gy-4">
             <div class="col-md-6">
-              <div class="info-box">
+              <div class="info-box text-center">
                 <i class="bi bi-geo-alt"></i>
                 <h3>Address</h3>
                 <p>{{ $content->address }}</p>
               </div>
             </div>
             <div class="col-md-6">
-              <div class="info-box">
+              <div class="info-box text-center">
                 <i class="bi bi-telephone"></i>
                 <h3>Call Us</h3>
                 <p>{{ '+88'.$content->phone }}</p>
               </div>
             </div>
             <div class="col-md-12">
-              <div class="info-box">
+              <div class="info-box text-center">
                 <i class="bi bi-envelope"></i>
                 <h3>Email Us</h3>
                 <p>{{ $content->email }}</p>
@@ -62,14 +62,20 @@
             @csrf
             <div class="row gy-4">
 
+              
               <div class="col-md-6">
                 <input type="text" name="name" class="form-control" placeholder="Your Name" required>
                 @error('name') <span style="color: red">{{$message}}</span> @enderror
               </div>
-
+              
               <div class="col-md-6 ">
                 <input type="email" class="form-control" name="email" placeholder="Your Email" required>
                 @error('email') <span style="color: red">{{$message}}</span> @enderror
+              </div>
+
+              <div class="col-md-12">
+                <input type="text" name="product_id" class="form-control" placeholder="" value="{{ $product->product_id }}" readonly>
+                @error('product_id') <span style="color: red">{{$message}}</span> @enderror
               </div>
 
               <div class="col-md-12">
@@ -81,7 +87,9 @@
                 <textarea class="form-control" name="message" rows="6" placeholder="Message" required></textarea>
                 @error('message') <span style="color: red">{{$message}}</span> @enderror
               </div>
-              <button type="submit">Order Now</button>
+              <div class="col-md-12">
+                <button type="submit" class="btn btn-sm d-inline-block w-100">Order Now</button>
+              </div>
             </div>
           </form>
         </div>

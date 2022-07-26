@@ -23,7 +23,7 @@
                                 @enderror
                                 
                                 <label for="s_description" class="mb-1">Short Description</label>
-                                <textarea name="s_description" class="form-control form-control-sm" id="s_description" rows="3">{{ $service->s_description }}</textarea>
+                                <textarea name="s_description" class="form-control form-control-sm @error('s_description') is-invalid @enderror" id="s_description" rows="3">{{ $service->s_description }}</textarea>
                                 @error('s_description')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

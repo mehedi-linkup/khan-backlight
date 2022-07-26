@@ -38,6 +38,11 @@
                                 </div>
 
                                 <div class="col-md-5 mb-2">
+
+                                    <label for="product_id" class="mb-2"> Product Model </label>
+                                    <input type="text" name="product_id" value="{{ @$productData->product_id }}" class="form-control form-control-sm mb-2" id="product_id" placeholder="Enter Product Model">
+                                    @error('product_id') <span style="color: red">{{$message}}</span> @enderror
+
                                     <label for="about_image" class="mb-2">Product Image</label>
                                     <input class="form-control form-control-sm" id="image" type="file" name="image" onchange="mainThambUrl(this)">
                                     <div class="form-group mt-2">
@@ -77,6 +82,7 @@
                                     <tr>
                                         <th>ID</th>
                                         <th>Product Name</th>
+                                        <th>Model</th>
                                         <th>Image</th>
                                         <th>Action</th>
                                     </tr>
@@ -86,6 +92,7 @@
                                     <tr>
                                         <td>{{ $loop->index + 1 }}</td>
                                         <td>{{ $item->name }}</td>
+                                        <td>{{ $item->product_id }}</td>
                                         <td><img src="{{ asset($item->image) }}" width="30" height="30" alt=""></td>
                                         <td>
                                             <a href="{{ route('admin.product.edit', $item->id) }}" class="btn-sm btn btn-info"><i class="fas fa-edit"></i></a>
@@ -110,7 +117,7 @@
 <script>
     $('#description').summernote({
         tabsize: 2,
-        height: 160
+        height: 120
     });
 </script>
 

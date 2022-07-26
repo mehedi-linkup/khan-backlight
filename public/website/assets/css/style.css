@@ -36,6 +36,11 @@ section {
   text-align: center;
   padding-bottom: 40px;
 }
+@media(min-width: 340px) and (max-width: 575px) {
+  .section-header {
+    padding-bottom: 20px;
+  }
+}
 .section-header h2 {
   font-size: 13px;
   letter-spacing: 1px;
@@ -51,7 +56,7 @@ section {
   line-height: 42px;
   font-weight: 700;
   color: #012970;
-  border-bottom: 2px solid
+  border-bottom: 1px solid #4154f147;
 }
 .section-header p span {
   display: inline-block;
@@ -615,13 +620,19 @@ section {
   font-weight: 700;
   color: #012970;
 }
+@media(min-width: 1200px) {
+  .about .about-text {
+    height: 320px;
+    overflow-y: auto;
+  }
+}
 .about p {
   margin: 15px 0 10px 0;
   line-height: 24px;
 }
 @media(min-width: 1200px) {
   .about .about-image {
-    height: 366px;
+    height: 459px;
   }
 }
 /*--------------------------------------------------------------
@@ -879,6 +890,10 @@ section {
     width: 100%;
     height: 100%;
   }
+  .history .history-box {
+    height: 342px;
+    overflow: hidden;
+  }
 }
 /*--------------------------------------------------------------
 # Services
@@ -908,6 +923,10 @@ section {
 @media(min-width: 1200px) {
   .services .service-box .img-box img {
     height: 138px;
+  }
+  .services .service-box .sister-text {
+    height: 200px;
+    overflow: hidden;
   }
 }
 .services .service-box h3 {
@@ -2188,7 +2207,7 @@ section {
   background: #5969f3;
 }
 .footer .footer-top {
-  background: white url(../img/footer-bg.png) no-repeat right top;
+  background: #f6f6f6 url(../img/footer-bg.png) no-repeat right top;
   background-size: contain;
   border-top: 1px solid #e1ecff;
   border-bottom: 1px solid #e1ecff;
@@ -2203,7 +2222,7 @@ section {
   margin-bottom: 30px;
 }
 .footer .footer-top .footer-info .logo {
-  line-height: 0;
+  line-height: 0.6;
   margin-bottom: 15px;
 }
 .footer .footer-top .footer-info .logo img {
@@ -2241,7 +2260,7 @@ section {
   color: #012970;
   text-transform: uppercase;
   position: relative;
-  padding-bottom: 12px;
+  padding-bottom: 4px;
 }
 .footer .footer-top .footer-links {
   margin-bottom: 30px;
