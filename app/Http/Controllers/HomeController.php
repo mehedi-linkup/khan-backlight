@@ -31,6 +31,7 @@ class HomeController extends Controller
         $management = Management::latest()->get();
         $history = Whatwe::first();
         $gallery = Gallery::latest()->get();
+        $video = Video::latest()->get();
         $product = Product::latest()->get();
         $factory = Factory::first();
         $factorypoint = FactoryPoint::latest()->get();
@@ -39,7 +40,7 @@ class HomeController extends Controller
         $news = News::latest()->get();
         $faq = Faq::latest()->get();
         $testimonial = Testimonial::latest()->get();
-        return view('pages.website.index', compact('slider', 'partner', 'management', 'gallery', 'product', 'history', 'factory', 'factorypoint', 'service', 'news', 'sister', 'faq', 'testimonial'));
+        return view('pages.website.index', compact('slider', 'partner', 'management', 'gallery', 'video', 'product', 'history', 'factory', 'factorypoint', 'service', 'news', 'sister', 'faq', 'testimonial'));
     }
     public function about() {
         return view('pages.website.about');
@@ -75,6 +76,10 @@ class HomeController extends Controller
     public function gallery() {
         $gallery = Gallery::latest()->get();
         return view('pages.website.gallery', compact('gallery'));
+    }
+    public function video() {
+        $video = Video::latest()->get();
+        return view('pages.website.video', compact('video'));
     }
     public function team() {
         $management = Management::latest()->get();

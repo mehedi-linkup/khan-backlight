@@ -3,7 +3,6 @@
 
     <a href="{{ route('home') }}" class="logo d-flex align-items-center">
       <img src="{{ asset($content->logo) }}" alt="">
-      <span>Backlight</span>
     </a>
 
     <nav id="navbar" class="navbar">
@@ -15,7 +14,13 @@
         <li><a class="nav-link scrollto" href="{{route('home')}}#features">Factory</a></li>
         {{-- <li><a class="nav-link scrollto" href="#history">History</a></li> --}}
         <li><a class="nav-link scrollto" href="{{ route('faq') }}">FAQ</a></li>
-        <li><a class="nav-link scrollto" href="{{ route('gallery') }}">Gallery</a></li>
+        <li class="dropdown"><a href="#"><span>Gallery</span> <i class="bi bi-chevron-down"></i></a>
+          <ul>
+            <li><a href="{{ route('gallery') }}">Photo Gallery</a></li>
+            <li><a href="{{ route('video') }}">Video Gallery</a></li>
+          </ul>
+        </li>
+        {{-- <li><a class="nav-link scrollto" href="{{ route('gallery') }}">Gallery</a></li> --}}
         <li><a class="nav-link scrollto" href="{{ route('team') }}">Team</a></li>
         <li><a class="nav-link scrollto" href="{{ route('webnews') }}">News</a></li>
         <li><a class="nav-link scrollto" href="{{ route('home') }}#contact">Contact</a></li>

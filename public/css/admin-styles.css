@@ -10333,3 +10333,15 @@ body {
 .multiImage img {
   width: 45%;
 }
+
+/* product page */
+#category1.form-control, #model1.form-control, #unit1.form-control {
+  width: 92%;
+}
+.add-item {
+  padding: 0.25rem 0.5rem;
+  border: 1px solid #9c9fa3;
+  margin-left: 5px;
+  color: #495057;
+  border-radius: 0.2rem;
+}

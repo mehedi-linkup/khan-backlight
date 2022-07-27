@@ -40,7 +40,7 @@ class CategoryController extends Controller
                 $imgName = $nameGen. '.' . $imgExt;
                 $upLocation = 'uploads/category/';
                 // $image->move($upLocation, $imgName);
-                Image::make($image)->resize(768,768)->save($upLocation . $imgName);
+                Image::make($image)->resize(960,720)->save($upLocation . $imgName);
                 $lastImage = $upLocation . $imgName;
             }
             $category = new Category();
@@ -97,7 +97,7 @@ class CategoryController extends Controller
             $image = $request->file('image');
             if($image) {
                 $imageName = date('YmdHi').$image->getClientOriginalName();
-                Image::make($image)->resize(768,768)->save('uploads/category/' . $imageName);
+                Image::make($image)->resize(960,720)->save('uploads/category/' . $imageName);
                 if(file_exists($category->image) && !empty($category->image)) {
                     unlink($category->image);
                 }
@@ -111,7 +111,7 @@ class CategoryController extends Controller
             //     'alert-type'=>'success'
             // );
             // return Redirect()->route('admin.categories')->with($notification);
-            return Redirect()->route('admin.categories')->with('success', 'Category Insertion Successful!');
+            return Redirect()->route('admin.categories')->with('success', 'Category Update Successful!');
 
         } catch (\Exception $e) {
             return Redirect()->back()->with('error', 'Category Insertion Failed!');

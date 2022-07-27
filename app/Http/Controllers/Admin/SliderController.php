@@ -93,7 +93,7 @@ class SliderController extends Controller
 
         } catch (\Throwable $th) {
             //throw $th;
-            return redirect()->back()->withInput()->with('error', 'Update Failed!');
+            return redirect()->back()->with('error', 'Update Failed!');
         }
     }
 
@@ -104,6 +104,6 @@ class SliderController extends Controller
             unlink($slider->image);
         }
         $slider->delete();
-        return redirect()->back()->with('success', 'Deleted Successful');
+        return redirect()->back()->with('success', 'Deleted Successfully!');
     }
 }

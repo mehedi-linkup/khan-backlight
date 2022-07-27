@@ -3,11 +3,14 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\FaqController;
+use App\Http\Controllers\Admin\MapController;
 use App\Http\Controllers\Admin\NewsController;
+use App\Http\Controllers\Admin\UnitController;
 use App\Http\Controllers\Admin\QueryController;
 use App\Http\Controllers\Admin\VideoController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\WhatweController;
+use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\FactoryController;
 use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\Admin\MessageController;
@@ -20,12 +23,11 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ManagementController;
 use App\Http\Controllers\Admin\SubcategoryController;
 use App\Http\Controllers\Admin\TestimonialController;
+use App\Http\Controllers\Admin\ProductModelController;
 use App\Http\Controllers\Admin\RegistrationController;
 use App\Http\Controllers\Admin\SisterConcernController;
 use App\Http\Controllers\Admin\AuthenticationController;
 use App\Http\Controllers\Admin\CompanyProfileController;
-use App\Http\Controllers\Admin\ContactController;
-use App\Http\Controllers\Admin\MapController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,6 +49,7 @@ Route::get('/activity', [HomeController::class, 'activity'])->name('activity');
 Route::get('/sister-concern', [HomeController::class, 'sister_concern'])->name('sister-concern');
 Route::get('/faq', [HomeController::class, 'faq'])->name('faq');
 Route::get('/gallery', [HomeController::class, 'gallery'])->name('gallery');
+Route::get('/video', [HomeController::class, 'video'])->name('video');
 Route::get('/team', [HomeController::class, 'team'])->name('team');
 Route::get('/webnews', [HomeController::class, 'webnews'])->name('webnews');
 Route::get('/webnews-detail/{id}', [HomeController::class, 'webnewsDetail'])->name('webnews-detail');
@@ -88,6 +91,18 @@ Route::group(['middleware' => ['auth']] , function(){
     Route::get('/category/edit/{id}', [CategoryController::class, 'edit'])->name('admin.category.edit');
     Route::post('/category/update/{id}', [CategoryController::class, 'update'])->name('admin.category.update');
     Route::get('/category/delete/{id}', [CategoryController::class, 'destroy'])->name('admin.category.delete');
+    // Product Model
+    Route::get('/product-model', [ProductModelController::class, 'index'])->name('admin.model');
+    Route::post('/product-model/store', [ProductModelController::class, 'store'])->name('admin.model.store');
+    Route::get('/product-model/edit/{id}', [ProductModelController::class, 'edit'])->name('admin.model.edit');
+    Route::post('/product-model/update/{id}', [ProductModelController::class, 'update'])->name('admin.model.update');
+    Route::get('/product-model/delete/{id}', [ProductModelController::class, 'destroy'])->name('admin.model.delete');
+
+    Route::get('/unit', [UnitController::class, 'index'])->name('admin.unit');
+    Route::post('/unit/store', [UnitController::class, 'store'])->name('admin.unit.store');
+    Route::get('/unit/edit/{id}', [UnitController::class, 'edit'])->name('admin.unit.edit');
+    Route::post('/unit/update/{id}', [UnitController::class, 'update'])->name('admin.unit.update');
+    Route::get('/unit/delete/{id}', [UnitController::class, 'destroy'])->name('admin.unit.delete');
 
     // Subcategory Routes
     Route::get('/subcategories', [SubcategoryController::class, 'index'])->name('admin.subcategories');
