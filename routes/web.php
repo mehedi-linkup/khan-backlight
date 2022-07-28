@@ -28,6 +28,7 @@ use App\Http\Controllers\Admin\RegistrationController;
 use App\Http\Controllers\Admin\SisterConcernController;
 use App\Http\Controllers\Admin\AuthenticationController;
 use App\Http\Controllers\Admin\CompanyProfileController;
+use App\Http\Controllers\CartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,6 +54,10 @@ Route::get('/video', [HomeController::class, 'video'])->name('video');
 Route::get('/team', [HomeController::class, 'team'])->name('team');
 Route::get('/webnews', [HomeController::class, 'webnews'])->name('webnews');
 Route::get('/webnews-detail/{id}', [HomeController::class, 'webnewsDetail'])->name('webnews-detail');
+Route::get('/checkout', [HomeController::class, 'checkout'])->name('checkout');
+Route::get('cart/', [CartController::class, 'index'])->name('cart.index');
+Route::post('cart/store/', [CartController::class, 'store'])->name('cart.store');
+Route::get('cart/remove/{id}', [CartController::class, 'cartRemove'])->name('cart.remove');
 // Route::get('/order/{id}', [HomeController::class, 'order'])->name('order');
 // contact route
 Route::post('/contact-store', [ContactController::class, 'store'])->name('contact.store');
@@ -64,7 +69,7 @@ Route::post('/messages/store', [MessageController::class, 'store'])->name('store
 Route::get('admin', [AuthenticationController::class, 'login'])->name('login');
 Route::post('admin', [AuthenticationController::class, 'AuthCheck'])->name('login.check');
 
-Route::group(['middleware' => ['auth']] , function(){
+Route::group(['middleware' => ['auth']] , function() {
     // Dashboard
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
     // logout

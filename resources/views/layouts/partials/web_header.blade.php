@@ -10,7 +10,7 @@
         <li><a class="nav-link scrollto" href="{{route('home')}}#hero">Home</a></li>
         <li><a class="nav-link scrollto {{(@$pageName=='about')? 'active': ''}}" href="{{ route('about') }}">About</a></li>
         <li><a class="nav-link scrollto" href="{{ route('product') }}">Product</a></li>
-        {{-- <li><a class="nav-link scrollto" href="#values">Speciality</a></li> --}}
+        <li><a class="nav-link scrollto" href="{{ route('cart.index') }}">Cart</a></li>
         <li><a class="nav-link scrollto" href="{{route('home')}}#features">Factory</a></li>
         {{-- <li><a class="nav-link scrollto" href="#history">History</a></li> --}}
         <li><a class="nav-link scrollto" href="{{ route('faq') }}">FAQ</a></li>

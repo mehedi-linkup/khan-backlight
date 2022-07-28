@@ -144,6 +144,19 @@ section {
     display: none;
   }
 }
+
+.btn-mod-primary {
+  color: #212529;
+  background-color: #D19C97;
+  border-color: #D19C97;
+  border-radius: 0rem;
+}
+.btn-mod-primary:focus {
+  box-shadow: none;
+}
+.bg-mod-secondary {
+  background-color: #EDF1FF !important;
+}
 /*--------------------------------------------------------------
 # Breadcrumbs
 --------------------------------------------------------------*/
@@ -2346,4 +2359,25 @@ section {
   text-align: center;
   font-size: 13px;
   color: #012970;
+}
+
+/* Checkout */
+.checkout .form-group {
+  margin-bottom: 1rem;
+}
+.checkout label {
+  display: inline-block;
+  margin-bottom: 0.5rem;
+}
+.checkout h4 {
+  color: #1C1C1C;
+}
+.checkout select {
+  width: 100%;
+}
+.checkout .bg-secondary {
+  background-color: #EDF1FF !important;
+}
+.checkout .border-secondary {
+  border-color: #EDF1FF !important;
 }

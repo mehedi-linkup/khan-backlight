@@ -70,7 +70,7 @@
                   </a> 
                   <div class="product-id pb-md-2">{{ $item->product_id }}</div>
                   <div class="">
-                      <a href="{{ route('order', $item->id) }}" class="btn button-2 btn-card">Order Now</a>
+                      <a href="{{ route('product-detail', $item->id) }}" class="btn button-2 btn-card">Datails</a>
                   </div>
               </div>
             </div>

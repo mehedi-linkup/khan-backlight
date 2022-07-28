@@ -72,11 +72,11 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function getSubCate($subcat_id)
-    {
-        $subcate = Subcategory::where('category_id', $subcat_id)->orderBy('name' , 'ASC')->get();
-        return json_encode($subcate);
-    }
+    // public function getSubCate($subcat_id)
+    // {
+    //     $subcate = Subcategory::where('category_id', $subcat_id)->orderBy('name' , 'ASC')->get();
+    //     return json_encode($subcate);
+    // }
 
     /**
      * Show the form for editing the specified resource.
