@@ -4,11 +4,11 @@
     <div class="container">
       <div class="row gy-4">
         <div class="col-lg-4 col-md-12 footer-info">
-          <a href="{{ route('home') }}" class="logo d-flex align-items-center">
+          <a href="{{ route('home') }}" class="logo d-block">
             {{-- <img src="{{ asset('website/assets/img/logo.png') }}" alt=""> --}}
             <span>{{ $content->name }}</span>
           </a>
-          <div>{!! Str::words($content->about, 30, '') !!}</div>
+          <div class="mt-2">{!! Str::words($content->about, 30, '') !!}</div>
           <div class="social-links mt-3">
             <a href="{{ $content->twitter }}" class="twitter" target="_blank"><i class="bi bi-twitter"></i></a>
             <a href="{{ $content->facebook }}" class="facebook" target="_blank"><i class="bi bi-facebook"></i></a>
@@ -30,19 +30,19 @@
           </ul>
         </div>
 
-        <div class="col-lg-2 col-md-12 footer-contact text-center text-md-start">
+        <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
           <h4>Contact Us</h4>
           <p>
             <span class="text-wrap">{{ $content->address }}</span>
-            <a href="tel: {{ $content->phone }}"><strong>Phone:</strong> {{ $content->phone }}</a><br>
-            <a href="mailto: {{ $content->email }}"><strong>Email:</strong> {{ $content->email }}</a><br>
+            <a class="d-block" href="tel: {{ $content->phone }}"><strong>Phone:</strong> {{ $content->phone }}</a>
+            <a class="d-block" href="mailto: {{ $content->email }}"><strong>Email:</strong> {{ $content->email }}</a><br>
           </p>
 
         </div>
 
-        <div class="col-lg-4 col-md-12">
+        <div class="col-lg-3 col-md-12">
           <h4>Map</h4>
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3650.338326674586!2d90.36699521429803!3d23.806565392546872!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c72d1a5bf2a9%3A0x25a0f9a592e96ad8!2sLink-Up%20Technology%20Ltd.!5e0!3m2!1sen!2sbd!4v1658576232072!5m2!1sen!2sbd" width="100%" height="200" style="border: 2px solid #bfb4b4;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <iframe src="{{ $map->link }}" width="100%" height="250" style="border: 2px solid #bfb4b4;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
 
       </div>

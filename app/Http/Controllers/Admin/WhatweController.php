@@ -20,12 +20,8 @@ class WhatweController extends Controller
     public function update(Request $request, Whatwe $whatwe)
     {
         $request->validate([
-            'title1' => 'required',
             'description1' => 'required|min:10',
-            'title2' => 'required',
             'description2' => 'required|min:10',
-            'title3' => 'required',
-            'description3' => 'required|min:10',
             'image' => 'mimes:jpg,jpeg,png,bmp'
         ]);
         try {
@@ -38,12 +34,12 @@ class WhatweController extends Controller
                 }
                 $image = $this->imageUpload($request, 'image', 'uploads/about');
             }
-            $whatwe->title1 = $request->title1;
+            // $whatwe->title1 = $request->title1;
             $whatwe->description1 = $request->description1;
-            $whatwe->title2 = $request->title2;
+            // $whatwe->title2 = $request->title2;
             $whatwe->description2 = $request->description2;
-            $whatwe->title3 = $request->title3;
-            $whatwe->description3 = $request->description3;
+            // $whatwe->title3 = $request->title3;
+            // $whatwe->description3 = $request->description3;
             $whatwe->image = $image;
             $whatwe->save();
             if($whatwe){

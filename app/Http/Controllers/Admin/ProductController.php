@@ -6,7 +6,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
-use App\Models\Subcategory;
+use App\Models\ProductModel;
+use App\Models\Unit;
+use Illuminate\Database\Eloquent\Model;
+// use App\Models\Subcategory;
 use Illuminate\Support\Facades\Redirect;
 use Image;
 
@@ -14,10 +17,12 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $subcategory = Subcategory::latest()->get();
+        // $subcategory = Subcategory::latest()->get();
         $category = Category::latest()->get();
+        $model = ProductModel::latest()->get();
+        $unit = Unit::latest()->get();
         $product = Product::latest()->get();
-        return view('pages.admin.product', compact('subcategory', 'category', 'product'));
+        return view('pages.admin.product', compact('product', 'category', 'model', 'unit'));
     }
 
     /**
@@ -29,29 +34,35 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'category_id' => 'required',
-            'subcategory_id' => 'required',
             'name' => 'required|max:100',
+            'category_id' => 'required',
+            'model_id' => 'required',
+            'unit_id' => 'required',
             'image' => 'required|image|mimes:jpeg,jpg,png,gif,webp',
+            'description' => 'min:8',
+            'rate' => 'required|numeric',
         ]);
         
         try {
             $image = $request->file('image');
             $name_gen=hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
-            Image::make($image)->resize(768,768)->save('uploads/product/'.$name_gen);
+            Image::make($image)->resize(960,720)->save('uploads/product/'.$name_gen);
             $save_url = 'uploads/product/'.$name_gen;
 
             $product = new Product();
-            $product->category_id = $request->category_id;
-            $product->subcategory_id = $request->subcategory_id;
             $product->name = $request->name;
-            // $product->description = $request->description;
+            $product->category_id = $request->category_id;
+            $product->model_id = $request->model_id;
+            $product->unit_id = $request->unit_id;
+            $product->rate = $request->rate;
+            $product->description = $request->description;
             $product->image = $save_url;
             $product->save();
             return Redirect()->route('admin.products')->with('success', 'Product Insertion Succeful!');
 
-        } catch (\Exception $e) {   
-            return Redirect()->back()->with('error', 'Insertion Failed!');
+        } catch (\Exception $e) {  
+            return $e->getMessage();
+            // return Redirect()->back()->with('error', 'Insertion Failed!');
         }
     }
 
@@ -61,11 +72,11 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function getSubCate($subcat_id)
-    {
-        $subcate = Subcategory::where('category_id', $subcat_id)->orderBy('name' , 'ASC')->get();
-        return json_encode($subcate);
-    }
+    // public function getSubCate($subcat_id)
+    // {
+    //     $subcate = Subcategory::where('category_id', $subcat_id)->orderBy('name' , 'ASC')->get();
+    //     return json_encode($subcate);
+    // }
 
     /**
      * Show the form for editing the specified resource.
@@ -75,12 +86,12 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        $productData = Product::find($id);
-        $productSubData = Subcategory::where('category_id', $productData->category_id)->get();
-        $subcategory = Subcategory::latest()->get();
         $category = Category::latest()->get();
+        $model = ProductModel::latest()->get();
+        $unit = Unit::latest()->get();
+        $productData = Product::find($id);
         $product = Product::latest()->get();
-        return view('pages.admin.product', compact('productData', 'subcategory', 'category', 'product', 'productSubData'));
+        return view('pages.admin.product', compact('productData', 'product', 'category', 'model', 'unit'));
     }
 
     /**
@@ -93,10 +104,13 @@ class ProductController extends Controller
     public function update(Request $request, $id)
     {
         $validatedData = $request->validate([
-            'category_id' => 'required',
-            'subcategory_id' => 'required',
             'name' => 'required|max:100',
             'image' => 'image|mimes:jpeg,jpg,png,gif,webp',
+            'description' => 'min:8',
+            'category_id' => 'required',
+            'model_id' => 'required',
+            'unit_id' => 'required',
+            'rate' => 'required|numeric',
         ]);
         try {
             $old_img = $request->old_image;
@@ -104,26 +118,29 @@ class ProductController extends Controller
                 unlink($old_img);
                 $image = $request->file('image');
                 $name_gen=hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
-                Image::make($image)->resize(768,768)->save('uploads/product/'.$name_gen);
+                Image::make($image)->resize(960,720)->save('uploads/product/'.$name_gen);
                 $save_url = 'uploads/product/'.$name_gen;
     
                 $product = Product::find($id);
-                $product->category_id = $request->category_id;
-                $product->subcategory_id = $request->subcategory_id;
                 $product->name = $request->name;
-                // $product->description = $request->description;
+                $product->category_id = $request->category_id;
+                $product->model_id = $request->model_id;
+                $product->unit_id = $request->unit_id;
+                $product->rate = $request->rate;
+                $product->description = $request->description;
                 $product->image = $save_url;
                 $product->save();
             } else {
                 $product = Product::find($id);
-                $product->category_id = $request->category_id;
-                $product->subcategory_id = $request->subcategory_id;
                 $product->name = $request->name;
-                // $product->description = $request->description;
+                $product->category_id = $request->category_id;
+                $product->model_id = $request->model_id;
+                $product->unit_id = $request->unit_id;
+                $product->rate = $request->rate;
+                $product->description = $request->description;
                 $product->save();
             }
-            return Redirect()->route('admin.products')->with('success', 'Update Successful!');
-            
+            return Redirect()->route('admin.products')->with('success', 'Update Successful!');  
         } catch (\Throwable $th) {
             return Redirect()->back()->with('failed', 'Product Update Failed!');
         }   

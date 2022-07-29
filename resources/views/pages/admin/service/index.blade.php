@@ -1,4 +1,4 @@
-@extends('layouts.admin-master', ['pageName'=> 'service', 'title' => 'Add Speciality'])
+@extends('layouts.admin-master', ['pageName'=> 'speciality', 'title' => 'Add Speciality'])
 {{-- @section('title', 'Service') --}}
 
 @push('admin-css')
@@ -13,7 +13,7 @@
                 <div class="card my-3">
                     <div class="card-header">
                         <i class="fas fa-plus"></i>
-                        Add Company Speciality
+                        Add Company Speciality (At most 3 specialities)
                     </div>
 
                     <div class="card-body">
@@ -28,16 +28,16 @@
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
-<!--                                     
-                                    <label for="description" class="mb-1">Description</label>
+
+                                    {{-- <label for="description" class="mb-1">Description</label>
                                     <textarea name="description" class="form-control form-control-sm" id="description" rows="3"></textarea>
                                     @error('description')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
-                                    @enderror -->
+                                    @enderror --}}
                                     <label for="s_description" class="mb-1">Short Description</label>
-                                    <textarea name="s_description" class="form-control form-control-sm" id="s_description" rows="3" placeholder="Enter a short description"></textarea>
+                                    <textarea name="s_description" class="form-control form-control-sm @error('s_description') is-invalid @enderror" id="s_description" rows="3" placeholder="Enter a short description"></textarea>
                                     @error('s_description')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -47,11 +47,16 @@
                                 <div class="col-md-6 mb-2">
 
 
-                                    <label for="image">Service Image</label>
+                                    <label for="image">Image</label>
                                     <input class="form-control form-control-sm" id="image" type="file" name="image" onchange="readImgURL(this);">
                                     <div class="form-group mt-2" style="margin-bottom: 0">
                                         <img class="img-thumbnail" src="#" id="previewImage" style="width: 160px;height: 120px;">
                                     </div>
+                                    @error('image')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="clearfix border-top">
