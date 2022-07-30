@@ -28,6 +28,7 @@
                         <th>Price</th>
                         <th>Quantity</th>
                         <th>Total</th>
+                        <th>Add</th>
                         <th>Remove</th>
                     </tr>
                 </thead>
@@ -52,6 +53,9 @@
                             </div>
                         </td>
                         <td class="align-middle">{{ $item->price }}/-</td>
+                        <td class="align-middle">
+                            <a href="" class="btn btn-sm btn-mod-primary">Add</a>
+                        </td>
                         <td class="align-middle"><a href="{{ route('cart.remove', $item->id) }}" class="btn btn-sm btn-mod-primary"><i class="bi bi-x-lg"></i></a></td>
                     </tr>
                     @endforeach
@@ -76,7 +80,7 @@
                 <div class="card-footer border-secondary bg-transparent">
                     <div class="d-flex justify-content-between mt-2">
                         <h5 class="font-weight-bold font-md">Total</h5>
-                        <h5 class="font-weight-bold font-md">tk. {{\Cart::getTotal() + 60;}}</h5>
+                        <h5 class="font-weight-bold font-md">tk. {{\Cart::getTotal() + 60}}</h5>
                     </div>
                     <div class="d-grid gap-2">
                         <a href="{{ route('checkout') }}" class="btn btn-primary btn-sm my-3 py-2">Proceed To Checkout</a>
