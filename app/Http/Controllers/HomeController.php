@@ -105,9 +105,6 @@ class HomeController extends Controller
             return view('pages.website.no-page');
         }
     }
-    public function checkout() {
-        return view('pages.website.checkout');
-    }
     // public function submenu($id) {
     //     $category = Category::find($id);
     //     if (isset($category)) {

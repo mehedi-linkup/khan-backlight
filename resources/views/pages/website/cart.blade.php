@@ -1,4 +1,7 @@
 @extends('layouts.website', ['pageName' => 'cart'])
+@push('web-css')
+<link rel="stylesheet" href="{{ asset('css/toastr.min.css') }}">
+@endpush
 @section('web-content')
 
 <!-- ======= Breadcrumbs ======= -->
@@ -20,70 +23,67 @@
     <div class="container" data-aos="fade-up">
       <!-- Feature Tabs -->
       <div class="row" data-aos="fade-up">
-        <div class="col-lg-8 table-responsive mb-4">
+        <div class="col-lg-12 mb-1">
             <table class="table table-bordered text-center mb-0">
-                <thead class="bg-secondary font-md text-dark">
+                <thead class="bg-light font-md text-dark">
                     <tr>
                         <th>Products</th>
                         <th>Price</th>
                         <th>Quantity</th>
                         <th>Total</th>
-                        <th>Add</th>
+                        <th>Update</th>
                         <th>Remove</th>
                     </tr>
                 </thead>
                 <tbody class="align-middle font-sm">
-                    @foreach ($cartItems as $item)
+                    @foreach ($cartItems->sortBy('id') as $item)
                     <tr>
                         <td class="align-middle"><img src="{{ asset($item->attributes['image']) }}" alt="" style="width: 50px; height: 50px; border-radius: 50%">{{ $item->name }}</td>
-                        <td class="align-middle">{{ $item->price }}/-</td>
+                        <td class="align-middle">{{ number_format($item->price, 2) }}/-</td>
+                        <form action="{{ route('cart.update') }}" method="post">
+                            @csrf
+                            <input type="hidden" name="id" value="{{ $item->id }}">
                         <td class="align-middle">
                             <div class="input-group quantity mx-auto" style="width: 100px;">
                                 <div class="input-group-btn">
-                                    <button class="btn btn-sm btn-mod-primary btn-minus" >
+                                    <button type="button" class="btn btn-sm btn-mod-primary btn-minus" >
                                         <i class="bi bi-dash-lg"></i>
                                     </button>
                                 </div>
-                                <input type="text" class="form-control form-control-sm bg-mod-secondary text-center" value="{{ $item->quantity }}">
+                                <input name="quantity" type="text" class="form-control form-control-sm bg-mod-secondary text-center" value="{{ $item->quantity }}">
                                 <div class="input-group-btn">
-                                    <button class="btn btn-sm btn-mod-primary btn-plus">
+                                    <button type="button" class="btn btn-sm btn-mod-primary btn-plus">
                                         <i class="bi bi-plus-lg"></i>
                                     </button>
                                 </div>
                             </div>
                         </td>
-                        <td class="align-middle">{{ $item->price }}/-</td>
+                        <td class="align-middle">Tk {{ $item->price * $item->quantity }}</td>
                         <td class="align-middle">
-                            <a href="" class="btn btn-sm btn-mod-primary">Add</a>
+                            <button type="submit" class="btn btn-sm btn-mod-primary">Update</button>
                         </td>
+                        </form>
                         <td class="align-middle"><a href="{{ route('cart.remove', $item->id) }}" class="btn btn-sm btn-mod-primary"><i class="bi bi-x-lg"></i></a></td>
                     </tr>
                     @endforeach
                 </tbody>
             </table>
         </div>
-        <div class="col-lg-4">
-            <div class="card border-secondary mb-4">
-                <div class="card-header bg-secondary border-0">
-                    <h4 class="font-weight-semi-bold font-md m-0">Cart Summary</h4>
-                </div>
+        <div class="col-lg-4 offset-lg-8">
+            <div class="card">
                 <div class="card-body">
-                    <div class="d-flex justify-content-between mb-3 pt-1">
-                        <h6 class="font-weight-medium font-sm">Subtotal</h6>
-                        <h6 class="font-weight-medium font-sm">tK. {{ \Cart::getSubTotal()}}</h6>
-                    </div>
-                    <div class="d-flex justify-content-between">
-                        <h6 class="font-weight-medium font-sm">Shipping</h6>
-                        <h6 class="font-weight-medium font-sm">tk. 60</h6>
+                    <div class="d-flex justify-content-between mb-0 pt-0">
+                        <h6 class="font-weight-medium font-sm mb-0">Subtotal</h6>
+                        <h6 class="font-weight-medium font-sm mb-0">TK. {{ \Cart::getTotal()}}</h6>
                     </div>
                 </div>
                 <div class="card-footer border-secondary bg-transparent">
-                    <div class="d-flex justify-content-between mt-2">
-                        <h5 class="font-weight-bold font-md">Total</h5>
-                        <h5 class="font-weight-bold font-md">tk. {{\Cart::getTotal() + 60}}</h5>
-                    </div>
                     <div class="d-grid gap-2">
-                        <a href="{{ route('checkout') }}" class="btn btn-primary btn-sm my-3 py-2">Proceed To Checkout</a>
+                        {{-- @if(\Cart::getTotal() == 0) 
+                        <a href="{{ route('product') }}" class="btn btn-primary btn-sm my-1">Proceed To Checkout</a>
+                        @else --}}
+                        <a href="{{ route('checkout') }}" class="btn btn-mod-primary btn-sm my-1">Proceed To Checkout</a>
+                        {{-- @endif --}}
                     </div>
                 </div>
             </div>

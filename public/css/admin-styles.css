@@ -2919,7 +2919,12 @@ fieldset:disabled a.btn {
   line-height: 1.5;
   border-radius: 0.2rem;
 }
-
+.btn-mod-sm {
+  padding: 0.15rem 0.25rem;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  border-radius: 0.2rem;
+}
 .btn-block {
   display: block;
   width: 100%;

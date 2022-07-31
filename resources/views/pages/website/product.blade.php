@@ -1,5 +1,8 @@
 @extends('layouts.website', ['pageName' => 'Product'])
 @section('web-content')
+@push('web-css')
+<link rel="stylesheet" href="{{ asset('css/toastr.min.css') }}">
+@endpush
 
 <!-- ======= Breadcrumbs ======= -->
 <section class="breadcrumbs">
@@ -45,4 +48,29 @@
     </section><!-- End Product Section -->
 
 @endsection
+
+@push('web-js')
+<script src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>
+
+<script src="{{ asset('js/toastr.min.js') }}"></script>
+<script>
+    @if(Session::has('success'))
+    toastr.options =
+    {
+        "closeButton" : true,
+        "progressBar" : true
+    }
+    toastr.success("{{ session('success') }}");
+    @endif
+
+    @if(Session::has('error'))
+    toastr.options =
+    {
+        "closeButton" : true,
+        "progressBar" : true
+    }
+            toastr.error("{{ session('error') }}");
+    @endif
+</script>
+@endpush
   

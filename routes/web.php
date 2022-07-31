@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\MapController;
 use App\Http\Controllers\Admin\NewsController;
@@ -28,7 +30,7 @@ use App\Http\Controllers\Admin\RegistrationController;
 use App\Http\Controllers\Admin\SisterConcernController;
 use App\Http\Controllers\Admin\AuthenticationController;
 use App\Http\Controllers\Admin\CompanyProfileController;
-use App\Http\Controllers\CartController;
+use App\Http\Controllers\Admin\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,11 +56,14 @@ Route::get('/video', [HomeController::class, 'video'])->name('video');
 Route::get('/team', [HomeController::class, 'team'])->name('team');
 Route::get('/webnews', [HomeController::class, 'webnews'])->name('webnews');
 Route::get('/webnews-detail/{id}', [HomeController::class, 'webnewsDetail'])->name('webnews-detail');
-Route::get('/checkout', [HomeController::class, 'checkout'])->name('checkout');
-Route::get('cart/', [CartController::class, 'index'])->name('cart.index');
-Route::post('cart/store/', [CartController::class, 'store'])->name('cart.store');
-Route::get('cart/remove/{id}', [CartController::class, 'cartRemove'])->name('cart.remove');
-// Route::get('/order/{id}', [HomeController::class, 'order'])->name('order');
+
+Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+Route::post('/cart/store/', [CartController::class, 'store'])->name('cart.store');
+Route::post('/cart/update/', [CartController::class, 'updateCart'])->name('cart.update');
+Route::get('/cart/remove/{id}', [CartController::class, 'cartRemove'])->name('cart.remove');
+// Checkout
+Route::get('/checkout', [CheckoutController::class, 'checkout'])->name('checkout');
+Route::post('/checkout/store', [CheckoutController::class, 'checkoutstore'])->name('checkout.store');
 // contact route
 Route::post('/contact-store', [ContactController::class, 'store'])->name('contact.store');
 // order route
@@ -210,17 +215,20 @@ Route::group(['middleware' => ['auth']] , function() {
 
     Route::get('map', [MapController::class, 'edit'])->name('map.edit');
     Route::put('map/{map}', [MapController::class, 'update'])->name('map.update');
+
+    Route::get('/pending-orders',[OrderController::class,'pending'])->name('order.pending');
+    Route::get('/pending/state/{id}',[OrderController::class,'pendingState'])->name('pending.state');
+
+    Route::get('/completed-orders',[OrderController::class,'completed'])->name('order.completed');
+    Route::get('/all-orders',[OrderController::class,'all'])->name('order.all');
+    Route::get('/cancelled-orders',[OrderController::class,'cancelled'])->name('order.cancelled');
+
+    Route::get('/order/details/{id}',[OrderController::class,'orderDetail'])->name('order-details');
+    
+
       
 });
 
 
 // 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
-<<<<<<< HEAD
 //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
-=======
-//Password: @xKPnwD7OTEq
-//User: khanhfyd_websiteUser
-//Database: khanhfyd_website
-
-
->>>>>>> 11572450839fb0f0fba4d0fe98ce4a13652bc50a
