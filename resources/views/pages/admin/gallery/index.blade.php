@@ -13,6 +13,16 @@
                         @csrf
                         <div class="row">
                             <div class="col-md-6 mb-2">
+                                <label for="event1" class="mb-2"> Event Name <span class="text-danger">*</span> </label>
+                                <select name="event_id" class="form-control form-control-sm d-inline-block mb-2" id="event1">
+                                    <option value="">Select Event</option>
+                                    @foreach ($event as $item)
+                                        <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                    @endforeach
+                                </select>
+                                <a href="{{ route('admin.event') }}" class="add-item add-item2"><i class="fas fa-plus-circle"></i></a>
+                                @error('event_id') <span style="color: red">{{$message}}</span> @enderror
+                            
                                 <label for="title"> Image Name <span class="text-danger">*</span> </label>
                                 <input type="text" name="title" class="form-control form-control-sm shadow-none @error('title') is-invalid @enderror" id="title" placeholder="Enter Image Name">
                                 @error('title')
@@ -20,13 +30,23 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
+                                
+                                <div class="field">
                                 <label for="image">Image</label>
-                                <input class="form-control form-control-sm" id="image" type="file" name="image" onchange="readURL(this);">
+                                <input class="form-control form-control-sm upload__inputfile" data-max_length="10" id="image" type="file" name="image[]" multiple>
+
+                                {{-- <div class="field" align="left">
+                                    <h3>Upload your images</h3>
+                                    <input type="file" id="files" name="files[]" multiple />
+                                </div> --}}
                             </div>
-                            <div class="col-md-4 offset-md-1 mt-3">
+                            {{-- <div class="col-md-4 offset-md-1 mt-3">
                                 <div class="form-group mt-2">
-                                    <img class="form-controlo img-thumbnail" src="#" id="previewImage" style="width: 150px;height: 120px; background: #3f4a49;">
+                                    <img class="form-controlo img-thumbnail" src="#" id="previewImage" style="width: 180px;height: 150px; background: #3f4a49;">
                                 </div>
+                            </div> --}}
+                            <div class="col-md-12 mt-3">
+                                <div class="upload__img-wrap"></div>
                             </div>
                         </div>
                         <hr class="my-2">
@@ -85,20 +105,55 @@
 @endsection
 @push('admin-js')
 <script>
-    function readURL(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
+    // function readURL(input) {
+    //     if (input.files && input.files[0]) {
+    //         var reader = new FileReader();
             
-            reader.onload = function (e) {
-                $('#previewImage')
-                    .attr('src', e.target.result)
-                    .width(100)
-                    .height(80);
-            };
+    //         reader.onload = function (e) {
+    //             $('#previewImage')
+    //                 .attr('src', e.target.result)
+    //                 .width(180)
+    //                 .height(150);
+    //         };
 
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
-    document.getElementById("previewImage").src="/uploads/no.png";
+    //         reader.readAsDataURL(input.files[0]);
+    //     }
+    // }
+    // document.getElementById("previewImage").src="/uploads/no.png";
+
+    $(document).ready(function() {
+  if (window.File && window.FileList && window.FileReader) {
+    $("#image").on("change", function(e) {
+      var files = e.target.files,
+        filesLength = files.length;
+      for (var i = 0; i < filesLength; i++) {
+        var f = files[i]
+        var fileReader = new FileReader();
+        fileReader.onload = (function(e) {
+          var file = e.target;
+          $("<span class=\"pip\">" +
+            "<img class=\"imageThumb\" src=\"" + e.target.result + "\" title=\"" + file.name + "\"/>" +
+            "<br/><span class=\"remove\">Remove image</span>" +
+            "</span>").insertAfter("#files");
+          $(".remove").click(function(){
+            $(this).parent(".pip").remove();
+          });
+          
+          // Old code here
+          /*$("<img></img>", {
+            class: "imageThumb",
+            src: e.target.result,
+            title: file.name + " | Click to remove"
+          }).insertAfter("#files").click(function(){$(this).remove();});*/
+          
+        });
+        fileReader.readAsDataURL(f);
+      }
+      console.log(files);
+    });
+  } else {
+    alert("Your browser doesn't support to File API")
+  }
+});
 </script>
 @endpush

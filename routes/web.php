@@ -8,6 +8,8 @@ use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\MapController;
 use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\UnitController;
+use App\Http\Controllers\Admin\EventController;
+use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\QueryController;
 use App\Http\Controllers\Admin\VideoController;
 use App\Http\Controllers\Admin\SliderController;
@@ -30,7 +32,6 @@ use App\Http\Controllers\Admin\RegistrationController;
 use App\Http\Controllers\Admin\SisterConcernController;
 use App\Http\Controllers\Admin\AuthenticationController;
 use App\Http\Controllers\Admin\CompanyProfileController;
-use App\Http\Controllers\Admin\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -142,7 +143,12 @@ Route::group(['middleware' => ['auth']] , function() {
     Route::get('sister/edit/{id}', [SisterConcernController::class, 'edit'])->name('edit.sister');
     Route::post('sister/update/{id}', [SisterConcernController::class, 'update'])->name('update.sister');
     Route::get('sister/delete/{id}', [SisterConcernController::class, 'delete'])->name('delete.sister');
-
+    // Events Route
+    Route::get('/event', [EventController::class, 'index'])->name('admin.event');
+    Route::post('/event/store', [EventController::class, 'store'])->name('admin.event.store');
+    Route::get('/event/edit/{id}', [EventController::class, 'edit'])->name('admin.event.edit');
+    Route::post('/event/update/{id}', [EventController::class, 'update'])->name('admin.event.update');
+    Route::get('/event/delete/{id}', [EventController::class, 'destroy'])->name('admin.event.delete');
     // Gallery Route
     Route::get('/galleries', [GalleryController::class, 'gallery'])->name('galleries');
     Route::post('gallery/insert', [GalleryController::class, 'galleryInsert'])->name('store.gallery');
@@ -222,6 +228,8 @@ Route::group(['middleware' => ['auth']] , function() {
     Route::get('/completed-orders',[OrderController::class,'completed'])->name('order.completed');
     Route::get('/all-orders',[OrderController::class,'all'])->name('order.all');
     Route::get('/cancelled-orders',[OrderController::class,'cancelled'])->name('order.cancelled');
+    Route::get('/delete-orders/{id}',[OrderController::class,'orderDelete'])->name('order.deleted');
+    Route::get('/pdelete-orders/{id}',[OrderController::class,'orderPDelete'])->name('order.pdeleted');
 
     Route::get('/order/details/{id}',[OrderController::class,'orderDetail'])->name('order-details');
     

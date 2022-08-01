@@ -87,7 +87,19 @@
                             @forelse ($orders->orderDetail as $item)
                                 <tr>
                                     <td>{{ $loop->index+1; }}</td>
-                                    <td>{{ \App\Models\Product::where('id', $item->product_id)->first()->name; }}</td>
+                                    <td>
+                                        @php 
+                                            $product = \App\Models\Product::where('id', $item->product_id)->first();
+                                            if(isset($product))
+                                            {
+                                                $lastName = $product->name;
+                                            }
+                                            else {
+                                                $lastName = 'Product Deleted';
+                                            }
+                                        @endphp
+                                        {{ $lastName }}
+                                    </td>
                                     <td>{{ $item->quantity }}</td>
                                     <td>{{ $item->price }}</td>
                                     <td>{{ $item->total_taka }}</td>

@@ -15,12 +15,12 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Name</th>
+                                <th class="text-left">Name</th>
                                 <th>Phone</th>
-                                <th>Address</th>
+                                <th class="text-left">Address</th>
                                 <th>Invoice Number</th>
                                 <th>Status</th>
-                                <th>Total Amount</th>
+                                <th class="text-right">Total Amount</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -28,9 +28,9 @@
                             @forelse ($order as $key=>$item)
                                 <tr>
                                     <td>{{ $key+1 }}</td>
-                                    <td>{{ $item->customer->name}}</td>
+                                    <td class="text-left">{{ $item->customer->name}}</td>
                                     <td>{{ $item->customer->phone}}</td>
-                                    <td>{{ $item->customer->address}}</td>
+                                    <td class="text-left">{{ $item->customer->address}}</td>
                                     <td>{{ $item->invoice_number }}</td>
                                     <td>
                                         @if($item->status == 'p')
@@ -39,10 +39,10 @@
                                         <a href="#!" class="btn btn-secondary btn-mod-sm text-white">No State</a>
                                         @endif
                                     </td>
-                                    <td>{{ $item->total_taka }}</td>
+                                    <td class="text-right">{{ $item->total_taka }}</td>
                                     <td>
-                                        <a href="{{ route('order-details', $item->id) }}" class="d-inline"><i class="far fa-eye"></i></a>
-                                        <a style="padding-left: 5px" href="{{ route('contact.delete', $item->id) }}" class="d-inline" onclick="return confirm('Are you sure you want to delete?');"><i class="fas fa-trash" style="color: red"></i></a>  
+                                        <a href="{{ route('order-details', $item->id) }}" class="d-inline" target="_blank"><i class="far fa-eye"></i></a>
+                                        <a style="padding-left: 5px" href="{{ route('order.deleted', $item->id) }}" class="d-inline" onclick="return confirm('Are you sure you want to delete?');"><i class="fas fa-trash" style="color: red"></i></a>  
                                     </td>                          
                                 </tr>
                             @empty

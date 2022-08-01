@@ -722,16 +722,16 @@ section {
   background-color: #e2f2ff;
 }
 .products .card {
-  border-radius: 8px;
+  border-radius: 0px;
   box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
   transition: all 0.2s ease-in-out;
 }
 .products .card .img-box {
   overflow: hidden;
-  border-radius: 8px;
+  border-radius: 0px;
 }
 .products .card .img-box img {
-  border-radius: 8px;
+  border-radius: 0px;
   transition: all 0.2s ease-in-out;
 }
 .products .card:hover .img-box img {
@@ -746,16 +746,46 @@ section {
   padding-bottom: 0.3rem;
   font-family: 'Lato', sans-serif;
   font-weight: 800;
-  font-size: 17px;
-  font-weight: 600;
-  color: #000;
+  font-size: 15px;
+  font-weight: 400;
+  color: #555;
   text-transform: capitalize;
+  max-height: 35.60px;
+  overflow: hidden;
 }
 .products .product-text {
   font-size: 16px !important;
 }
 .products .product-id {
   font-size: 13px;
+}
+.products .card .product-cart {
+  /* position: absolute;
+  top: 0;
+  left: 40%;
+  opacity: 0;
+  transition: all 0.2s ease-in-out; */
+  background-color: #ff0000;
+  color: #e6e6e6;
+  margin-top: 5px;
+  z-index: 2;
+  transition: all 0.3s ease;
+}
+/* .products .card:hover .product-cart {
+  top: 30%;
+  opacity: 1;
+} */
+.card .product-cart button {
+  color: #706e6e;
+}
+.card .product-cart:hover {
+  background-color: #c10033;
+}
+.card .product-cart button {
+  color: #fff;
+}
+.card .product-cart:hover button {
+  color: #dadada;
 }
 /*--------------------------------------------------------------
 # Counts
