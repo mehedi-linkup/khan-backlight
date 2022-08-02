@@ -215,12 +215,9 @@ Route::group(['middleware' => ['auth']] , function() {
 
 
 // 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
-<<<<<<< HEAD
 //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
-=======
 //Password: @xKPnwD7OTEq
 //User: khanhfyd_websiteUser
 //Database: khanhfyd_website
 
 
->>>>>>> 11572450839fb0f0fba4d0fe98ce4a13652bc50a
