@@ -13,19 +13,21 @@ use App\Models\Video;
 use App\Models\News;
 use App\Models\Management;
 use App\Models\BackImage;
+use App\Models\Event;
 use App\Models\Partner;
 use App\Models\Factory;
 use App\Models\FactoryPoint;
 use App\Models\Service;
 use App\Models\SisterConcern;
 use App\Models\Faq;
+use App\Models\ProductModel;
 use App\Models\Testimonial;
+use Illuminate\Database\Eloquent\Model;
 
 class HomeController extends Controller
 {
     public function index()
     {   
-
         $slider = Slider::latest()->get();
         $partner = Partner::latest()->get();
         $management = Management::latest()->get();
@@ -46,9 +48,17 @@ class HomeController extends Controller
         return view('pages.website.about');
     }
     public function product() {
-        $category = Category::with('product')->latest()->get();
+        $category = Category::with(['product' => function($cat){
+            
+        }])->latest()->get();
         // $product = Product::with('category')->latest()->get();
         return view('pages.website.product', compact('category'));
+    }
+    public function catwithProduct($id) {
+        $category = Category::find($id);
+        $product = Product::where('category_id',$id)->latest()->get();
+        // return $product;
+        return view('pages.website.cat-product', compact('product', 'category'));
     }
     public function productDetail($id) {
         $product = Product::find($id);
@@ -58,6 +68,45 @@ class HomeController extends Controller
             return view('pages.website.no-page');
         }
     }
+
+    public function getSearchSuggestions($keyword)
+    {
+        $product = Product::select('name')
+            ->where('name', 'like', "%$keyword%")
+            ->get()->toArray();
+
+        $category = Category::select('name as name')
+            ->where('name', 'like', "%$keyword%")
+            ->get()->toArray();
+
+        $model = ProductModel::select('name as name')
+            ->where('name', 'like', "%$keyword%")
+            ->get()->toArray();
+
+        $mergedArray = array_merge($product, $category, $model);
+
+        $search_results = [];
+
+        foreach ($mergedArray as $sr) {
+            $search_results[] = $sr['name'];
+        }
+
+        return response()->json($search_results);
+    }
+
+    public function productSearch()
+    {
+        if (request()->query('q')) {
+            $categories = Category::all();
+            $keyword = request()->query('q');
+            $search_result = Product::Where('name', 'like', "%$keyword%")->get();
+
+            return view('pages.website.search', compact('search_result', 'keyword','categories'));
+        }
+
+        return redirect()->back();
+    }
+
     public function history() {
         $history = Whatwe::first();
         return view('pages.website.history', compact('history'));
@@ -75,8 +124,14 @@ class HomeController extends Controller
         return view('pages.website.faq', compact('faq'));
     }
     public function gallery() {
+        $event = Event::latest()->get();
         $gallery = Gallery::latest()->get();
-        return view('pages.website.gallery', compact('gallery'));
+        return view('pages.website.gallery', compact('gallery', 'event'));
+    }
+    public function eventwithGallery($id) {
+        $event = Event::find($id);
+        $gallery = Gallery::where('event_id', $id)->latest()->get();
+        return view('pages.website.event-gallery', compact('gallery', 'event'));
     }
     public function video() {
         $video = Video::latest()->get();

@@ -14,10 +14,13 @@ class VideoController extends Controller
     }
     public function store(Request $request) {
         $request->validate([
+            'name' => 'min:2|max:100',
             'link' => 'required|min:4',
         ]);
         try {
+            // https://www.youtube.com/embed/Zv11L-ZfrSg
             $video = new Video;
+            $video->name = $request->name;
             $video->link = $request->link;
             $video->save();
             return redirect()->back()->with('success', 'Video Inserted!');
@@ -33,12 +36,13 @@ class VideoController extends Controller
 
     public function update(Request $request, $id) {
         $request->validate([
+            'name' => 'min:2|max:100',
             'link' => 'required|min:4',
         ]);
 
-        try {
-            
+        try {            
             $video = Video::find($id);
+            $video->name = $request->name;
             $video->link = $request->link;
             $video->save();
             return Redirect()->back()->with("success", "Update Successfull");

@@ -18,7 +18,7 @@ class CreateGalleriesTable extends Migration
             $table->foreignId('event_id')
                 ->constrained('events')
                 ->onDelete('cascade');
-            $table->string('title');
+            $table->string('title')->nullable();
             $table->string('image');
             $table->timestamps();
         });

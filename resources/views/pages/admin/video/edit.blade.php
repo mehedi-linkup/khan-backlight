@@ -13,6 +13,14 @@
                         @csrf
                         <div class="row">
                             <div class="col-md-12 mb-2">
+                                <label for="name"> Video Title </span> </label>
+                                <input type="text" name="name" class="form-control form-control-sm mb-2 shadow-none @error('name') is-invalid @enderror" id="name" placeholder="Enter Video Title" value="{{ $video->name }}">
+                                @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+
                                 <label for="link"> Video Url <span class="text-danger">*</span> </label>
                                 <input type="url" name="link" class="form-control form-control-sm shadow-none @error('link') is-invalid @enderror" id="link" placeholder="Update Video" value="{{ $video->link }}">
                                 @error('link')

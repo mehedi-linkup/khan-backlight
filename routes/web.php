@@ -47,12 +47,20 @@ use App\Http\Controllers\Admin\CompanyProfileController;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::get('/product', [HomeController::class, 'product'])->name('product');
+Route::get('/product/category/{id}', [HomeController::class, 'catwithProduct'])->name('cat-product');
 Route::get('/product-detail/{id}', [HomeController::class, 'productDetail'])->name('product-detail');
+
+// search route
+Route::get('/get_suggestions/{k}', [HomeController::class, 'getSearchSuggestions']);
+Route::get('/search', [HomeController::class, 'productSearch'])->name('search');
+
 Route::get('/history', [HomeController::class, 'history'])->name('history');
 Route::get('/activity', [HomeController::class, 'activity'])->name('activity');
 Route::get('/sister-concern', [HomeController::class, 'sister_concern'])->name('sister-concern');
 Route::get('/faq', [HomeController::class, 'faq'])->name('faq');
 Route::get('/gallery', [HomeController::class, 'gallery'])->name('gallery');
+Route::get('/gallery/event/{id}', [HomeController::class, 'eventwithGallery'])->name('event-gallery');
+
 Route::get('/video', [HomeController::class, 'video'])->name('video');
 Route::get('/team', [HomeController::class, 'team'])->name('team');
 Route::get('/webnews', [HomeController::class, 'webnews'])->name('webnews');

@@ -6,7 +6,7 @@
 <main>
     <div class="container-fluid">
         <div class="row justify-content-center">
-            <div class="col-md-6">
+            <div class="col-md-7">
                 <div class="form-area">
                     <h4 class="heading"><i class="fas fa-edit"></i> Edit Photo</h4>
                     <form action="{{ route('update.gallery', $gallery->id) }}" method="POST" enctype="multipart/form-data">
@@ -17,13 +17,13 @@
                                 <select name="event_id" class="form-control form-control-sm d-inline-block mb-2" id="event1">
                                     <option value="">Select Event</option>
                                     @foreach ($event as $item)
-                                        <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                        <option value="{{ $item->id }}" {{ $item->id == $gallery->event_id ? 'selected' : '' }}>{{ $item->name }}</option>
                                     @endforeach
                                 </select>
                                 <a href="{{ route('admin.event') }}" class="add-item add-item2"><i class="fas fa-plus-circle"></i></a>
                                 @error('event_id') <span style="color: red">{{$message}}</span> @enderror
                             </div>
-                            <div class="col-md-12 mb-2">
+                            {{-- <div class="col-md-12 mb-2">
                                 <label for="title"> Image Name <span class="text-danger">*</span> </label>
                                 <input type="text" name="title" class="form-control form-control-sm shadow-none @error('title') is-invalid @enderror" id="title" placeholder="Enter Image Name" value="{{ $gallery->title }}">
                                 @error('title')
@@ -31,7 +31,7 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-                            </div>
+                            </div> --}}
                             <div class="col-md-12 mb-2">
                                 <label for="image">Image</label>
                                 <input class="form-control form-control-sm" id="image" type="file" name="image" onchange="readURL(this);">

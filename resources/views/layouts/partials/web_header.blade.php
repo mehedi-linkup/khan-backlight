@@ -6,7 +6,7 @@
     </a>
 
     <nav id="navbar" class="navbar">
-      <ul class="nav-mod-link">
+      <ul>
         <li><a class="nav-link scrollto" href="{{route('home')}}#hero">Home</a></li>
         <li><a class="nav-link scrollto {{(@$pageName=='about')? 'active': ''}}" href="{{ route('about') }}">About</a></li>
         <li><a class="nav-link scrollto" href="{{ route('product') }}">Product</a></li>
@@ -14,7 +14,7 @@
         <li><a class="nav-link scrollto" href="{{route('home')}}#features">Factory</a></li>
         {{-- <li><a class="nav-link scrollto" href="#history">History</a></li> --}}
         <li><a class="nav-link scrollto" href="{{ route('faq') }}">FAQ</a></li>
-        <li class="dropdown gallery"><a href="#"><span>Gallery</span><i class="bi  bi-chevron-down"></i></a>
+        <li class="dropdown gallery"><a href="#"><span>Gallery</span><i class="bi bi-chevron-down"></i></a>
           <ul>
             <li><a href="{{ route('gallery') }}">Photo Gallery</a></li>
             <li><a href="{{ route('video') }}">Video Gallery</a></li>
@@ -24,7 +24,7 @@
         <li><a class="nav-link scrollto" href="{{ route('team') }}">Team</a></li>
         <li><a class="nav-link scrollto" href="{{ route('webnews') }}">News</a></li>
         <li><a class="nav-link scrollto" href="{{ route('home') }}#contact">Contact</a></li>
-        <li class="dropdown">
+        {{-- <li class="dropdown">
           <a href="{{ route('cart.index')}}">
             <i class="bi bi-cart4">
               <span class="cartItem"> {{ Cart::getTotalQuantity() }}</span>
@@ -34,7 +34,7 @@
             <li><a href="{{ route('gallery') }}">Photo Gallery</a></li>
             <li><a href="{{ route('video') }}">Video Gallery</a></li>
           </ul>
-        </li>
+        </li> --}}
         {{-- <li><a class="nav-link scrollto" href="">
           <i class="bi bi-cart"><span class="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle">
           <span class="visually-hidden">New alerts</span></span>

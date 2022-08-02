@@ -39,7 +39,7 @@
           <div class="portfolio-description">
             <h2>Product Information</h2>
             <p><strong>Product Name: </strong>{{ $product->name }}</p>
-            <h6><strong>Model: </strong> {{ $product->product_id }}</h6>
+            <h6><strong>Model: </strong> {{ $product->model->name }}</h6>
             <div>
             <div>
               <strong>Description: </strong>
