@@ -46,8 +46,9 @@ class HomeController extends Controller
         return view('pages.website.about');
     }
     public function product() {
-        $product = Product::latest()->get();
-        return view('pages.website.product', compact('product'));
+        $category = Category::with('product')->latest()->get();
+        // $product = Product::with('category')->latest()->get();
+        return view('pages.website.product', compact('category'));
     }
     public function productDetail($id) {
         $product = Product::find($id);
@@ -104,9 +105,6 @@ class HomeController extends Controller
         } else {
             return view('pages.website.no-page');
         }
-    }
-    public function checkout() {
-        return view('pages.website.checkout');
     }
     // public function submenu($id) {
     //     $category = Category::find($id);

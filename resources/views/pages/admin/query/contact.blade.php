@@ -73,7 +73,7 @@
                                             </div>
                                         </div>
                                         @endif
-                                        <a href="{{ route('contact.delete', $item->id) }}" type="submit" class="d-inline btn btn-danger btn-sm b-btn" onclick="return confirm('Are you sure you want to delete?');"><i class="fas fa-trash"></i></button>
+                                        <a href="{{ route('contact.delete', $item->id) }}" type="submit" class="d-inline btn btn-danger btn-sm b-btn" onclick="return confirm('Are you sure you want to delete?');"><i class="fas fa-trash"></i></a>
                                     </td>
                                 </tr>
                             @empty

@@ -2615,10 +2615,15 @@ fieldset:disabled a.btn {
   border-color: #bd2130;
   box-shadow: 0 0 0 0.2rem rgba(225, 83, 97, 0.5);
 }
-.btn-danger.disabled, .btn-danger:disabled {
+/* .btn-danger.disabled, .btn-danger:disabled {
   color: #fff;
   background-color: #dc3545;
   border-color: #dc3545;
+} */
+.btn-danger.disabled, .btn-danger:disabled {
+  color: #fff;
+  background-color: #ff0c23;
+  border-color: #ff0c23;
 }
 .btn-danger:not(:disabled):not(.disabled):active, .btn-danger:not(:disabled):not(.disabled).active, .show > .btn-danger.dropdown-toggle {
   color: #fff;
@@ -2919,7 +2924,12 @@ fieldset:disabled a.btn {
   line-height: 1.5;
   border-radius: 0.2rem;
 }
-
+.btn-mod-sm {
+  padding: 0.15rem 0.25rem;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  border-radius: 0.2rem;
+}
 .btn-block {
   display: block;
   width: 100%;
@@ -10335,7 +10345,7 @@ body {
 }
 
 /* product page */
-#category1.form-control, #model1.form-control, #unit1.form-control {
+#category1.form-control, #model1.form-control, #unit1.form-control, #event1.form-control {
   width: 92%;
 }
 .add-item {
@@ -10344,4 +10354,34 @@ body {
   margin-left: 5px;
   color: #495057;
   border-radius: 0.2rem;
+}
+.add-item2 {
+  margin-left: 4px;
+}
+
+/* Multiple Image Upload */
+input[type="file"] {
+  display: block;
+}
+.imageThumb {
+  max-height: 75px;
+  border: 2px solid;
+  padding: 1px;
+  cursor: pointer;
+}
+.pip {
+  display: inline-block;
+  margin: 10px 10px 0 0;
+}
+.remove {
+  display: block;
+  background: #444;
+  border: 1px solid black;
+  color: white;
+  text-align: center;
+  cursor: pointer;
+}
+.remove:hover {
+  background: white;
+  color: black;
 }

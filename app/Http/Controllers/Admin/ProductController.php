@@ -46,7 +46,7 @@ class ProductController extends Controller
         try {
             $image = $request->file('image');
             $name_gen=hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
-            Image::make($image)->resize(960,720)->save('uploads/product/'.$name_gen);
+            Image::make($image)->resize(720,720)->save('uploads/product/'.$name_gen);
             $save_url = 'uploads/product/'.$name_gen;
 
             $product = new Product();
@@ -118,7 +118,7 @@ class ProductController extends Controller
                 unlink($old_img);
                 $image = $request->file('image');
                 $name_gen=hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
-                Image::make($image)->resize(960,720)->save('uploads/product/'.$name_gen);
+                Image::make($image)->resize(720,720)->save('uploads/product/'.$name_gen);
                 $save_url = 'uploads/product/'.$name_gen;
     
                 $product = Product::find($id);

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Support\Carbon;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Event;
 use App\Models\Gallery;
 use DB;
 use Image;
@@ -12,10 +13,13 @@ class GalleryController extends Controller
 {
     public function gallery() {
         $galleries = Gallery::latest()->get();
-        return view('pages.admin.gallery.index', compact('galleries'));
+        $event = Event::latest()->get();
+        return view('pages.admin.gallery.index', compact('galleries', 'event'));
     }
     public function galleryInsert(Request $request) {
+        return $request;
         $validatedData = $request->validate([
+            'event_id' => 'required',
             'title' => 'required|min:4',
             'image' => 'required|Image|mimes:jpeg,jpg,png,gif',
         ]);
@@ -33,9 +37,9 @@ class GalleryController extends Controller
             $upLocation = 'uploads/gallery/';
             Image::make($image)->resize(720,480)->save($upLocation . $imgName);
             //close image upload
+            $gallery->event_id = $request->event_id;
             $gallery->title = $request->title;
             $gallery->image = $imgName;
-            $gallery->created_at = Carbon::now();
             $gallery->save();
             DB::commit();
             return redirect()->back()->with('success', 'photo Inserted!');
@@ -46,18 +50,21 @@ class GalleryController extends Controller
         }
     }
     public function galleryEdit($id) {
+        $event = Event::latest()->get();
         $gallery = Gallery::find($id);
-        return view('pages.admin.gallery.edit', compact('gallery'));
+        return view('pages.admin.gallery.edit', compact('gallery', 'event'));
     }
 
     public function galleryUpdate(Request $request, $id) {
         $validatedData = $request->validate([
+            'event_id' => 'required',
             'title' => 'required|min:4'
         ]);
 
         try {
             DB::beginTransaction();
             $gallery = Gallery::find($id);
+            $gallery->event_id = $request->event_id;
             $gallery->title = $request->title;
             $image = $request->file('image');
             if($image) {

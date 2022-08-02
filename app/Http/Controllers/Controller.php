@@ -36,4 +36,25 @@ class Controller extends BaseController
 
         return false;
     }
+
+    public function generateProductCode($model, $prefix = '')
+    {
+        $code = "000001";
+        $model = '\\App\\Models\\' . $model;
+        $num_rows = $model::count();
+        // return $num_rows;
+        $count_char = strlen($prefix);
+        if($num_rows != 0){
+            $last_code = $model::withTrashed()->select('invoice_number')->latest()->take(1)->first();
+            $number = substr($last_code->invoice_number, $count_char);
+            $number = (int) $number;
+        }
+
+        if ($num_rows != 0) {
+            $newCode = $number + 1;
+            $zeros = ['0', '00', '000', '0000', '00000'];
+            $code = strlen($newCode) > count($zeros) ? $newCode : $zeros[count($zeros) - strlen($newCode)] . $newCode;
+        }
+        return $prefix . $code;
+    }
 }
