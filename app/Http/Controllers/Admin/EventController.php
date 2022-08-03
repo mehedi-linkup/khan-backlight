@@ -5,6 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Event;
+use PHPUnit\Framework\Constraint\FileExists;
+
+use function PHPUnit\Framework\fileExists;
+use Intervention\Image\Facades\Image;
 
 class EventController extends Controller
 {
@@ -17,13 +21,21 @@ class EventController extends Controller
     {
         $request->validate([
             'name' => 'required|unique:events|max:100',
+            'image' => 'required|image|mimes:jpeg,jpg,png,gif,webp'
         ]);
         try {
+            $image = $request->file('image');
+           
+            $imageName = hexdec(uniqid()).$image->getClientOriginalName();
+            $lastImage = 'uploads/event/'.$imageName;
+            Image::make($image)->resize(720,480)->save('uploads/event/'.$imageName);
             $event = new Event();
             $event->name = $request->name;
+            $event->image = $lastImage;
             $event->save();
             return Redirect()->back()->with('success', 'Insertion Successful!');
         } catch (\Exception $e) {
+            // throw $e;
             return Redirect()->back()->with('error', 'Insert Failed!');
         }
     }
@@ -37,11 +49,23 @@ class EventController extends Controller
     {
         $request->validate([
             'name' => 'required|max:100',
+            'image' => 'image|mimes:jpeg,jpg,png,gif,webp'
         ]);
         
         try {
             $event = Event::find($id);
-            $event->name = $request->name;
+
+            $image = $request->file('image');
+            if($image) {
+                if(file_exists($event->image) && !empty($event->image)) {
+                    unlink($event->image);
+                }
+                $imageName = hexdec(uniqid()).$image->getClientOriginalName();
+                Image::make($image)->resize(720,480)->save('uploads/event/' . $imageName);
+
+                $event['image'] = 'uploads/event/'.$imageName;
+            }
+            $event->name = $request->name;           
             $event->save();
             return Redirect()->route('admin.event')->with('success', 'Update Successful!');
 
@@ -54,6 +78,9 @@ class EventController extends Controller
     {
         try {
             $event = Event::find($id);
+            if(fileExists($event->image)) {
+                unlink($event->image);
+            }
             $event->delete();
             return Redirect()->back()->with('success', 'Deleted Successfully!');
         } catch (\Throwable $th) {

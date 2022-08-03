@@ -16,6 +16,7 @@ class CreateEventsTable extends Migration
         Schema::create('events', function (Blueprint $table) {
             $table->id();
             $table->string('name', 100);
+            $table->text('image');
             $table->softDeletes();
             $table->timestamps();
         });

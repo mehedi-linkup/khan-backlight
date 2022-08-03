@@ -7,15 +7,15 @@
 
     <ol>
       <li><a href="{{route('home')}}">Home</a></li>
-      <li> Gallery </li>
+      <li> Events </li>
     </ol>
-    <h2>Our Photos</h2>
+    <h2>Our Events</h2>
 
   </div>
 </section><!-- End Breadcrumbs -->
 
    <!-- ======= Portfolio Section ======= -->
-   <section id="portfolio" class="portfolio">
+   {{-- <section id="portfolio" class="portfolio">
     <div class="container" data-aos="fade-up">
 
       @foreach ($event as $item1)
@@ -44,7 +44,24 @@
       @endif
       @endforeach
     </div>
-  </section><!-- End Portfolio Section -->
+  </section><!-- End Portfolio Section --> --}}
 
+    <section id="portfolio" class="portfolio">
+      <div class="container" data-aos="fade-up">
+        <div class="row gy-4 mb-4 portfolio-container" data-aos="fade-up" data-aos-delay="200">
+          @foreach ($event as $item)
+          <div class="col-lg-3 col-md-6 portfolio-item filter-app">
+            <div class="card">
+              <img src="{{ asset($item->image) }}" class="card-img-top" alt="">
+              <div class="card-body">
+                <h5 class="card-title">{{ $item->name }} ({{ $item->gallery->count() }})</h5>
+              </div>
+              <a class="event-link" href="{{ route('event-gallery', $item->id) }}"></a>
+            </div>
+          </div>
+          @endforeach
+        </div>
+      </div>
+    </section>
 @endsection
   

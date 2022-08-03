@@ -6,10 +6,10 @@
   <div class="container">
     <ol>
       <li><a href="{{route('home')}}">Home</a></li>
-      <li> Gallery </li>
+      <li><a href="{{route('gallery')}}">Events</a></li>
       <li> {{ $event->name }} </li>
     </ol>
-    <h2>Our {{ $event->name }} Photos</h2>
+    <h2>Our {{ $event->name }}Photos</h2>
   </div>
 </section><!-- End Breadcrumbs -->
 <!-- ======= Portfolio Section ======= -->
@@ -34,4 +34,3 @@
 </section><!-- End Portfolio Section -->
 
 @endsection
-  

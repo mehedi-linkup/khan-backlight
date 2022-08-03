@@ -24,6 +24,15 @@
                                     <input type="text" name="name" value="{{ @$eventData->name }}" class="form-control form-control-sm mb-2" id="name" placeholder="Enter Event Name">
                                     @error('name') <span style="color: red">{{$message}}</span> @enderror
                                 </div>
+                                <div class="col-md-12 mb-2">
+                                    <label for="image"> Image <span class="text-danger">*</span> </label>
+                                    <input type="file" name="image" value="{{ @$eventData->image }}" class="form-control form-control-sm mb-2" id="image" onchange="mainThambUrl(this)">
+                                    @error('image') <span style="color: red">{{$message}}</span> @enderror
+
+                                    <div class="form-group mt-2">
+                                        <img class="form-controlo img-thumbnail" src="{{(@$eventData) ? asset($eventData->image) : asset('uploads/no.png') }}" id="mainThmb" style="width: 150px;height: 120px;">
+                                    </div>
+                                </div>
                             </div>
                             
                             <div class="clearfix border-top">
@@ -33,7 +42,7 @@
                                     @else
                                     <button type="reset" class="btn btn-dark btn-sm">Reset</button>
                                     @endif
-                                    <button type="submit" class="btn btn-info btn-sm">{{(@$eventData)?'Update':'Create'}}</button>
+                                    <button type="submit" class="btn btn-info btn-sm">{{(@$eventData)? 'Update':'Create'}}</button>
                                 </div>
                             </div>
                         </form>
@@ -42,7 +51,7 @@
 
             </div>
 
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <div class="card my-3">
                     <div class="card-header">
                         <i class="fas fa-list mr-1"></i>
@@ -55,6 +64,7 @@
                                     <tr>
                                         <th>ID</th>
                                         <th>Name</th>
+                                        <th>Image</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -63,6 +73,7 @@
                                     <tr>
                                         <td>{{ $loop->index + 1 }}</td>
                                         <td>{{ $item->name }}</td>
+                                        <td><img src="{{ $item->image }}" alt="" height="30px" width="30px"></td>
                                         <td>
                                             <a href="{{ route('admin.event.edit', $item->id) }}" class="btn btn-info btn-mod-info btn-sm"><i class="fas fa-edit"></i></a>
                                             <a href="{{ route('admin.event.delete', $item->id) }}" onclick="return confirm('Are you sure to Delete?')" class="btn btn-danger btn-mod-danger btn-sm"><i class="fas fa-trash"></i></a>
@@ -79,4 +90,21 @@
     </div>
 </main>
 @endsection
+
+@push('admin-js')
+<script>
+    function mainThambUrl(input){
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function(e){
+            $('#mainThmb').attr('src',e.target.result).width(150)
+                  .height(120);
+        };
+        reader.readAsDataURL(input.files[0]);
+      }
+    }
+</script>
+
+@endpush
 

@@ -18,6 +18,7 @@
                                 <th class="text-left">Name</th>
                                 <th>Phone</th>
                                 <th class="text-left">Address</th>
+                                <th class="text-left">Note</th>
                                 <th>Invoice Number</th>
                                 <th>Status</th>
                                 <th class="text-right">Total Amount</th>
@@ -31,6 +32,7 @@
                                     <td class="text-left">{{ $item->customer->name}}</td>
                                     <td>{{ $item->customer->phone}}</td>
                                     <td class="text-left">{{ $item->customer->address}}</td>
+                                    <td class="text-left">{{ $item->customer->note }}</td>
                                     <td>{{ $item->invoice_number }}</td>
                                     <td>
                                         {{-- {{ !isset($item->deleted_at) }} --}}

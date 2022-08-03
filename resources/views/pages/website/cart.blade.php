@@ -38,13 +38,16 @@
                 <tbody class="align-middle font-sm">
                     @foreach ($cartItems->sortBy('id') as $item)
                     <tr>
-                        <td class="align-middle"><img src="{{ asset($item->attributes['image']) }}" alt="" style="width: 50px; height: 50px; border-radius: 50%">{{ $item->name }}</td>
+                        <td class="align-middle d-flex">
+                            <img src="{{ asset($item->attributes['image']) }}" alt="" style="width: 50px; height: 50px; border-radius: 2px">
+                           <span style="align-self: center;padding-left: 10px;font-weight: 600;"> {{ $item->name }}</span>
+                        </td>
                         <td class="align-middle">{{ number_format($item->price, 2) }}/-</td>
                         <form action="{{ route('cart.update') }}" method="post">
                             @csrf
                             <input type="hidden" name="id" value="{{ $item->id }}">
                         <td class="align-middle">
-                            <div class="input-group quantity mx-auto" style="width: 100px;">
+                            <div class="input-group quantity mx-auto" style="width: 116px;">
                                 <div class="input-group-btn">
                                     <button type="button" class="btn btn-sm btn-mod-primary btn-minus" >
                                         <i class="bi bi-dash-lg"></i>
@@ -82,7 +85,7 @@
                         {{-- @if(\Cart::getTotal() == 0) 
                         <a href="{{ route('product') }}" class="btn btn-primary btn-sm my-1">Proceed To Checkout</a>
                         @else --}}
-                        <a href="{{ route('checkout') }}" class="btn btn-mod-primary btn-sm my-1">Proceed To Checkout</a>
+                        <a href="{{ route('checkout') }}" class="btn btn-success my-1 py-2">Proceed To Checkout</a>
                         {{-- @endif --}}
                     </div>
                 </div>

@@ -22,20 +22,21 @@ class CheckoutController extends Controller
         }
     }
     public function checkoutstore(Request $request) {
+
+        dd('ok');
         $request->validate([
             'name' => 'required|min:4|max:255',
-            'email' => 'email:rfc,dns',
+            // 'email' => 'email:rfc,dns',
             'phone' => 'required|digits:11',
             'address' => 'required|min:4|max:255',
         ]);
-
         try {
             DB::beginTransaction();
-            
             $customer = new Customer_info;
             $customer->name = $request->name;
             $customer->email = $request->email;
             $customer->phone = $request->phone;
+            $customer->note = $request->note;
             $customer->address = $request->address;
             $customer->save();
 
@@ -60,8 +61,11 @@ class CheckoutController extends Controller
             }
             DB::commit();
             \Cart::clear();
-            // $cartItems->clear();
-            return redirect()->route('cart.index')->with('success', 'Your order is successfully sent!');
+
+            $details = Order::where('id',$order->id)->get()->load('customer','orderDetail');
+            
+            return view('pages.website.order-placed',compact('details'));
+            // return redirect()->route('order.placed')->with('success', 'Your order is successfully sent!');
         } catch (\Throwable $th) {
             DB::rollback();
             throw $th;

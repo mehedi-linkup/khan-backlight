@@ -32,11 +32,12 @@
                 <div class="card-body">
                     <div class="mb-4">
                       <div class="row font-sm">
-                          <div class="col-md-6 form-group">
+                          <div class="col-md-12 form-group">
                               <label>Full Name</label>
                               <input class="form-control form-control-sm" name="name" type="text" placeholder="You Name" value="{{ old('name') }}">
                               @error('name') <span style="color: red"><small>{{$message}}</small></span> @enderror
                           </div>
+                          {{-- <div class="col-md-6 form-group"></div> --}}
                           <div class="col-md-6 form-group">
                               <label>E-mail</label>
                               <input class="form-control form-control-sm" name="email" type="email" placeholder="example@email.com" value="{{ old('email') }}">
@@ -51,7 +52,12 @@
                               <label>Address</label>
                               <textarea class="form-control form-control-sm" name="address" type="text" placeholder="123 Street" rows="3" cols="3">{{ old('address') }}</textarea>
                               @error('address') <span style="color: red"><small>{{$message}}</small></span> @enderror
-                          </div>                  
+                          </div>
+                          <div class="col-md-6 form-group">
+                            <label>Note</label>
+                            <textarea class="form-control form-control-sm" name="note" type="text" placeholder="write short notes" rows="3" cols="3">{{ old('note') }}</textarea>
+                            @error('note') <span style="color: red"><small>{{$message}}</small></span> @enderror
+                          </div>                 
                       </div>
                     </div>
                 </div>

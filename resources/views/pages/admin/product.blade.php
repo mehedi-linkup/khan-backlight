@@ -28,23 +28,26 @@
                             <input type="hidden" name="old_image" value="{{ @$productData->image }}">
                             <div class="row">
                                 <div class="col-md-6 mb-2">
-
                                     <label for="category1" class="mb-2"> Category <span class="text-danger">*</span> </label>
                                     <select name="category_id" class="form-control form-control-sm d-inline-block mb-2" id="category1">
                                         <option value="">Select Category</option>
                                         @foreach ($category as $item)
-                                            <option value="{{ $item->id }}" {{ $item->id == @$productData->category_id ? 'selected' : '' }} >{{ $item->name }}</option>
+                                            @if (old('category_id') == $item->id)
+                                                <option value="{{ $item->id }}" selected>{{ $item->name }}</option>
+                                            @else
+                                                <option value="{{ $item->id }}" {{ $item->id == @$productData->category_id ? 'selected' : '' }} >{{ $item->name }}</option>
+                                            @endif
                                         @endforeach
                                     </select>
                                     <a href="{{ route('admin.categories') }}" class="add-item"><i class="fas fa-plus-circle"></i></a>
                                     @error('category_id') <span style="color: red">{{$message}}</span> @enderror
 
                                     <label for="name" class="mb-2"> Product Name <span class="text-danger">*</span> </label>
-                                    <input type="text" name="name" value="{{ @$productData->name }}" class="form-control form-control-sm mb-2" id="name" placeholder="Enter Product name">
+                                    <input type="text" name="name" value="{{ @$productData ? $productData->name : old('name')}}" class="form-control form-control-sm mb-2" id="name" placeholder="Enter Product name">
                                     @error('name') <span style="color: red">{{$message}}</span> @enderror
 
                                     <label for="description" class="mb-2"> Product Description <span class="text-danger">*</span> </label>
-                                    <textarea name="description" id="description" rows="4" class="form-control">{{ @$productData->description }}</textarea>
+                                    <textarea name="description" id="description" rows="4" class="form-control">{{ @$productData? $productData->description : old('description') }}</textarea>
                                     @error('description') <span style="color: red">{{$message}}</span> @enderror
                                 </div>
                                 <div class="col-md-6 mb-2">
@@ -52,7 +55,11 @@
                                     <select name="model_id" class="form-control form-control-sm d-inline-block mb-2" id="model1">
                                         <option value="">Select Model</option>
                                         @foreach ($model as $item)
+                                            @if (old('model_id') == $item->id)
+                                            <option value="{{ $item->id }}" selected>{{ $item->name }}</option>
+                                            @else
                                             <option value="{{ $item->id }}" {{ $item->id == @$productData->model_id ? 'selected' : '' }} >{{ $item->name }}</option>
+                                            @endif
                                         @endforeach
                                     </select>
                                     <a href="{{ route('admin.model') }}" class="add-item"><i class="fas fa-plus-circle"></i></a>
@@ -62,14 +69,18 @@
                                     <select name="unit_id" class="form-control form-control-sm d-inline-block mb-2" id="unit1">
                                         <option value="">Select Unit</option>
                                         @foreach ($unit as $item)
+                                            @if (old('unit_id') == $item->id)
+                                            <option value="{{ $item->id }}" selected>{{ $item->name }}</option>
+                                            @else
                                             <option value="{{ $item->id }}" {{ $item->id == @$productData->unit_id ? 'selected' : '' }} >{{ $item->name }}</option>
+                                            @endif
                                         @endforeach
                                     </select>
                                     <a href="{{ route('admin.unit') }}" class="add-item"><i class="fas fa-plus-circle"></i></a>
                                     @error('unit_id') <span style="color: red">{{$message}}</span> @enderror
 
                                     <label for="rate" class="mb-2"> Product Rate <span class="text-danger">*</span> </label>
-                                    <input type="number" name="rate" value="{{ @$productData->rate }}" class="form-control form-control-sm mb-2" id="rate" placeholder="Enter Product Rate">
+                                    <input type="number" name="rate" value="{{ @$productData ? $productData->rate : old('rate') }}" class="form-control form-control-sm mb-2" id="rate" placeholder="Enter Product Rate">
                                     @error('rate') <span style="color: red">{{$message}}</span> @enderror
 
                                     <label for="image" class="mb-2">Product Image</label>
@@ -110,9 +121,9 @@
                                 <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>Product Name</th>
                                         <th>Category</th>
                                         <th>Model</th>
+                                        <th>Product Name</th>
                                         <th>Image</th>
                                         <th>Rate</th>
                                         <th>Action</th>
@@ -122,9 +133,9 @@
                                     @foreach ($product as $item)
                                     <tr>
                                         <td>{{ $loop->index + 1 }}</td>
+                                        <td>{{ $item->category->name }}</td>
+                                        <td>{{ $item->model->name }}</td>
                                         <td>{{ $item->name }}</td>
-                                        <td>{{ $item->category_id }}</td>
-                                        <td>{{ $item->model_id }}</td>
                                         <td><img src="{{ asset($item->image) }}" width="30" height="30" alt=""></td>
                                         <td>{{ $item->rate }}</td>
                                         <td>

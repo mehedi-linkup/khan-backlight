@@ -2447,3 +2447,30 @@ section {
   color: red;
   font-size: 14px;
 }
+
+/* event bootstrap card */
+.portfolio-item .card-img-top {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+.portfolio-item .card {
+  border-radius: 0;
+}
+
+.portfolio-item .card-body {
+  padding: .4rem 1rem;
+}
+
+.portfolio-item .card-title {
+  font-size: 15px;
+  font-family: cursive;
+  margin-bottom: 0;
+}
+.card:hover .event-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+

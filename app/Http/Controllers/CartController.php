@@ -55,4 +55,12 @@ class CartController extends Controller
         \Cart::remove($id);
         return redirect()->back()->with('success', 'Cart Removed Successfully!');
     }
+
+    public function orderPlaced() {
+        
+        if(empty(\Cart::getContent())){
+            return redirect()->route('home'); 
+         }
+        return view('pages.website.order-placed');
+    }
 }

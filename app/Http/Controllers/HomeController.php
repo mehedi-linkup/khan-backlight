@@ -125,8 +125,8 @@ class HomeController extends Controller
     }
     public function gallery() {
         $event = Event::latest()->get();
-        $gallery = Gallery::latest()->get();
-        return view('pages.website.gallery', compact('gallery', 'event'));
+        // $gallery = Gallery::latest()->get();
+        return view('pages.website.gallery', compact('event'));
     }
     public function eventwithGallery($id) {
         $event = Event::find($id);

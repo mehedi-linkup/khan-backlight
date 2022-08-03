@@ -70,6 +70,10 @@ Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 Route::post('/cart/store/', [CartController::class, 'store'])->name('cart.store');
 Route::post('/cart/update/', [CartController::class, 'updateCart'])->name('cart.update');
 Route::get('/cart/remove/{id}', [CartController::class, 'cartRemove'])->name('cart.remove');
+
+Route::get('/order-placed', [CartController::class, 'orderPlaced'])->name('order.placed');
+
+
 // Checkout
 Route::get('/checkout', [CheckoutController::class, 'checkout'])->name('checkout');
 Route::post('/checkout/store', [CheckoutController::class, 'checkoutstore'])->name('checkout.store');
