@@ -30,7 +30,7 @@
           </ul>
         </div>
 
-        <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
+        <div class="col-lg-3 col-md-12 footer-contact text-md-start">
           <h4>Contact Us</h4>
           <p>
             <span class="text-wrap">{{ $content->address }}</span>

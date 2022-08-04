@@ -73,7 +73,7 @@
                     <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
-                                <th>Image</th>
+                                <th>Id</th>
                                 <th>Product Name</th>
                                 <th>Quantity</th>
                                 <th>Price</th>

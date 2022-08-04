@@ -19,7 +19,7 @@ class GalleryController extends Controller
     public function galleryInsert(Request $request) {
         $request->validate([
             'event_id' => 'required',
-            'images.*' => 'required|mimes:jpeg,jpg,png,gif',
+            'image.*' => 'required|mimes:jpeg,jpg,png,gif',
         ]);
         
         try {
@@ -29,26 +29,28 @@ class GalleryController extends Controller
             // $eventName = strtolower(preg_replace('/\s+/', '-', $eventName));
             // return $eventName;
             $image = $request->file('image');
-            foreach ($image as $key => $item) {
-                //image upload
-                $gallery = new Gallery;
-                $nameGen = hexdec(uniqid());
-                $imgExt = strtolower($item->getClientOriginalExtension());
-                $imgName = $nameGen. '.' . $imgExt;
-                $upLocation = 'uploads/gallery/';
-                Image::make($item)->resize(720,480)->save($upLocation . $imgName);
-                //close image upload
-                $gallery->event_id = $request->event_id;
-                $gallery->title = $imgName;
-                $gallery->image = $imgName;
-                $gallery->save();
-                DB::commit();
+            if($request->hasFile('image')) {
+                foreach ($image as $key => $item) {
+                    //image upload
+                    $gallery = new Gallery;
+                    $nameGen = hexdec(uniqid());
+                    $imgExt = strtolower($item->getClientOriginalExtension());
+                    $imgName = $nameGen. '.' . $imgExt;
+                    $upLocation = 'uploads/gallery/';
+                    Image::make($item)->resize(720,480)->save($upLocation . $imgName);
+                    //close image upload
+                    $gallery->event_id = $request->event_id;
+                    $gallery->title = $imgName;
+                    $gallery->image = $imgName;
+                    $gallery->save();
+                    DB::commit();
+                }
+                return redirect()->back()->with('success', 'photo Inserted!');
             }
-            return redirect()->back()->with('success', 'photo Inserted!');
         } catch (\Exception $e) {
             DB::rollback();           
-		    return ["error" => $e->getMessage()];
-            // return Redirect()->back()->with('Failed', 'Photo insertion failed!');
+		    // return ["error" => $e->getMessage()];
+            return Redirect()->back()->with('Failed', 'Photo insertion failed!');
         }
     }
     public function galleryEdit($id) {

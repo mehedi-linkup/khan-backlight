@@ -19,6 +19,7 @@
                                 <th>Email</th>
                                 <th>Subject</th>
                                 <th>Message</th>
+                                <td>Date</td>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -41,7 +42,10 @@
                                         @else
                                         {{ $item->message }}
                                         @endif
-                                    </td>                          
+                                    </td>
+                                    <td>
+                                        {{ Carbon\Carbon::parse($item->created_at)->diffForHumans() }}
+                                    </td>                         
                                     <td>
                                         @if(Str::of($item->message)->wordCount() > 10)
                                         <a href="#staticBackdrop{{ $item->id }}" class="d-inline btn btn-primary btn-sm b-btn mr-1"  data-toggle="modal" style="text-decoration: none;">

@@ -70,7 +70,7 @@
                 </a>
                 <div class="collapse {{ ($pageName == 'contact' || $pageName == 'order') ? 'show' : '' }}" id="collapseLayouts4" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" href="{{ route('admin.message') }}">Order Message</a>
+                        {{-- <a class="nav-link" href="{{ route('admin.message') }}">Order Message</a> --}}
                         <a class="nav-link" href="{{ route('contact.list') }}">Customer Message</a>
                     </nav>
                 </div>

@@ -69,27 +69,38 @@ class HomeController extends Controller
         }
     }
 
-    public function getSearchSuggestions($keyword)
-    {
-        $product = Product::select('name')
+    public function getSearchSuggestions($keyword, $id)
+    {   
+        if($id) {
+            $product = Product::select('name')
+            ->where('name', 'like', "%$keyword%")
+            ->where('category_id', $id)
+            ->get()->toArray();
+        }
+        else {
+            $product = Product::select('name')
             ->where('name', 'like', "%$keyword%")
             ->get()->toArray();
+        }
+        // $product = Product::select('name')
+        //     ->where('name', 'like', "%$keyword%")
+        //     ->get()->toArray();
 
-        $product1 = Product::select('name')->where('name', 'like', "$keyword%")->get()->toArray();
+        // $product1 = Product::select('name')->where('name', 'like', "$keyword%")->get()->toArray();
 
-        $category = Category::select('name as name')
-            ->where('name', 'like', "%$keyword%")
-            ->get()->toArray();
+        // $category = Category::select('name as name')
+        //     ->where('name', 'like', "%$keyword%")
+        //     ->get()->toArray();
 
-        $model = ProductModel::select('name as name')
-            ->where('name', 'like', "%$keyword%")
-            ->get()->toArray();
+        // $model = ProductModel::select('name as name')
+        //     ->where('name', 'like', "%$keyword%")
+        //     ->get()->toArray();
 
-        $mergedArray = array_merge($product, $category, $model, $product1);
+        // $mergedArray = array_merge($product, $category, $model, $product1);
 
         $search_results = [];
 
-        foreach ($mergedArray as $sr) {
+        foreach ($product as $sr) {
             $search_results[] = $sr['name'];
         }
 
@@ -102,9 +113,10 @@ class HomeController extends Controller
             $categories = Category::all();
             $keyword = request()->query('q');
             $search_result = Product::Where('name', 'like', "$keyword%")->get();
-            $search2 = Product::where('name', 'like', "$keyword%")->get();
+            // $search2 = Product::where('name', 'like', "$keyword%")->get();
+            $catid = request()->query('category');
 
-            return view('pages.website.search', compact('search_result', 'keyword','categories', 'search2'));
+            return view('pages.website.search', compact('search_result', 'keyword','categories', 'catid'));
         }
 
         return redirect()->back();
@@ -156,14 +168,14 @@ class HomeController extends Controller
             return view('pages.website.no-page');
         }
     }
-    public function order($id) {
-        $product = Product::find($id);
-        if($product) {
-            return view('pages.website.order', compact('product'));
-        } else {
-            return view('pages.website.no-page');
-        }
-    }
+    // public function order($id) {
+    //     $product = Product::find($id);
+    //     if($product) {
+    //         return view('pages.website.order', compact('product'));
+    //     } else {
+    //         return view('pages.website.no-page');
+    //     }
+    // }
     // public function submenu($id) {
     //     $category = Category::find($id);
     //     if (isset($category)) {

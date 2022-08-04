@@ -22,15 +22,24 @@
 {{-- Search Section --}}
 <section class="search" style="padding-bottom: 0px; padding-top: 22px;">
   <div class="container">
-    <div class="row justify-content-end">
-      <div class="col-lg-3">
-          <form action="{{route('search')}}" method="GET">
-            <div class="">
-              <input type="search" name="q" class="form-control form-control-sm serach-control search-box keyword" id="keyword" autocomplete="off" placeholder="search...">
-            </div>
-          </form>
+    <form action="{{route('search')}}" method="get">
+      <div class="row justify-content-end">
+      <div class="col-lg-3 pe-lg-0">
+        <input type="search" name="q" class="form-control form-control-sm serach-control search-box keyword" id="keyword" autocomplete="off" placeholder="search...">
+      </div>
+      <div class="col-lg-2 ps-lg-0">
+        <div class="input-group">
+          <select class="form-select form-select-sm" id="category" onchange="test(this.value)">
+            <option value="0">All</option>
+            @foreach ($category as $item)
+            <option value="{{ $item->id }}">{{ $item->name }}</option>    
+            @endforeach
+          </select>
+          {{-- <input type="submit" class="btn btn-danger btn-sm"> --}}
+        </div>
       </div>
     </div>
+  </form>
   </div>
 </section>
 
@@ -86,15 +95,22 @@
 <script src="{{asset('website/assets/vendor/bootstrap3-typeahead.min.js')}}" ></script>
 <script type="text/javascript">
   var baseUri = "{{ url('/') }}";
+var catId = 0;
+ function test(id) {
+    catId = id;
+    $('#keyword').val('');
+    // console.log(catId)
+  }
+
   $('#keyword').typeahead({
       minLength: 1,
       source: function (keyword, process) {
-          return $.get(`${baseUri}/get_suggestions/${keyword}`, function (data) {
+          return $.get(`${baseUri}/get_suggestions/${keyword}/${catId}`, function (data) {
               return process(data);
           });
       },
       updater:function (item) {
-          $(location).attr('href', '/search?q='+item);
+          $(location).attr('href', `/search?q=${item}&category=${catId}`);
           return item;
       }
   });
@@ -102,7 +118,7 @@
 <script src="{{ asset('website/assets/vendor/owl-carousel/owl.carousel.min.js') }}"></script>
 <script>
   $('.owl-carousel').owlCarousel({
-    loop:true,
+    loop:false,
     margin:10,
     nav:false,
     // autoplay:true,

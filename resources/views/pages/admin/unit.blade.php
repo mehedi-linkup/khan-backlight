@@ -21,7 +21,7 @@
                             <div class="row">
                                 <div class="col-md-12 mb-2">
                                     <label for="name"> Name <span class="text-danger">*</span> </label>
-                                    <input type="text" name="name" value="{{ @$unitData->name }}" class="form-control form-control-sm mb-2" id="name" placeholder="Enter Unit Name">
+                                    <input type="text" name="name" value="{{ @$unitData ? $unitData->name : old('name') }}" class="form-control form-control-sm mb-2" id="name" placeholder="Enter Unit Name">
                                     @error('name') <span style="color: red">{{$message}}</span> @enderror
                                 </div>
                             </div>

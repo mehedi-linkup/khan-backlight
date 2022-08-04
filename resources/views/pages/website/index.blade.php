@@ -512,22 +512,22 @@
               <div class="row gy-4">
 
                 <div class="col-md-6">
-                  <input type="text" name="name" class="form-control" placeholder="Your Name" required>
+                  <input type="text" name="name" class="form-control" placeholder="Your Name" required value="{{ old('name') }}">
                   @error('name') <span style="color: red">{{$message}}</span> @enderror
                 </div>
 
                 <div class="col-md-6 ">
-                  <input type="email" class="form-control" name="email" placeholder="Your Email" required>
+                  <input type="email" class="form-control" name="email" placeholder="Your Email" required value="{{ old('email') }}">
                   @error('email') <span style="color: red">{{$message}}</span> @enderror
                 </div>
 
                 <div class="col-md-12">
-                  <input type="text" class="form-control" name="subject" placeholder="Subject" required>
+                  <input type="text" class="form-control" name="subject" placeholder="Subject" required value="{{ old('subject') }}">
                   @error('subject') <span style="color: red">{{$message}}</span> @enderror
                 </div>
 
                 <div class="col-md-12">
-                  <textarea class="form-control" name="message" rows="6" placeholder="Message" required></textarea>
+                  <textarea class="form-control" name="message" rows="6" placeholder="Message" required value="{{ old('message') }}"></textarea>
                   @error('message') <span style="color: red">{{$message}}</span> @enderror
                 </div>
                 <div class="col-md-12">

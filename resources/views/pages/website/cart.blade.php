@@ -24,6 +24,7 @@
       <!-- Feature Tabs -->
       <div class="row" data-aos="fade-up">
         <div class="col-lg-12 mb-1">
+            <div class="table-responsive">
             <table class="table table-bordered text-center mb-0">
                 <thead class="bg-light font-md text-dark">
                     <tr>
@@ -71,6 +72,7 @@
                     @endforeach
                 </tbody>
             </table>
+            </div>
         </div>
         <div class="col-lg-4 offset-lg-8">
             <div class="card">

@@ -22,11 +22,11 @@
                             <div class="row">
                                 <div class="col-md-6 mb-2">
                                     <label for="name"> Name <span class="text-danger">*</span> </label>
-                                    <input type="text" name="name" value="{{ @$categoryData->name }}" class="form-control form-control-sm mb-2" id="name" placeholder="Enter Category name">
+                                    <input type="text" name="name" value="{{ @$categoryData ? $categoryData->name : old('name')}}" class="form-control form-control-sm mb-2" id="name" placeholder="Enter Category name">
                                     @error('name') <span style="color: red">{{$message}}</span> @enderror
 
                                     <label for="image"> Image <span style="font-size: 12px; font-weight: 400">(768px * 768px)</span> <span class="text-danger">*</span> </label>
-                                    <input type="file" name="image" value="{{ @$categoryData->image }}" class="form-control form-control-sm" id="image" onchange="mainThambUrl(this)">
+                                    <input type="file" name="image" value="{{ @$categoryData->image }}" class="form-control form-control-sm @error('image') is-invalid @enderror" id="image" onchange="mainThambUrl(this)">
                                     @error('image') <span style="color: red">{{$message}}</span> @enderror
                                 </div>
                                 <div class="col-md-6 mb-2">

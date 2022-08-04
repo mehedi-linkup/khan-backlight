@@ -24,8 +24,8 @@
 <section id="cart" class="cart">
     <div class="container">
       <!-- Feature Tabs -->
-      <div class="row">
-        <div class="col-md-12">
+      <div class="row justify-content-center">
+        <div class="col-md-6">
             <div class="card">
                 <div class="card-body">
 
@@ -35,7 +35,7 @@
                         <thead>
                             <th>sl</th>
                             <th>Product Name</th>
-                            <th>Product Image</th>
+                            <th>Image</th>
                             <th>Quantity</th>
                             <th>Total Taka</th>
                         </thead>
@@ -45,14 +45,19 @@
                                 <tr>
                                     <td>{{ $key + 1 }}</td>
                                     <td>{{ $item->product_id }}</td>
-                                    <td>{{ $item->product_id }}</td>
+                                    <td>
+                                        @php
+                                           $image = App\Models\Product::find($item->product_id)->image 
+                                        @endphp
+                                        <img src="{{ asset($image) }}" alt="" width="36px" height="30px">
+                                    </td>
                                     <td>{{ $item->quantity }}</td>
                                     <td>{{ $item->price }}</td>
                                 </tr>  
                                 @php $qty += $item->quantity; @endphp                              
                             @endforeach
                             <tr>
-                                <td colspan="3">Total = </td>
+                                <th colspan="3">Total</th>
                                 <td>{{ $qty }}</td>
                                 <td>{{ $details[0]->total_taka}}</td>
                             </tr>

@@ -32,7 +32,7 @@ class CategoryController extends Controller
             'image' => 'mimes:jpeg,png,jpg,gif,webp',
         ]);
         try {
-            $imgName = '';
+            $category = new Category();
             if($request->hasFile('image')){
                 $image = $request->file('image');
                 $nameGen = hexdec(uniqid());
@@ -40,27 +40,19 @@ class CategoryController extends Controller
                 $imgName = $nameGen. '.' . $imgExt;
                 $upLocation = 'uploads/category/';
                 // $image->move($upLocation, $imgName);
-                Image::make($image)->resize(960,720)->save($upLocation . $imgName);
+                Image::make($image)->resize(768,768)->save($upLocation . $imgName);
                 $lastImage = $upLocation . $imgName;
+                $category->image = $lastImage;
             }
-            $category = new Category();
             $category->name = $request->name;
-            $category->image = $lastImage;
             $category->save();
             
-            $notification=array(
-                'message'=>'Category Created Succefully..',
-                'alert-type'=>'success'
-            );
-            return Redirect()->back()->with($notification);
+            return Redirect()->back()->with('success', 'Insert Successful!');
 
         } catch (\Exception $e) {
 
-            $notification=array(
-                'message'=>'Something went wrong',
-                'alert-type'=>'success'
-            );
-            return Redirect()->back()->with($notification);
+            throw $e;
+            return Redirect()->back()->with('failed', 'Insert Failed!');
         }
     }
 
@@ -97,7 +89,7 @@ class CategoryController extends Controller
             $image = $request->file('image');
             if($image) {
                 $imageName = date('YmdHi').$image->getClientOriginalName();
-                Image::make($image)->resize(960,720)->save('uploads/category/' . $imageName);
+                Image::make($image)->resize(768,768)->save('uploads/category/' . $imageName);
                 if(file_exists($category->image) && !empty($category->image)) {
                     unlink($category->image);
                 }
@@ -105,21 +97,10 @@ class CategoryController extends Controller
                 $category['image'] = $lastImage;
             }
             $category->save();
-
-            // $notification=array(
-            //     'message'=>'Category Updated Succefully..',
-            //     'alert-type'=>'success'
-            // );
-            // return Redirect()->route('admin.categories')->with($notification);
             return Redirect()->route('admin.categories')->with('success', 'Category Update Successful!');
 
         } catch (\Exception $e) {
-            return Redirect()->back()->with('error', 'Category Insertion Failed!');
-            // $notification=array(
-            //     'message'=>'Something went wrong',
-            //     'alert-type'=>'success'
-            // );
-            // return Redirect()->back()->with($notification);
+            return Redirect()->back()->with('error', 'Category Update Failed!');
         }
     }
 
@@ -138,11 +119,6 @@ class CategoryController extends Controller
             }
             $category->delete();
         }
-        // $notification=array(
-        //     'message'=>'Category Deleted Succefully..',
-        //     'alert-type'=>'success'
-        // );
-        // return Redirect()->back()->with($notification);
         return Redirect()->back()->with('success', 'Deleted Successfully!');
     }
 }

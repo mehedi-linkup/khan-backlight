@@ -37,6 +37,12 @@ section {
   padding: 60px 0;
   overflow: hidden;
 }
+@media(min-width: 340px) and (max-width: 575px) {
+  section {
+    padding: 20px 0;
+    overflow: hidden;
+  }
+}
 
 .section-header {
   text-align: center;
@@ -156,6 +162,9 @@ section {
   background-color: #6184c3;
   border-color: #6184c3;
   border-radius: 0rem;
+}
+.btn-mod-primary:hover {
+  color: #fff;
 }
 .btn-mod-primary:focus {
   box-shadow: none;
@@ -317,12 +326,17 @@ section {
 .header.header-scrolled .navbar a {
   color: #013289;
 }
+@media(max-width:540px) {
+  .header .navbar li a {
+    color: #013289;
+  }
+}
 .navbar a i, .navbar a:focus i {
   font-size: 12px;
   line-height: 0;
   margin-left: 5px;
 }
-.navbar .dropdown a i {
+.navbar a i {
   font-size: 16px;
 }
 .navbar a:hover, .navbar .active, .navbar .active:focus, .navbar li:hover > a {
@@ -415,7 +429,9 @@ section {
   .mobile-nav-toggle {
     display: block;
   }
-
+  /* .header-scrolled .mobile-nav-toggle {
+    color: #fff;
+  } */
   .navbar ul {
     display: none;
 }
@@ -1713,7 +1729,19 @@ section {
 .search {
   background-color: #e2f2ff;
 }
-
+.search .form-control-sm {
+  border-radius: 0rem;
+  border-right: 0;
+}
+.search .form-control:focus {
+  box-shadow: none;
+}
+.search .form-select-sm {
+  border-radius: 0rem;
+}
+.search .form-select:focus {
+  box-shadow: none;
+}
 /*--------------------------------------------------------------
 # Contact
 --------------------------------------------------------------*/
@@ -2305,7 +2333,7 @@ section {
   border-top: 1px solid #e1ecff;
   border-bottom: 1px solid #e1ecff;
   padding: 60px 0 30px 0;
-  max-height: 381px;
+  /* max-height: 381px; */
 }
 @media (max-width: 992px) {
   .footer .footer-top {

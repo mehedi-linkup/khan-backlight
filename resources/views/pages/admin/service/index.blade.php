@@ -22,7 +22,7 @@
                             <div class="row">
                                 <div class="col-md-6 mb-2">
                                     <label for="name" class="mb-1"> Title <span class="text-danger">*</span> </label>
-                                    <input type="text" name="name" class="form-control form-control-sm shadow-none @error('name') is-invalid @enderror" id="name" placeholder="Enter a Title">
+                                    <input type="text" name="name" class="form-control form-control-sm shadow-none @error('name') is-invalid @enderror" id="name" placeholder="Enter a Title" value="{{ old('name') }}">
                                     @error('name')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -37,7 +37,7 @@
                                         </span>
                                     @enderror --}}
                                     <label for="s_description" class="mb-1">Short Description</label>
-                                    <textarea name="s_description" class="form-control form-control-sm @error('s_description') is-invalid @enderror" id="s_description" rows="3" placeholder="Enter a short description"></textarea>
+                                    <textarea name="s_description" class="form-control form-control-sm @error('s_description') is-invalid @enderror" id="s_description" rows="3" placeholder="Enter a short description">{{ old('s_description') }}</textarea>
                                     @error('s_description')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -45,8 +45,6 @@
                                     @enderror
                                 </div>
                                 <div class="col-md-6 mb-2">
-
-
                                     <label for="image">Image</label>
                                     <input class="form-control form-control-sm" id="image" type="file" name="image" onchange="readImgURL(this);">
                                     <div class="form-group mt-2" style="margin-bottom: 0">

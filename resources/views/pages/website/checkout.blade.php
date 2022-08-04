@@ -30,7 +30,7 @@
                     <h4 class="font-weight-semi-bold m-0 font-lg text-center">Billing Address</h4>
                 </div>
                 <div class="card-body">
-                    <div class="mb-4">
+                    <div class="mb-0 mb-md-4">
                       <div class="row font-sm">
                           <div class="col-md-12 form-group">
                               <label>Full Name</label>
