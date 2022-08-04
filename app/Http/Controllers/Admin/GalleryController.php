@@ -19,7 +19,7 @@ class GalleryController extends Controller
     public function galleryInsert(Request $request) {
         $request->validate([
             'event_id' => 'required',
-            'image.*' => 'required|mimes:jpeg,jpg,png,gif',
+            'image.*' => 'required|mimes:jpeg,jpg,png,gif,webp',
         ]);
         
         try {
@@ -46,6 +46,9 @@ class GalleryController extends Controller
                     DB::commit();
                 }
                 return redirect()->back()->with('success', 'photo Inserted!');
+            }
+            else {
+                return redirect()->back()->with('error', 'Insert Image First');
             }
         } catch (\Exception $e) {
             DB::rollback();           

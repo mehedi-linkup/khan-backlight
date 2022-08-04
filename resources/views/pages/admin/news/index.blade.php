@@ -12,7 +12,7 @@
                         <div class="row">
                             <div class="col-md-6 mb-2">
                                 <label for="title"> News Title <span class="text-danger">*</span> </label>
-                                <input type="text" name="title" class="form-control form-control-sm shadow-none @error('title') is-invalid @enderror" id="title" placeholder="Enter a News Title">
+                                <input type="text" name="title" class="form-control form-control-sm shadow-none @error('title') is-invalid @enderror" id="title" placeholder="Enter a News Title" value="{{ old('title') }}">
                                 @error('title')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -33,7 +33,7 @@
                             <div class="col-md-6 mb-2">
                                 <div class="form-group">
                                     <label for="description">News Details</label>
-                                    <textarea name="description" class="form-control @error('description') is-invalid @enderror" id="description" rows="4" placeholder="News Details"></textarea>
+                                    <textarea name="description" class="form-control @error('description') is-invalid @enderror" id="description" rows="4" placeholder="News Details">{{ old('description') }}</textarea>
                                     @error('description')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>

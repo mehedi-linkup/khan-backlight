@@ -14,7 +14,7 @@
                         <div class="row">
                             <div class="col-md-12 mb-2">
                                 <label for="name"> Video Title </span> </label>
-                                <input type="text" name="name" class="form-control form-control-sm mb-2 shadow-none @error('name') is-invalid @enderror" id="name" placeholder="Enter Video Title">
+                                <input type="text" name="name" class="form-control form-control-sm mb-2 shadow-none @error('name') is-invalid @enderror" id="name" placeholder="Enter Video Title" value={{ old('name') }}>
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

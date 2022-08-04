@@ -36,8 +36,8 @@
                         <hr class="my-2">
                         <div class="clearfix mt-1">
                             <div class="float-md-left">
-                                <button type="reset" class="btn btn-dark">Reset</button>
-                                <button type="submit" class="btn btn-info">Save</button>
+                                <button type="reset" class="btn btn-sm btn-dark">Reset</button>
+                                <button type="submit" class="btn btn-sm btn-info">Save</button>
                             </div>
                         </div>
 

@@ -42,7 +42,7 @@
                                     </span>
                                 @enderror
 
-                                <label for="image" class="mt-1">Slider Image</label>
+                                <label for="image" class="mt-1">Slider Image (Size: 1920px * 1080px)</label>
                                 <input class="form-control form-control-sm @error('image') is-invalid @enderror" id="image" type="file" name="image" onchange="readURL(this);">
                                 @error('image')
                                     <span class="invalid-feedback" role="alert">

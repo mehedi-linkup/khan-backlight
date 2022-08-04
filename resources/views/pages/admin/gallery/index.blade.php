@@ -32,8 +32,8 @@
                                 @enderror
                                  --}}
                                 <div class="field">
-                                    <label for="image">Image</label>
-                                    <input class="form-control form-control-sm upload__inputfile" data-max_length="10" id="image" type="file" name="image[]" multiple>
+                                    <label for="image">Image (Size: 720px * 480px)</label>
+                                    <input class="form-control form-control-sm upload__inputfile @error('image') is-invalid @enderror" data-max_length="10" id="image" type="file" name="image[]" multiple>
                                     @error('image')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

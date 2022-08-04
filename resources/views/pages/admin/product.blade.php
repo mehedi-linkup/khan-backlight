@@ -83,7 +83,7 @@
                                     <input type="number" name="rate" value="{{ @$productData ? $productData->rate : old('rate') }}" class="form-control form-control-sm mb-2" id="rate" placeholder="Enter Product Rate">
                                     @error('rate') <span style="color: red">{{$message}}</span> @enderror
 
-                                    <label for="image" class="mb-2">Product Image</label>
+                                    <label for="image" class="mb-2">Product Image (Size: 720px * 720px)</label>
                                     <input class="form-control form-control-sm" id="image" type="file" name="image" onchange="mainThambUrl(this)">
                                     <div class="form-group mt-2">
                                         <img class="form-controlo img-thumbnail" src="{{(@$productData) ? asset($productData->image) : asset('uploads/no.png') }}" id="mainThmb" style="width: 150px;height: 120px;">
