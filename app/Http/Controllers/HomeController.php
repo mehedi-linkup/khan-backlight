@@ -75,6 +75,8 @@ class HomeController extends Controller
             ->where('name', 'like', "%$keyword%")
             ->get()->toArray();
 
+        $product1 = Product::select('name')->where('name', 'like', "$keyword%")->get()->toArray();
+
         $category = Category::select('name as name')
             ->where('name', 'like', "%$keyword%")
             ->get()->toArray();
@@ -83,7 +85,7 @@ class HomeController extends Controller
             ->where('name', 'like', "%$keyword%")
             ->get()->toArray();
 
-        $mergedArray = array_merge($product, $category, $model);
+        $mergedArray = array_merge($product, $category, $model, $product1);
 
         $search_results = [];
 
@@ -99,9 +101,10 @@ class HomeController extends Controller
         if (request()->query('q')) {
             $categories = Category::all();
             $keyword = request()->query('q');
-            $search_result = Product::Where('name', 'like', "%$keyword%")->get();
+            $search_result = Product::Where('name', 'like', "$keyword%")->get();
+            $search2 = Product::where('name', 'like', "$keyword%")->get();
 
-            return view('pages.website.search', compact('search_result', 'keyword','categories'));
+            return view('pages.website.search', compact('search_result', 'keyword','categories', 'search2'));
         }
 
         return redirect()->back();

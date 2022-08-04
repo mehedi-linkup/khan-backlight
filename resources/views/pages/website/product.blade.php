@@ -20,30 +20,15 @@
 </section><!-- End Breadcrumbs -->
 
 {{-- Search Section --}}
-<section class="search" style="padding-top: 10px; padding-bottom: 0">
-  <div class="container" data-aos="fade-down">
-    <div class="row">
-      <div class="col-lg-12 d-flex justify-content-end">
-        {{-- <div class="select-box">
-          
-          <div class="input-group">
-            <select class="form-select form-select-sm" aria-label="Default select example" style="background-color: transparent">
-              <option selected>Select</option>
-              <option href="" value="1">Category</option>
-              <option value="2">Model</option>
-              <option value="3">Product</option>
-            </select>
-            <button class="btn btn-sm btn-outline-secondary" type="button" id="button-addon2">Filter</button>
-          </div>
-
-        </div> --}}
-        <div class="search-box">
+<section class="search" style="padding-bottom: 0px; padding-top: 22px;">
+  <div class="container">
+    <div class="row justify-content-end">
+      <div class="col-lg-3">
           <form action="{{route('search')}}" method="GET">
             <div class="">
               <input type="search" name="q" class="form-control form-control-sm serach-control search-box keyword" id="keyword" autocomplete="off" placeholder="search...">
             </div>
           </form>
-        </div>
       </div>
     </div>
   </div>
@@ -101,7 +86,7 @@
 <script src="{{asset('website/assets/vendor/bootstrap3-typeahead.min.js')}}" ></script>
 <script type="text/javascript">
   var baseUri = "{{ url('/') }}";
-  $('.keyword').typeahead({
+  $('#keyword').typeahead({
       minLength: 1,
       source: function (keyword, process) {
           return $.get(`${baseUri}/get_suggestions/${keyword}`, function (data) {
