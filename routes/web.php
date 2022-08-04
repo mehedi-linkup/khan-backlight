@@ -51,8 +51,9 @@ Route::get('/product/category/{id}', [HomeController::class, 'catwithProduct'])-
 Route::get('/product-detail/{id}', [HomeController::class, 'productDetail'])->name('product-detail');
 
 // search route
-Route::get('/get_suggestions/{k}', [HomeController::class, 'getSearchSuggestions']);
+Route::get('/get_suggestions/{k}/{cat}', [HomeController::class, 'getSearchSuggestions']);
 Route::get('/search', [HomeController::class, 'productSearch'])->name('search');
+// Route::get('/search', [HomeController::class, 'productSearch'])->name('search');
 
 Route::get('/history', [HomeController::class, 'history'])->name('history');
 Route::get('/activity', [HomeController::class, 'activity'])->name('activity');
@@ -71,7 +72,7 @@ Route::post('/cart/store/', [CartController::class, 'store'])->name('cart.store'
 Route::post('/cart/update/', [CartController::class, 'updateCart'])->name('cart.update');
 Route::get('/cart/remove/{id}', [CartController::class, 'cartRemove'])->name('cart.remove');
 
-Route::get('/order-placed', [CartController::class, 'orderPlaced'])->name('order.placed');
+Route::get('/order-placed', [CheckoutController::class, 'checkoutstore']);
 
 
 // Checkout
@@ -79,9 +80,6 @@ Route::get('/checkout', [CheckoutController::class, 'checkout'])->name('checkout
 Route::post('/checkout/store', [CheckoutController::class, 'checkoutstore'])->name('checkout.store');
 // contact route
 Route::post('/contact-store', [ContactController::class, 'store'])->name('contact.store');
-// order route
-Route::get('/order/{id}', [HomeController::class, 'order'])->name('order');
-Route::post('/messages/store', [MessageController::class, 'store'])->name('store.message');
 
 // login
 Route::get('admin', [AuthenticationController::class, 'login'])->name('login');
