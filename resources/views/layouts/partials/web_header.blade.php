@@ -24,7 +24,7 @@
         <li><a class="nav-link scrollto" href="{{ route('team') }}">Team</a></li>
         <li><a class="nav-link scrollto" href="{{ route('webnews') }}">News</a></li>
         <li><a class="nav-link scrollto" href="{{ route('home') }}#contact">Contact</a></li>
-        <li><a class="nav-link scrollto" href="{{ route('cart.index') }}"><i class="bi bi-cart4">
+        <li class="nav-link nav-link-last"><a class="nav-link scrollto" href="{{ route('cart.index') }}"><i class="bi bi-cart4">
           <span class="cartItem"> {{ Cart::getTotalQuantity() }}</span>
           </i></a>
         </li>
@@ -46,6 +46,11 @@
           </a>
         </li> --}}
       </ul>
+      <a class="nav-link cart-link" href="{{ route('cart.index') }}">
+        <i class="bi bi-cart4">
+          <span class="cartItem"> {{ Cart::getTotalQuantity() }}</span>
+        </i>
+      </a>
       <i class="bi bi-list mobile-nav-toggle"></i>
     </nav><!-- .navbar -->
 

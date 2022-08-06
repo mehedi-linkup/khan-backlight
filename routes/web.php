@@ -47,6 +47,7 @@ use App\Http\Controllers\Admin\CompanyProfileController;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::get('/product', [HomeController::class, 'product'])->name('product');
+Route::get('/get-product/{category}', [HomeController::class, 'getProductByCategory']);
 Route::get('/product/category/{id}', [HomeController::class, 'catwithProduct'])->name('cat-product');
 Route::get('/product-detail/{id}', [HomeController::class, 'productDetail'])->name('product-detail');
 

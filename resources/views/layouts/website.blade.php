@@ -7,6 +7,7 @@
 
   <title>Khan Back Light | {{ $pageName ?? '' }}</title>
   <meta content="" name="description">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
 
   <meta content="" name="keywords">
 
@@ -16,7 +17,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="{{ asset($content->logo)}}">
   <link rel="icon" type="image/png" sizes="16x16" href="{{ asset($content->logo)}}">
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  {{-- <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet"> --}}
 
   <!-- Vendor CSS Files -->
   <link href="{{ asset('website/assets/vendor/aos/aos.css')}}" rel="stylesheet">

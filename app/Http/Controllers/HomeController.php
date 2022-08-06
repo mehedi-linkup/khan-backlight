@@ -23,6 +23,7 @@ use App\Models\Faq;
 use App\Models\ProductModel;
 use App\Models\Testimonial;
 use Illuminate\Database\Eloquent\Model;
+use PHPUnit\Framework\Constraint\RegularExpression;
 
 class HomeController extends Controller
 {
@@ -220,5 +221,21 @@ class HomeController extends Controller
     //         return view('pages.website.not-found', compact('backimage'));
     //     }
     // }
+
+    public function getProductByCategory($CategoryId)
+    {
+        if($CategoryId == 0) {
+            $products = Product::get()->load('category','model');
+        } else {
+            $products = Product::where('category_id', $CategoryId)->get()->load('category','model');
+        }
+        $id = [$CategoryId];
+
+
+
+        return view('loadhtmlpage.loadproduct', compact('products', 'id'));
+
+        // return response()->json(['data'=> $products]);
+    }
 
 }
