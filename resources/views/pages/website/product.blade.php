@@ -23,22 +23,48 @@
     <section class="search" style="padding-bottom: 0px; padding-top: 22px;">
         <div class="container">
             <form action="{{ route('search') }}" method="get">
-                <div class="row justify-content-end">
-                    <div class="col-lg-3 pe-lg-0">
+                <div class="row">
+                    {{-- <div class="col-lg-3">
                         <input type="search" name="q"
                             class="form-control form-control-sm serach-control search-box keyword" id="keyword"
                             autocomplete="off" placeholder="search...">
-                    </div>
-                    <div class="col-lg-2 ps-lg-0">
+                    </div> --}}
+                    <div class="col-lg-2 px-lg-0">
                         <div class="input-group">
+                            <label for="" class="search-lebel">Search By:</label>
+                            <select class="form-select form-select-sm" id="search_by" onchange="SearchBy(this.value)">
+                                <option value="" selected>Select---</option>
+                                <option value="category">Category</option>
+                                <option value="model">Model</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 px-lg-0" id="category_column" style="display: none">
+                        <div class="input-group">
+                            <label for="" class="search-lebel">Category: </label>
                             <select class="form-select form-select-sm" id="category" onchange="SearchProduct(this.value)">
                                 <option value="0">All</option>
                                 @foreach ($category as $item)
                                     <option value="{{ $item->id }}">{{ $item->name }}</option>
                                 @endforeach
                             </select>
-                            {{-- <input type="submit" class="btn btn-danger btn-sm"> --}}
                         </div>
+                    </div>
+                    <div class="col-lg-2 px-lg-0" id="model_column" style="display: none">
+                        <div class="input-group">
+                            <label for="" class="search-lebel">Model: </label>
+                            <select class="form-select form-select-sm" id="model" onchange="SearchProductModel(this.value)">
+                                <option value="0">All</option>
+                                @foreach ($model as $item)
+                                    <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 ms-auto">
+                        <input type="search" name="q"
+                            class="form-control form-control-sm serach-control search-box keyword" id="keyword"
+                            autocomplete="off" placeholder="search products...">
                     </div>
                 </div>
             </form>
@@ -107,6 +133,20 @@
         var baseUri = "{{ url('/') }}";
         var catId = 0;
 
+        function SearchBy(value) {
+            // console.log(value);
+            if(value == 'category') {
+                $('#category_column').show();
+                $('#model_column').hide();
+            } else if(value == 'model') {
+                $('#model_column').show();
+                $('#category_column').hide();
+            } else {
+                $('#model_column').hide();
+                $('#category_column').hide();
+            }
+        }
+
         function SearchProduct(id) {
             catId = id;
             $('#keyword').val('');
@@ -115,6 +155,21 @@
             $.ajax({
                 type: "GET",
                 url: "/get-product/"+catId,
+                data: '',
+                success: function(res) {
+                    // console.log(res);
+                    $('#replaceProduct').html(res);
+                    // $('#replaceProduct').replaceWith( res ) 
+                }
+            });
+        }
+        function SearchProductModel(id) {
+            modelId = id;
+            // console.log(modelId);
+
+            $.ajax({
+                type: "GET",
+                url: "/get-model/"+modelId,
                 data: '',
                 success: function(res) {
                     // console.log(res);

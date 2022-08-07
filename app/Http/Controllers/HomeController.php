@@ -49,11 +49,10 @@ class HomeController extends Controller
         return view('pages.website.about');
     }
     public function product() {
-        $category = Category::with(['product' => function($cat){
-            
-        }])->latest()->get();
+        $category = Category::with('product')->latest()->get();
+        $model = ProductModel::latest()->get();
         // $product = Product::with('category')->latest()->get();
-        return view('pages.website.product', compact('category'));
+        return view('pages.website.product', compact('category', 'model'));
     }
     public function catwithProduct($id) {
         $category = Category::find($id);
@@ -231,11 +230,22 @@ class HomeController extends Controller
         }
         $id = [$CategoryId];
 
-
-
         return view('loadhtmlpage.loadproduct', compact('products', 'id'));
 
         // return response()->json(['data'=> $products]);
+    }
+
+    public function getProductByModel($ModelId) {
+
+        if($ModelId == 0) {
+            $products = Product::get()->load('category','model');
+        } else {
+            $products = Product::where('model_id', $ModelId)->get()->load('category','model');
+        }
+        $id = [$ModelId];
+
+        return view('loadhtmlpage.loadproduct', compact('products', 'id'));
+
     }
 
 }

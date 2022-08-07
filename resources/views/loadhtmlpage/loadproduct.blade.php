@@ -1,9 +1,8 @@
 <div class="row">
     <div class="col-lg-12">
         <div class="product-header mb-1 clearfix" style="border-bottom: 1px solid #c5c5c5;">
-            
             {{-- <span class="fw-bold text-uppercase">{{ $products[0]->category->name }}</span> --}}
-            <span class="fw-bold text-uppercase">{{ $id[0] == '0' ? 'All Category' : $products[0]->category->name}}</span>
+            <span class="fw-bold text-uppercase">{{ $id[0] == '0' ? 'All Product' : $products[0]->category->name}}</span>
             <a href="{{ route('cat-product', $products[0]->category_id) }}"
                 class="float-end btn btn-see-more btn-danger">See More</span></a>
         </div>

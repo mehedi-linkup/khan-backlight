@@ -48,6 +48,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::get('/product', [HomeController::class, 'product'])->name('product');
 Route::get('/get-product/{category}', [HomeController::class, 'getProductByCategory']);
+Route::get('/get-model/{model}', [HomeController::class, 'getProductByModel']);
 Route::get('/product/category/{id}', [HomeController::class, 'catwithProduct'])->name('cat-product');
 Route::get('/product-detail/{id}', [HomeController::class, 'productDetail'])->name('product-detail');
 

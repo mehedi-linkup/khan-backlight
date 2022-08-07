@@ -850,6 +850,15 @@ section {
 .card .product-cart:hover button {
   color: #dadada;
 }
+
+.search-lebel {
+  padding-bottom: 0.25rem;
+  padding-top: 0.25rem;
+  padding-left: 0.5rem;
+  padding-right: 0.25rem;
+  font-size: .9rem;
+  color: #012970;
+}
 /*--------------------------------------------------------------
 # Counts
 --------------------------------------------------------------*/
@@ -1771,7 +1780,7 @@ section {
 }
 .search .form-control-sm {
   border-radius: 0rem;
-  border-right: 0;
+  /* border-right: 0; */
 }
 .search .form-control:focus {
   box-shadow: none;

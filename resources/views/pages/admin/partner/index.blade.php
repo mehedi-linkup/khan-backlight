@@ -19,7 +19,7 @@
                         <div class="row">
                             <div class="col-md-6 mb-2">
                                 <label for="name">Partner Name <span class="text-danger"> * </span></label>
-                                <input class="form-control @error('name') is-invalid @enderror" id="name" type="text" name="name" value="{{ old('name') }}" placeholder="partner company name">
+                                <input class="form-control form-control-sm @error('name') is-invalid @enderror" id="name" type="text" name="name" value="{{ old('name') }}" placeholder="Partner Name">
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -27,7 +27,12 @@
                                 @enderror
 
                                 <label for="image" class="mt-1">Partner Image</label>
-                                <input class="form-control" id="image" type="file" name="image" onchange="readURL(this);">
+                                <input class="form-control form-control-sm @error('image') is-invalid @enderror" id="image" type="file" name="image" onchange="readURL(this);">
+                                @error('image')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                             <div class="col-md-4 offset-md-1 mt-3">
                                 <img class="form-controlo img-thumbnail" src="#" id="previewImage" style="width: 150px;height: 120px; background: #3f4a49;">
@@ -60,7 +65,7 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Name</th>
-                                <th>Slug</th>
+                                {{-- <th>Slug</th> --}}
                                 <th>Image</th>
                                 <th>Action</th>
                             </tr>
@@ -70,7 +75,7 @@
                                 <tr>
                                     <td>{{ $key+1 }}</td>
                                     <td>{{ $partner->name }}</td>
-                                    <td>{{ $partner->slug }}</td>
+                                    {{-- <td>{{ $partner->slug }}</td> --}}
                                     <td><img class="border" style="height: 40px; width:50px;" src="{{ asset($partner->image) }}" alt=""></td>
                                     <td>
                                         <a href="{{ route('partner.edit',$partner) }}" class="btn btn-info btn-sm"><i class="fa fa-edit"></i></a>
