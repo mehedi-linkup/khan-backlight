@@ -134,7 +134,7 @@
                                     <tr>
                                         <td>{{ $loop->index + 1 }}</td>
                                         <td>{{ $item->category->name }}</td>
-                                        <td>{{ $item->model->name }}</td>
+                                        <td>{{ @$item->model->name? $item->model->name : 'Unknown' }}</td>
                                         <td>{{ $item->name }}</td>
                                         <td><img src="{{ asset($item->image) }}" width="30" height="30" alt=""></td>
                                         <td>{{ $item->rate }}</td>
