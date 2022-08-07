@@ -35,7 +35,7 @@
             </div>
             <div class="card-body p_card text-start">
               <h5 class="card-title">{{ $item->name }}</h5>
-              <p style="font-size: 13px; margin-top: 4px; margin-bottom: 2px;"><span style="color: #333; font-weight: 700;">Model &nbsp;</span><span class="text-danger">{{ $item->model->name }}</span></p>
+              <p style="font-size: 13px; margin-top: 4px; margin-bottom: 2px;"><span style="color: #333; font-weight: 700;">Model &nbsp;</span><span class="text-danger">{{ @$item->model->name? $item->model->name : 'Unknown' }}</span></p>
               <p class="mb-0" style="color: #333; font-weight: 700; font-size: 14px;">TK {{ $item->rate }}</p>
             </div>
             <div class="product-cart">
