@@ -78,7 +78,7 @@
                                     </div> --}}
 
                                     <div class="col-md-3">
-                                        <strong><label>Image</label> <span class="float-right">:</span></strong>
+                                        <strong><label>Image <small>(Size: 120px * 120px)</small></label> <span class="float-right">:</span></strong>
                                     </div>
                                     <div class="col-md-5 mt-2">
                                         <input type="file" class="form-control my-form-control" id="image" name="image" onchange="readURL(this);">

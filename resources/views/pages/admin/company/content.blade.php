@@ -77,7 +77,7 @@
                                     </span>
                                 @enderror
                                 
-                                <label for="about_image">About Image 1</label>
+                                <label for="about_image">About Image</label>
                                 <input class="form-control form-control-sm" id="about_image" type="file" name="about_image" onchange="readAboutURL(this);">
                                 <div class="form-group mt-2">
                                     <img class="form-controlo img-thumbnail" src="#" id="previewAboutImage" style="width: 160px;height: 130px;">
@@ -98,11 +98,11 @@
                                     </span>
                                 @enderror
 
-                                <label for="bg_image">About Image 2</label>
+                                {{-- <label for="bg_image">About Image 2</label>
                                 <input class="form-control form-control-sm" id="bg_image" type="file" name="bg_image" onchange="readBgURL(this);">
                                 <div class="form-group mt-2">
                                     <img class="form-controlo img-thumbnail" src="#" id="previewBgImage" style="width: 160px;height: 130px;">
-                                </div>
+                                </div> --}}
 
                                 <label for="about" class="mt-2">Company About</label>
                                 <textarea class="form-control form-control-sm" name="about" id="about_description" cols="4" rows="4">{{ $company->about }}</textarea>
@@ -132,7 +132,8 @@
 <script>
     $('#about_description').summernote({
         tabsize: 2,
-        height: 160,
+        // height: 160,
+        height: 280,
         placeholder: 'Write about your company'
     });
 </script>

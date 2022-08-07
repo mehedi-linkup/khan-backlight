@@ -10,7 +10,7 @@
                         @csrf
                         <div class="row">
                             <div class="col-md-6 mb-2">
-                                <label for="image1" class="">Image 1 (size 1280*1280)</label>
+                                <label for="image1" class="">Image 1 <span style="font-size: 12px; font-weight: 400">(Size: 354px * 224px)</label>
                                 <input class="form-control form-control-sm" id="image1" type="file" name="image1" onchange="readURL1(this);">
                                 <div class="form-group my-2">
                                     <img class="form-controlo img-thumbnail" src="#" id="previewImage1" style="width: 160px;height: 130px;">

@@ -25,7 +25,7 @@
                                     @error('name') <span style="color: red">{{$message}}</span> @enderror
                                 </div>
                                 <div class="col-md-12 mb-2">
-                                    <label for="image"> Image <span class="text-danger">*</span> </label>
+                                    <label for="image"> Image <small>(Size: 720px * 480px)</small> <span class="text-danger">*</span> </label>
                                     <input type="file" name="image" value="{{ @$eventData->image }}" class="form-control form-control-sm mb-2" id="image" onchange="mainThambUrl(this)">
                                     @error('image') <span style="color: red">{{$message}}</span> @enderror
 

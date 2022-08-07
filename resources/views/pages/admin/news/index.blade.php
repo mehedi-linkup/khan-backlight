@@ -6,7 +6,7 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="form-area">
-                    <h4 class="heading"><i class="fas fa-plus"></i> Add a News (At most 2 news)</h4>
+                    <h4 class="heading"><i class="fas fa-plus"></i> Add a News</h4>
                     <form action="{{ route('store.news') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
@@ -18,7 +18,7 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-                                <label for="image">Image</label>
+                                <label for="image">Image <small>(Size: 600px * 500px)</small></label>
                                 <input class="form-control form-control-sm @error('image') is-invalid @enderror" id="image" type="file" name="image" onchange="readURL(this);">
                                 @error('image')
                                     <span class="invalid-feedback" role="alert">
