@@ -52,7 +52,6 @@
       </div>
     </div>
   </section><!-- End Product Section -->
-
 @endsection
 
 @push('web-js')
