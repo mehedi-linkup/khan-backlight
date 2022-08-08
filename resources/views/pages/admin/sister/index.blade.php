@@ -28,11 +28,6 @@
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
-                                    {{-- @error('description')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror --}}
                                     <label for="s_description" class="mb-1">Short Description</label>
                                     <textarea name="s_description" class="form-control form-control-sm @error('s_description') is-invalid @enderror" id="s_description" rows="3" placeholder="Enter a short description">{{ old('s_description') }}</textarea>
                                     @error('s_description')
@@ -42,7 +37,7 @@
                                     @enderror
                                 </div>
                                 <div class="col-md-6 mb-2">
-                                    <label for="image">Sister Concern Image (Size: 1920px * 1080px)</label>
+                                    <label for="image">Sister Concern Image <small>(Size: 440px * 360px)</small></label>
                                     <input class="form-control form-control-sm @error('image') is-invalid @enderror" id="image" type="file" name="image" onchange="readImgURL(this);">
                                     @error('image')
                                         <span class="invalid-feedback" role="alert">

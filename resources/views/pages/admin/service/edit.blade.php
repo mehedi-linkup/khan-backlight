@@ -34,7 +34,12 @@
                             <div class="col-md-6 mb-2">
 
                                 <label for="image">Image  <span style="font-size: 12px; font-weight: 400">(Size: 440px * 360px)</label>
-                                <input class="form-control form-control-sm" id="image" type="file" name="image" onchange="readImgURL(this);">
+                                <input class="form-control form-control-sm @error('image') is-invalid @enderror" id="image" type="file" name="image" onchange="readImgURL(this);">
+                                @error('image')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror      
                                 <div class="form-group mt-2" style="margin-bottom: 0">
                                     <img class="img-thumbnail" src="#" id="previewImage" style="width: 160px;height: 130px;">
                                 </div>

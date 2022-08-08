@@ -32,7 +32,7 @@
                                 @enderror
                                  --}}
                                 <div class="field">
-                                    <label for="image">Image (Size: 720px * 480px)</label>
+                                    <label for="image">Image <small>(Size: 720px * 480px)</small></label>
                                     <input class="form-control form-control-sm upload__inputfile @error('image') is-invalid @enderror" data-max_length="10" id="image" type="file" name="image[]" multiple>
                                     @error('image')
                                     <span class="invalid-feedback" role="alert">
@@ -79,7 +79,7 @@
                             @forelse ($galleries as $key=>$item)
                                 <tr>
                                     <td>{{ $key+1 }}</td>
-                                    <td>{{ $item->event->name }}</td>                               
+                                    <td>{{ $item->event ? $item->event->name : 'Unknown'}}</td>                               
                                     <td><img class="border" style="height: 26px; width:35px;" src="{{ asset('uploads/gallery/'.$item->image) }}" alt=""></td>
                                     <td>
                                         <a href="{{ url('gallery/edit/'. $item->id) }}" type="submit" class="btn btn-info btn-mod-info btn-sm mr-1"><i class="fas fa-edit"></i></button>

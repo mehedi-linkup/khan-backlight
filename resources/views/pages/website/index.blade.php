@@ -312,7 +312,7 @@
               <div class="portfolio-info">
                 <h4>{{ $item->title }}</h4>
                 <div class="portfolio-links">
-                  <a href="{{ asset('uploads/gallery/'.$item->image) }}" data-gallery="portfolioGallery" class="portfokio-lightbox" title="{{ $item->title }}"><i class="bi bi-plus"></i></a>
+                  <a href="{{ asset('uploads/gallery/'.$item->image) }}" data-gallery="portfolioGallery{{ $item->event_id }}" class="portfokio-lightbox" title="{{ $item->title }}"><i class="bi bi-plus"></i></a>
                 </div>
               </div>
             </div>

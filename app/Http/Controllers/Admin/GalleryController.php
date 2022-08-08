@@ -25,17 +25,25 @@ class GalleryController extends Controller
         try {
             DB::beginTransaction();
 
-            // $eventName = Event::find($request->event_id)->name;
-            // $eventName = strtolower(preg_replace('/\s+/', '-', $eventName));
-            // return $eventName;
+            $eventName = Event::find($request->event_id)->name;
+            $eventName = strtolower(preg_replace('/\s+/', '-', $eventName));
             $image = $request->file('image');
             if($request->hasFile('image')) {
+                $lastImage = Gallery::where('event_id', $request->event_id)->orderBy('id', 'desc')->first();
+                if($lastImage) {
+                    $lastImageNameExt = $lastImage->title;
+                    $lastImageName = explode('_', $lastImageNameExt);
+                    $lastextNumber = explode('.', $lastImageName[1]);
+                    $lastNumber = $lastextNumber[0] + 1;
+                }
+                
                 foreach ($image as $key => $item) {
                     //image upload
                     $gallery = new Gallery;
-                    $nameGen = hexdec(uniqid());
+                    // $nameGen = hexdec(uniqid());
                     $imgExt = strtolower($item->getClientOriginalExtension());
-                    $imgName = $nameGen. '.' . $imgExt;
+                    $imgName = $eventName. '_' . (@$lastImage ? $lastNumber++ : $key) . '.' . $imgExt;
+                     
                     $upLocation = 'uploads/gallery/';
                     Image::make($item)->resize(720,480)->save($upLocation . $imgName);
                     //close image upload
@@ -70,15 +78,23 @@ class GalleryController extends Controller
             DB::beginTransaction();
             $gallery = Gallery::find($id);
             $gallery->event_id = $request->event_id;
+            // $arr = explode('.', $image);
+            // $ext = strtolower($image->getClientOriginalExtension());
+            // $name = $arr[0];
             // $gallery->title = $request->title;
             $image = $request->file('image');
             if($image) {
-                $imageName = hexdec(uniqid()).$image->getClientOriginalName();
-                // $image->move('img/gallery', $imageName);
-                Image::make($image)->resize(720,480)->save('uploads/gallery/' . $imageName);
+                // $imageName = hexdec(uniqid()).$image->getClientOriginalName();
+                $oldimg = $gallery->image;
+                $arr = explode('.', $oldimg);
+                $firstpart = $arr[0];
+                $ext = strtolower($image->getClientOriginalExtension());
+                $imageName = $firstpart . '.' . $ext;
+
                 if(file_exists('uploads/gallery/'. $gallery->image) && !empty($gallery->image)) {
                     unlink('uploads/gallery/' . $gallery->image);
                 }
+                Image::make($image)->resize(720,480)->save('uploads/gallery/' . $imageName);
                 $gallery['image'] = $imageName;
             }
             $gallery->save();

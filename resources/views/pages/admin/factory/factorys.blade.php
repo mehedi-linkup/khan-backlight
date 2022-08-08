@@ -5,12 +5,12 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="form-area">
-                    <h4 class="heading"><i class="fa fa-address-card"></i> Update Company What we do section</h4>
+                    <h4 class="heading"><i class="fa fa-plus"></i> Factory Information</h4>
                     <form action="{{ route('update.factory', 1) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
                             <div class="col-md-6 mb-2">
-                                <label for="image1" class="">Image 1 <span style="font-size: 12px; font-weight: 400">(Size: 354px * 224px)</label>
+                                <label for="image1" class="">Image 1 <small>(Size: 354px * 224px)</small></label>
                                 <input class="form-control form-control-sm" id="image1" type="file" name="image1" onchange="readURL1(this);">
                                 <div class="form-group my-2">
                                     <img class="form-controlo img-thumbnail" src="#" id="previewImage1" style="width: 160px;height: 130px;">
@@ -20,7 +20,7 @@
                                     <strong>{{ $message }}</strong>
                                 </span>
                                 @enderror
-                                <label for="image2" class="">Image 2 (size 1280*1280)</label>
+                                <label for="image2" class="">Image 2 <small>(Size: 354px * 224px)</small></label>
                                 <input class="form-control form-control-sm" id="image2" type="file" name="image2" onchange="readURL2(this);">
                                 <div class="form-group my-2">
                                     <img class="form-controlo img-thumbnail" src="#" id="previewImage2" style="width: 160px;height: 130px;">
@@ -32,7 +32,7 @@
                                 @enderror
                             </div>
                             <div class="col-md-6 mb-2">
-                                <label for="image3" class="">Image 3 (size 1280*1280)</label>
+                                <label for="image3" class="">Image 3 <small>(Size: 354px * 224px)</small></label>
                                 <input class="form-control form-control-sm" id="image3" type="file" name="image3" onchange="readURL3(this);">
                                 <div class="form-group my-2">
                                     <img class="form-controlo img-thumbnail" src="#" id="previewImage3" style="width: 160px;height: 130px;">
@@ -43,7 +43,7 @@
                                     </span>
                                 @enderror
 
-                                <label for="image4" class="">Image 4 (size 1280*1280)</label>
+                                <label for="image4" class="">Image 4 <small>(Size: 354px * 224px)</small></label>
                                 <input class="form-control form-control-sm" id="image4" type="file" name="image4" onchange="readURL4(this);">
                                 <div class="form-group my-2">
                                     <img class="form-controlo img-thumbnail" src="#" id="previewImage4" style="width: 160px;height: 130px;">

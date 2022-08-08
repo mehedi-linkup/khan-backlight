@@ -10,6 +10,6 @@ class Gallery extends Model
     use HasFactory;
     public function event()
     {
-        return $this->belongsTo(Event::class);
+        return $this->belongsTo(Event::class, 'event_id', 'id');
     }
 }

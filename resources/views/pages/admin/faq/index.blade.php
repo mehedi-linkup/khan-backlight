@@ -34,7 +34,7 @@
                                         <strong><label>Details</label> <span class="float-right">:</span></strong>
                                     </div>
                                     <div class="col-md-9">
-                                        <textarea type="text" id="details" class="form-control my-form-control @error('details') is-invalid @enderror" name="details" value="{{ old('details') }}" cols="7" rows="5"> </textarea>
+                                        <textarea type="text" id="details" class="form-control my-form-control @error('details') is-invalid @enderror" name="details" cols="7" rows="5">{{ old('details') }}</textarea>
                                         @error('details')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
